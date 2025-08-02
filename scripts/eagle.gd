@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var ray: RayCast2D = $los_ray
 @onready var ray_cast_bot: RayCast2D = $RayCastBot
 @onready var ray_cast_top: RayCast2D = $RayCastTop
+@onready var sign: AnimatedSprite2D = $AnimatedSprite2D2
 
 
 @export var properties := ["global_position"]
@@ -34,12 +35,16 @@ func _physics_process(delta):
 		state = "chase"
 	match state:
 		"idle":
+			sign.hide()
 			idle_hover(delta)
 		"chase":
+			sign.show()
 			chase_player(delta)
 		"return":
+			sign.hide()
 			return_home(delta)
 		"idle2":
+			sign.hide()
 			idle_hover_p2(delta)
 
 func _on_body_entered(body):
