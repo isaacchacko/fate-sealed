@@ -1,7 +1,6 @@
 extends CharacterBody2D
 var bullet_path=preload("res://scenes/bullet.tscn")
 
-
 const SPEED = 200.0
 const JUMP_VELOCITY = -300.0
 
