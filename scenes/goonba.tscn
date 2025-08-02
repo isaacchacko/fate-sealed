@@ -90,18 +90,18 @@ collision_mask = 7
 target_position = Vector2(0, 10)
 collision_mask = 7
 
-[node name="death" type="StaticBody2D" parent="."]
+[node name="goonbadeath" type="StaticBody2D" parent="."]
 position = Vector2(8, -4)
 script = ExtResource("3_4k4wr")
 
-[node name="Area2D" type="Area2D" parent="death"]
+[node name="Area2D" type="Area2D" parent="goonbadeath"]
 collision_layer = 512
 collision_mask = 512
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="death/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="goonbadeath/Area2D"]
 position = Vector2(-8, 4)
 rotation = 1.5708
 scale = Vector2(0.92, 0.959999)
 shape = SubResource("CapsuleShape2D_m038f")
 
-[connection signal="body_entered" from="death/Area2D" to="death" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="goonbadeath/Area2D" to="goonbadeath" method="_on_area_2d_body_entered"]

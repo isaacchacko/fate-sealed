@@ -540,10 +540,10 @@ sources/0 = SubResource("TileSetAtlasSource_dinhu")
 [node name="game" type="Node2D"]
 script = ExtResource("1_gee14")
 
-[node name="stopwatch" parent="." instance=ExtResource("8_0tnpc")]
-
 [node name="death" parent="." instance=ExtResource("3_lnu2h")]
 position = Vector2(1, 105)
+
+[node name="stopwatch" parent="." instance=ExtResource("8_0tnpc")]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_lbhrr")
