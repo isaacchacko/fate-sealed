@@ -123,12 +123,14 @@ sprite_frames = SubResource("SpriteFrames_g2els")
 animation = &"jumping_down"
 autoplay = "IDLE"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, -10)
-shape = SubResource("CircleShape2D_qhqgy")
-
 [node name="gun" type="Node2D" parent="."]
 position = Vector2(15, -11)
 
+<<<<<<< HEAD
 [node name="rewind" type="Node" parent="."]
 script = ExtResource("3_qhqgy")
+=======
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(2, -10)
+shape = SubResource("CircleShape2D_qhqgy")
+>>>>>>> 24c83b12a45bc1a1a28d0b3fedcc6b3bcc3bb4f9

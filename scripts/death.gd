@@ -1,16 +1,8 @@
-extends Area2D
+extends StaticBody2D
 
+signal player_died
 
-@onready var timer: Timer = $Timer
-
-
-func _on_body_entered(body):
-
-	print("you suck balls")
-	timer.start()
-
-
-
-
-func _on_timer_timeout():
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	print("you sssss balls")
+	player_died.emit()
 	get_tree().reload_current_scene()

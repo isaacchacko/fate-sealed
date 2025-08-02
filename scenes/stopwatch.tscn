@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://drrmrjq6hfdw7"]
+
+[ext_resource type="Script" uid="uid://b27mxhdudrr6i" path="res://scripts/stopwatch.gd" id="1_5iol8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d33h4"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="stopwatch" type="CanvasLayer"]
+script = ExtResource("1_5iol8")
+
+[node name="label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_d33h4")
