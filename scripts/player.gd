@@ -1,5 +1,6 @@
 extends CharacterBody2D
 var bullet_path=preload("res://scenes/bullet.tscn")
+signal player_died
 
 const SPEED = 200.0
 const JUMP_VELOCITY = -300.0
@@ -10,6 +11,19 @@ const JUMP_VELOCITY = -300.0
 
 func _ready():
 	HistoryManager.register_node(self, properties, false)
+
+func check_deadly_collision():
+	var tilemap = get_node("../SpikeTileMap") # Adjust path as needed
+	var tile_coords = tilemap.local_to_map(global_position)
+	var tile_data = tilemap.get_cell_tile_data(0, tile_coords)  # 0 is the layer index
+
+	if tile_data and tile_data.get_custom_data("deadly"):
+		print("you sssss balls")
+		player_died.emit()
+		HistoryManager.reset_all()
+		get_tree().reload_current_scene()
+		
+		
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -25,6 +39,9 @@ func _physics_process(delta: float) -> void:
 	#movement is 1,0,-1
 	var direction := Input.get_axis("move_left", "move_right")
 
+
+	check_deadly_collision()
+		
 	#to flip sprite
 	if direction > 0:
 		animated_sprite_2d.flip_h = false
