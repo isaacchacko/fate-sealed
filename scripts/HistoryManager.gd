@@ -63,16 +63,21 @@ func _physics_process(delta):
 			var sealExpiresAt = seal_info['expiresAt']
 
 			if not rewinding:
-				# --- RECORD ---
-				record_node_state(node, properties)
-				# Clamp history size
-				var max_size = int(record_duration * snapshot_rate)
-				var entry = histories.get(node_id, [])
-				while entry.size() > max_size:
-					entry.pop_back()
+				if isSealed and historyTime < sealExpiresAt:  # obj sealed
+					var entry = histories.get(node_id, [])
+					if entry.size() > 0:
+						var state = entry[historyTime]
+						apply_state_to_node(node, state)
+
+				else:  # record
+					record_node_state(node, properties)
+					# Clamp history size
+					var max_size = int(record_duration * snapshot_rate)
+					var entry = histories.get(node_id, [])
+					while entry.size() > max_size:
+						entry.pop_back()
 
 			else:
-				# --- REWIND ---
 
 				# this only triggers for ephemeral obj
 				if historyTime < createdAt:  # obj does not exist (historyTime)
@@ -88,8 +93,8 @@ func _physics_process(delta):
 					var state
 
 					# either
-					if isSealed and historyTime < sealExpiresAt:
-						state = entry[0]
+					if isSealed and historyTime < sealExpiresAt:  # obj sealed
+						state = entry[historyTime]
 					else:
 						state = entry.pop_front()
 
