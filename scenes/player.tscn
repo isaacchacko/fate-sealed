@@ -120,14 +120,14 @@ script = ExtResource("1_g2els")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 12
-position = Vector2(2, -16)
+position = Vector2(-1, -15)
 sprite_frames = SubResource("SpriteFrames_g2els")
 animation = &"jumping_down"
 autoplay = "IDLE"
 
 [node name="gun" type="Node2D" parent="."]
-position = Vector2(15, -11)
+position = Vector2(10, -10)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(2, -13)
+position = Vector2(0, -11)
 shape = SubResource("RectangleShape2D_g2els")
