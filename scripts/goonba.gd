@@ -7,7 +7,7 @@ var fall = 0.5
 @onready var ray_cast_left: RayCast2D = $RayCastLeft
 @onready var ray_cast_right: RayCast2D = $RayCastRight
 @onready var ray_cast_down: RayCast2D = $RayCastDown
-@onready var killzone = $killzone
+
 @onready var goonba: AnimatedSprite2D = $AnimatedSprite2D
 
 
