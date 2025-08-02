@@ -14,19 +14,19 @@ var historyTime = 0;  # helps to distinguish when ephemeral nodes were created
 var accumulated_time : float = 0.0
 
 func _unhandled_input(event):
-	if event.is_action_pressed("freeze"):  # "seal_time" should be bound to your freeze key (e.g., S) in Input Map
-		FreezeControl.is_frozen = true
-		frozen_states.clear()
-		for node_id in registered.keys():
-			var reg_info = registered[node_id]
-			var node = reg_info["node"]
-			var properties = reg_info["properties"]
-			var state = {}
-			for prop in properties:
-				state[prop] = node.get(prop)
+	if event.is_action_pressed("freeze"):  # toggle on key press
+		FreezeControl.is_frozen = !FreezeControl.is_frozen
+		if FreezeControl.is_frozen:
+			frozen_states.clear()
+			for node_id in registered.keys():
+				var reg_info = registered[node_id]
+				var node = reg_info["node"]
+				var properties = reg_info["properties"]
+				var state = {}
+				for prop in properties:
+					state[prop] = node.get(prop)
 				frozen_states[node_id] = state
-	elif event.is_action_pressed("freeze"):  # For testing, or to allow undo freeze
-			FreezeControl.is_frozen = false
+
 		
 func _physics_process(delta):
 	# freeze code
