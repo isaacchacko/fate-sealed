@@ -24,7 +24,7 @@ var center = 0
 
 
 func _ready():
-	# HistoryManager.register_node(self, properties)
+	HistoryManager.register_node(self, properties, false)
 	base_position = global_position
 	los_area.body_entered.connect(_on_body_entered)
 	los_area.body_exited.connect(_on_body_exited)
