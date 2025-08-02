@@ -33,17 +33,17 @@ func _physics_process(delta):
 	if FreezeControl.is_frozen:
 		for node_id in frozen_states.keys():
 			var node = registered[node_id]["node"]
+			if node is CharacterBody2D:
+				node.velocity = Vector2.ZERO
 			var state = frozen_states[node_id]
 			for prop in state.keys():
 				node.set(prop, state[prop])
-		
+		return
 		
 	var rewinding = TimeControl.is_rewinding
 	accumulated_time += delta
 	var interval = 1.0 / float(snapshot_rate)
 	
-	if FreezeControl.is_frozen:
-		return
 		
 	if accumulated_time >= interval:
 		accumulated_time -= interval
