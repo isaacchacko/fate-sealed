@@ -500,7 +500,7 @@ script = ExtResource("1_gee14")
 [node name="stopwatch" parent="." instance=ExtResource("8_0tnpc")]
 
 [node name="death" parent="." instance=ExtResource("3_lnu2h")]
-position = Vector2(41, 130)
+position = Vector2(1, 105)
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(1, 0)
@@ -510,6 +510,7 @@ layer_0/tile_data = PackedInt32Array(-9, 65537, 1, -8, 65537, 1, -7, 65537, 1, -
 
 [node name="player" parent="." instance=ExtResource("1_uwrxv")]
 position = Vector2(7, -25)
+collision_mask = 259
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 position = Vector2(0, -31)

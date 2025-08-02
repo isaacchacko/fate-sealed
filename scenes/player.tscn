@@ -110,12 +110,12 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_qhqgy"]
-radius = 10.0499
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
+size = Vector2(20, 22)
 
 [node name="player" type="CharacterBody2D"]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 515
+collision_mask = 515
 script = ExtResource("1_g2els")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -129,5 +129,5 @@ autoplay = "IDLE"
 position = Vector2(15, -11)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(2, -10)
-shape = SubResource("CircleShape2D_qhqgy")
+position = Vector2(2, -13)
+shape = SubResource("RectangleShape2D_g2els")
