@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cqmroqi28a6ev"]
+[gd_scene load_steps=11 format=3 uid="uid://cqmroqi28a6ev"]
 
 [ext_resource type="PackedScene" uid="uid://bxyndvqh2aqka" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://ci6d6qkrdp62a" path="res://icon.svg" id="1_yqjtg"]
@@ -489,10 +489,10 @@ sources/0 = SubResource("TileSetAtlasSource_lnu2h")
 sources/1 = SubResource("TileSetAtlasSource_iywne")
 sources/2 = SubResource("TileSetAtlasSource_p57ef")
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lbhrr"]
-distance = 10.0
-
 [node name="game" type="Node2D"]
+
+[node name="death" parent="." instance=ExtResource("3_lnu2h")]
+position = Vector2(41, 130)
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(1, 0)
@@ -513,14 +513,8 @@ position_smoothing_enabled = true
 [node name="BombSpawn" type="Node2D" parent="player"]
 position = Vector2(15, -10)
 
-[node name="death" parent="." instance=ExtResource("3_lnu2h")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="death"]
-position = Vector2(-208, 86)
-shape = SubResource("WorldBoundaryShape2D_lbhrr")
-
 [node name="PixelArtForestTreesAndSkyLandscapeHighResolutionPreview3293114" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(99.0309, -107)
+position = Vector2(99, -107)
 scale = Vector2(0.394444, 0.394444)
 texture = ExtResource("6_p57ef")
