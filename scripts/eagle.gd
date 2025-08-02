@@ -10,14 +10,16 @@ extends CharacterBody2D
 @export var properties := ["global_position"]
 @export var idle_amplitude: float = 16.0
 @export var idle_speed: float = 2.0
+@export var idle2_speed: float = 40.0
 @export var chase_speed: float = 120.0
 @export var return_speed: float = 80.0
 
 var base_position: Vector2
 var state := "idle" # possibilities are: "idle", "chase", "return"
 var player: Node2D = null
-var direction := 1 # 1 for continue path
+var direction = 1 # 1 for continue path
 var idle_center: Vector2
+var center = 0
 
 
 func _ready():
@@ -46,18 +48,24 @@ func _on_body_entered(body):
 func _on_body_exited(body):
 	if body == player:
 		idle_center = global_position
-		state = "idle"
+		direction = 1
+		state = "idle2"
 		
 func idle_hover(delta):
 	if (ray_cast_bot.is_colliding() or ray_cast_top.is_colliding()):
 		direction = direction * -1
 	global_position.y = base_position.y + sin(Time.get_ticks_msec() / 1000.0 * idle_speed) * idle_amplitude * direction
 
-func idle_hover_p2(delta):
-	if (ray_cast_bot.is_colliding() or ray_cast_top.is_colliding()):
-		direction = direction * -1
-	global_position.y = idle_center.y + sin(Time.get_ticks_msec() / 1000.0 * idle_speed) * (idle_amplitude + 7) * direction
+	
 
+func idle_hover_p2(delta):
+	if ray_cast_bot.is_colliding() or ray_cast_top.is_colliding():
+		direction *= -1
+	elif abs(global_position.y - idle_center.y) > idle_amplitude:
+		direction *= -1
+	global_position.y += idle2_speed * delta * direction
+	
+	
 func chase_player (delta):
 	if player.global_position.x > global_position.x:
 		goonba.flip_h = true   # Player is to the right; face right (adjust as needed)
@@ -69,6 +77,7 @@ func chase_player (delta):
 		move_and_slide()
 	else:
 		idle_center = global_position
+		direction = 1
 		state = "idle2"
 
 # currently not used, would be useful if we ever want it to return to base
@@ -78,7 +87,8 @@ func return_home(delta):
 		global_position = base_position
 		velocity = Vector2.ZERO
 		idle_center = global_position
-		state = "idle"
+		direction = 1
+		state = "idle2"
 		return
 	var direction = to_base.normalized()
 	velocity = direction * return_speed
