@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cdiven56e6ams" path="res://scenes/death.tscn" id="3_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://cbcw0jp777ldr" path="res://assets/Pixel_Art_Forest_Trees_And_Sky_Landscape_high_resolution_preview_3293114.jpg" id="6_p57ef"]
 [ext_resource type="PackedScene" uid="uid://drrmrjq6hfdw7" path="res://scenes/stopwatch.tscn" id="8_0tnpc"]
+[ext_resource type="PackedScene" uid="uid://bqe1pgnavya4c" path="res://scenes/goonba.tscn" id="7_u5sy4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("1_yqjtg")
@@ -524,3 +525,9 @@ z_index = -1
 position = Vector2(99, -107)
 scale = Vector2(0.394444, 0.394444)
 texture = ExtResource("6_p57ef")
+
+[node name="goonba" parent="." instance=ExtResource("7_u5sy4")]
+position = Vector2(161, -30)
+
+[node name="goonba2" parent="." instance=ExtResource("7_u5sy4")]
+position = Vector2(272, -61)
