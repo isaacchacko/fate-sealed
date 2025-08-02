@@ -15,4 +15,5 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		game_won.emit()
 		# Optionally, wait for the animation to finish:
 		await ender.animation_finished
+		HistoryManager.reset_all()
 		get_tree().reload_current_scene()
