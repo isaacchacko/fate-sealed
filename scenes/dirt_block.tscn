@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://mgvpgkb8nqad"]
+
+[ext_resource type="Texture2D" uid="uid://bmd5276g2fvoh" path="res://assets/dirtExplosion.png" id="1_m38wc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6n7a"]
+atlas = ExtResource("1_m38wc")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8n7l8"]
+atlas = ExtResource("1_m38wc")
+region = Rect2(1024, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_geudm"]
+atlas = ExtResource("1_m38wc")
+region = Rect2(1152, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4fyj"]
+atlas = ExtResource("1_m38wc")
+region = Rect2(1280, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2oyeh"]
+atlas = ExtResource("1_m38wc")
+region = Rect2(1408, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f530v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w6n7a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8n7l8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_geudm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4fyj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2oyeh")
+}],
+"loop": true,
+"name": &"explosion",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m38wc"]
+radius = 38.5876
+
+[node name="DirtBlock" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_f530v")
+animation = &"explosion"
+frame_progress = 0.271405
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -22)
+shape = SubResource("CircleShape2D_m38wc")
