@@ -17,6 +17,7 @@ var base_position: Vector2
 var state := "idle" # possibilities are: "idle", "chase", "return"
 var player: Node2D = null
 var direction := 1 # 1 for continue path
+var idle_center: Vector2
 
 
 func _ready():
@@ -35,6 +36,8 @@ func _physics_process(delta):
 			chase_player(delta)
 		"return":
 			return_home(delta)
+		"idle2":
+			idle_hover_p2(delta)
 
 func _on_body_entered(body):
 	player = body
@@ -42,13 +45,19 @@ func _on_body_entered(body):
 
 func _on_body_exited(body):
 	if body == player:
-		state = "return"
+		idle_center = global_position
+		state = "idle"
 		
 func idle_hover(delta):
 	if (ray_cast_bot.is_colliding() or ray_cast_top.is_colliding()):
 		direction = direction * -1
 	global_position.y = base_position.y + sin(Time.get_ticks_msec() / 1000.0 * idle_speed) * idle_amplitude * direction
-	
+
+func idle_hover_p2(delta):
+	if (ray_cast_bot.is_colliding() or ray_cast_top.is_colliding()):
+		direction = direction * -1
+	global_position.y = idle_center.y + sin(Time.get_ticks_msec() / 1000.0 * idle_speed) * (idle_amplitude + 7) * direction
+
 func chase_player (delta):
 	if player.global_position.x > global_position.x:
 		goonba.flip_h = true   # Player is to the right; face right (adjust as needed)
@@ -59,13 +68,16 @@ func chase_player (delta):
 		velocity = direction * chase_speed
 		move_and_slide()
 	else:
-		state = "idle"
+		idle_center = global_position
+		state = "idle2"
 
+# currently not used, would be useful if we ever want it to return to base
 func return_home(delta):
 	var to_base = base_position - global_position
 	if to_base.length() < 2:
 		global_position = base_position
 		velocity = Vector2.ZERO
+		idle_center = global_position
 		state = "idle"
 		return
 	var direction = to_base.normalized()
