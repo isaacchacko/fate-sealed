@@ -4,7 +4,7 @@ extends Node
 var is_frozen: bool = false
 
 func _input(event):
-	if event.is_action_pressed("frozen"):
+	if event.is_action_pressed("freeze"):
 		toggle()
 
 func freeze():
