@@ -13,7 +13,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	velocity=Vector2(speed,0).rotated(dir)
 	var collision = move_and_collide(velocity * delta)
-	
+
 	if collision:
 		if collision.get_collider() is TileMap:
 			queue_free()  # Deletes the bullet on impact

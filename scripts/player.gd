@@ -21,13 +21,13 @@ func _physics_process(delta: float) -> void:
 
 	#movement is 1,0,-1
 	var direction := Input.get_axis("move_left", "move_right")
-	
+
 	#to flip sprite
 	if direction > 0:
-		animated_sprite_2d.flip_h = false	
+		animated_sprite_2d.flip_h = false
 	elif direction < 0:
 		animated_sprite_2d.flip_h = true
-	
+
 	#Handles bombspawn rotations
 	if direction > 0:
 		animated_sprite_2d.flip_h = false
@@ -35,8 +35,8 @@ func _physics_process(delta: float) -> void:
 	elif direction < 0:
 		animated_sprite_2d.flip_h = true
 		muzzle.position.x = -abs(muzzle.position.x)
-	
-	
+
+
 	#choose which animations are played
 	if is_on_floor():
 		if direction == 0:
@@ -48,7 +48,7 @@ func _physics_process(delta: float) -> void:
 			animated_sprite_2d.play("jumping_up")
 		elif velocity.y > 0:
 			animated_sprite_2d.play("jumping_down")
-		
+
 	if direction:
 		velocity.x = direction * SPEED
 	else:
