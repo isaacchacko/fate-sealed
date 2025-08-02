@@ -9,6 +9,7 @@ var registered = {}
 var histories = {}
 var historyTime = 0;  # helps to distinguish when ephemeral nodes were created
 
+
 var accumulated_time : float = 0.0
 
 func _physics_process(delta):
@@ -19,10 +20,18 @@ func _physics_process(delta):
 		accumulated_time -= interval
 
 		for node_id in registered.keys():
+
+			# the following is used for ALL objects
 			var reg_info = registered[node_id]
 			var node = reg_info["node"]
 			var properties = reg_info["properties"]
 			var createdAt = reg_info['createdAt']
+
+			# the following is only relevant to sealable objects.
+			# if the object is not sealable, these variable values are generic
+			var seal_info = reg_info['seal']
+			var isSealed = seal_info['isSealed']
+			var sealExpiresAt = seal_info['expiresAt']
 
 			if not rewinding:
 				# --- RECORD ---
@@ -32,10 +41,12 @@ func _physics_process(delta):
 				var entry = histories.get(node_id, [])
 				while entry.size() > max_size:
 					entry.pop_back()
+
 			else:
 				# --- REWIND ---
-				if historyTime < createdAt:  # if true, obj is ephemeral and
-											 # should not be alive rn
+
+				# this only triggers for ephemeral obj
+				if historyTime < createdAt:  # obj does not exist (historyTime)
 					if node.is_inside_tree():
 						node.queue_free()
 
@@ -45,7 +56,14 @@ func _physics_process(delta):
 
 				var entry = histories.get(node_id, [])
 				if entry.size() > 0:
-					var state = entry.pop_front()
+					var state
+
+					# either
+					if isSealed and historyTime < sealExpiresAt:
+						state = entry[0]
+					else:
+						state = entry.pop_front()
+
 					apply_state_to_node(node, state)
 
 	# update the history time
@@ -59,6 +77,18 @@ func reset_all():
 	registered.clear()
 	histories.clear()
 	historyTime = 0
+
+func seal(node: Node):
+	var node_id = node.get_instance_id()
+
+	# sanity check that node is sealable
+	if (!registered[node_id]['sealable']):
+		return
+
+	var entry = histories.get(node_id, [])
+	if entry.size() > 0:  # if there is history to seal
+		registered[node_id]['seal']['isSealed'] = true
+		registered[node_id]['seal']['expiresAt'] = historyTime
 
 # Called automatically for all nodes during recording!
 func record_node_state(node: Node, properties: Array):
@@ -80,10 +110,25 @@ func apply_state_to_node(node: Node, state: Dictionary):
 		node.set(prop, state[prop])  # default set
 
 # Nodes should call this in _ready()
-func register_node(node: Node, properties: Array, isEphemeral: bool):
+func register_node(node: Node, properties: Array, ephemeral: bool, sealable: bool):
+
+	# ephemeral objects cannot be choosen to be sealed. they CAN be used by
+	# sealable enemies. say an enemy shoots a bomb. the bomb will still
+	# create history, and because the enemy is sealed the bomb will always be
+	# shot, but the bomb itself cannot be sealed.
+	assert(!(ephemeral and sealable),
+	"ephemeral objects cannot be choosen to be sealed.")
+
 	var node_id = node.get_instance_id()
-	registered[node_id] = { "node": node,
-							"properties": properties,
-							"createdAt": historyTime if isEphemeral else -1}
+	registered[node_id] = {
+		"node": node,
+		"properties": properties,
+		"createdAt": historyTime if ephemeral else -1,
+		"sealable": sealable,
+		"seal": {
+			"isSealed": false,
+			"expiresAt": null
+			}
+		}
 	if !histories.has(node_id):
 		histories[node_id] = []

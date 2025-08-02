@@ -9,7 +9,7 @@ const JUMP_VELOCITY = -300.0
 @export var properties := ["global_position"]
 
 func _ready():
-	HistoryManager.register_node(self, properties, false)
+	HistoryManager.register_node(self, properties, false, false)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
