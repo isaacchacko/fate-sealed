@@ -1,5 +1,6 @@
-[gd_scene load_steps=42 format=3 uid="uid://c4usvoo0rrtog"]
+[gd_scene load_steps=43 format=3 uid="uid://c4usvoo0rrtog"]
 
+[ext_resource type="Script" uid="uid://dwainthicxd05" path="res://scripts/red_hulk.gd" id="1_330le"]
 [ext_resource type="Texture2D" uid="uid://cptdi5u4qw5t0" path="res://assets/Red Panda Sprite Sheet.png" id="1_hasph"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_330le"]
@@ -173,7 +174,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vso75")
 }],
-"loop": true,
+"loop": false,
 "name": &"GroundPound",
 "speed": 7.0
 }, {
@@ -219,7 +220,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3lt3b")
 }],
-"loop": true,
+"loop": false,
 "name": &"nighty",
 "speed": 5.0
 }, {
@@ -277,7 +278,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_th8b6")
 }],
-"loop": true,
+"loop": false,
 "name": &"wakey",
 "speed": 5.0
 }]
@@ -286,17 +287,18 @@ animations = [{
 radius = 6.08276
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hasph"]
-radius = 88.0511
+radius = 175.183
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_330le"]
-radius = 47.0956
+radius = 120.599
 
 [node name="RedHulk" type="CharacterBody2D"]
 collision_mask = 2
+script = ExtResource("1_330le")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_oaxlh")
-animation = &"postSpotIdle"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -312,8 +314,12 @@ position = Vector2(1, 10)
 shape = SubResource("CircleShape2D_hasph")
 
 [node name="SmallLOSHulk" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 512
 
 [node name="SmallLOSHulk" type="CollisionShape2D" parent="SmallLOSHulk"]
+light_mask = 0
+visibility_layer = 512
 position = Vector2(1, 10)
 shape = SubResource("CircleShape2D_330le")
 

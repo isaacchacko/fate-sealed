@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://mgvpgkb8nqad"]
+[gd_scene load_steps=10 format=3 uid="uid://mgvpgkb8nqad"]
 
 [ext_resource type="Texture2D" uid="uid://bmd5276g2fvoh" path="res://assets/dirtExplosion.png" id="1_m38wc"]
 
@@ -22,6 +22,10 @@ region = Rect2(1280, 0, 128, 128)
 atlas = ExtResource("1_m38wc")
 region = Rect2(1408, 0, 128, 128)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_m38wc"]
+atlas = ExtResource("1_m38wc")
+region = Rect2(896, 0, 128, 128)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_f530v"]
 animations = [{
 "frames": [{
@@ -43,6 +47,14 @@ animations = [{
 "loop": true,
 "name": &"explosion",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m38wc")
+}],
+"loop": true,
+"name": &"throw",
+"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m38wc"]
@@ -52,8 +64,7 @@ radius = 38.5876
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_f530v")
-animation = &"explosion"
-frame_progress = 0.271405
+animation = &"throw"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -22)

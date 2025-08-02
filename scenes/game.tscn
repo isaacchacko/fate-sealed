@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://7eond7jr52wg" path="res://scenes/goonba.tscn" id="7_u5sy4"]
 [ext_resource type="PackedScene" path="res://scenes/stopwatch.tscn" id="8_0tnpc"]
 [ext_resource type="PackedScene" path="res://scenes/ender.tscn" id="10_vtaks"]
-[ext_resource type="PackedScene" path="res://scenes/eagle.tscn" id="11_kvpfn"]
+[ext_resource type="PackedScene" uid="uid://cpp1qqhb7ktog" path="res://scenes/eagle.tscn" id="11_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://c4usvoo0rrtog" path="res://scenes/red_hulk.tscn" id="12_dinhu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
@@ -543,4 +543,4 @@ position = Vector2(58, -187)
 position = Vector2(157, -193)
 
 [node name="RedHulk" parent="." instance=ExtResource("12_dinhu")]
-position = Vector2(366, -94)
+position = Vector2(248, -144)
