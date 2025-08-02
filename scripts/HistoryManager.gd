@@ -54,6 +54,12 @@ func _physics_process(delta):
 	elif TimeControl.is_rewinding:
 		historyTime = max(0, historyTime - 1)
 
+# called when player dies
+func reset_all():
+	registered.clear()
+	histories.clear()
+	historyTime = 0
+
 # Called automatically for all nodes during recording!
 func record_node_state(node: Node, properties: Array):
 	var node_id = node.get_instance_id()
