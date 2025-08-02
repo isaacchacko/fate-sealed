@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://dcb7ai6k3ntmh"]
+[gd_scene load_steps=13 format=3 uid="uid://dcb7ai6k3ntmh"]
 
 [ext_resource type="Texture2D" uid="uid://bo5srvhfqbcvl" path="res://assets/goomba.png" id="1_dkq4h"]
 [ext_resource type="Script" uid="uid://c76phpnhbmiim" path="res://scripts/goonba.gd" id="1_ghie5"]
+[ext_resource type="Script" uid="uid://b5lxai2lpgiwf" path="res://scripts/death.gd" id="3_4k4wr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ghie5"]
 atlas = ExtResource("1_dkq4h")
@@ -57,31 +58,50 @@ animations = [{
 radius = 7.0
 height = 22.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m038f"]
+radius = 8.0
+height = 29.1667
+
 [node name="goonba" type="CharacterBody2D"]
-position = Vector2(2, -2)
+position = Vector2(1, -1)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_ghie5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.987179, 1)
 sprite_frames = SubResource("SpriteFrames_sbr7i")
 autoplay = "default"
 frame_progress = 0.43619
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 2)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_4k4wr")
 
 [node name="RayCastLeft" type="RayCast2D" parent="."]
-position = Vector2(-2, 2)
-target_position = Vector2(-20, 0)
+target_position = Vector2(-14, 0)
 collision_mask = 3
 
 [node name="RayCastRight" type="RayCast2D" parent="."]
-target_position = Vector2(17, 0)
+target_position = Vector2(14, 0)
 collision_mask = 3
 
 [node name="RayCastDown" type="RayCast2D" parent="."]
-target_position = Vector2(-1, 10)
+target_position = Vector2(0, 10)
 collision_mask = 3
+
+[node name="death" type="StaticBody2D" parent="."]
+position = Vector2(8, -4)
+script = ExtResource("3_4k4wr")
+
+[node name="Area2D" type="Area2D" parent="death"]
+collision_layer = 512
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="death/Area2D"]
+position = Vector2(-8, 4)
+rotation = 1.5708
+scale = Vector2(0.92, 0.959999)
+shape = SubResource("CapsuleShape2D_m038f")
+
+[connection signal="body_entered" from="death/Area2D" to="death" method="_on_area_2d_body_entered"]

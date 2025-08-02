@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://cqmroqi28a6ev"]
 
-[ext_resource type="Script" path="res://scripts/game.gd" id="1_gee14"]
+[ext_resource type="Script" uid="uid://db6ygwvad1irf" path="res://scripts/game.gd" id="1_gee14"]
 [ext_resource type="PackedScene" uid="uid://bxyndvqh2aqka" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://ci6d6qkrdp62a" path="res://icon.svg" id="1_yqjtg"]
 [ext_resource type="Texture2D" uid="uid://brioi1475dkep" path="res://assets/tileset.png" id="2_lbhrr"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cbcw0jp777ldr" path="res://assets/Pixel_Art_Forest_Trees_And_Sky_Landscape_high_resolution_preview_3293114.jpg" id="6_p57ef"]
 [ext_resource type="PackedScene" uid="uid://dcb7ai6k3ntmh" path="res://scenes/goonba.tscn" id="7_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://bg4yphxg3bnlo" path="res://scenes/stopwatch.tscn" id="8_0tnpc"]
+
 [ext_resource type="PackedScene" uid="uid://ujw3wxcw3x0o" path="res://scenes/ender.tscn" id="10_vtaks"]
 [ext_resource type="PackedScene" uid="uid://dx7150d6erw1f" path="res://scenes/eagle.tscn" id="11_kvpfn"]
 
@@ -501,7 +502,7 @@ script = ExtResource("1_gee14")
 [node name="stopwatch" parent="." instance=ExtResource("8_0tnpc")]
 
 [node name="death" parent="." instance=ExtResource("3_lnu2h")]
-position = Vector2(41, 130)
+position = Vector2(1, 105)
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(1, 0)
@@ -511,6 +512,7 @@ layer_0/tile_data = PackedInt32Array(-9, 65537, 1, -8, 65537, 1, -7, 65537, 1, -
 
 [node name="player" parent="." instance=ExtResource("1_uwrxv")]
 position = Vector2(7, -25)
+collision_mask = 259
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 position = Vector2(0, -31)

@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@export var properties := ["global_position", "velocity", "alive"]
+
 var pos: Vector2
 var rota: float
 var dir: float
@@ -8,23 +10,33 @@ var speed = 250.0
 var jump_velocity = -300.0
 var gravity = 1000.0  # Adjust this to control arc steepness
 
+var alive := true
 
 func _ready() -> void:
+	HistoryManager.register_node(self, properties, true)
+
 	global_position = pos
 	global_rotation = rota
-
-	# Set initial velocity using direction
-	velocity = Vector2(speed, 0).rotated(dir)
-
 	velocity.x = speed * cos(dir)
 	velocity.y = jump_velocity
 
 func _physics_process(delta: float) -> void:
-	# Apply gravity to vertical velocity
-	velocity.y += gravity * delta
+	if not alive:
+		print("v: alive: ", alive, " ", ("right" if velocity.x > 0 else "left"), " ", ("up" if velocity.y < 0 else "down"))
+		return
 
-	# Move and check for collision
+	velocity.y += gravity * delta
+	print("v: alive: ", alive, " ", ("right" if velocity.x > 0 else "left"), " ", ("up" if velocity.y < 0 else "down"))
 	var collision = move_and_collide(velocity * delta)
-	if collision:
-		if collision.get_collider() is TileMap:
-			queue_free()
+	if collision and collision.get_collider() is TileMap:
+		set_alive(false)
+
+# HAS to be defined so that HistoryManager can immediately trigger a hide/show
+# when alive changes. i miss useEffect
+func set_alive(is_alive: bool) -> void:
+	if alive != is_alive:
+		alive = is_alive
+		if alive:
+			show()
+		else:
+			hide()
