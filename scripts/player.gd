@@ -12,6 +12,8 @@ func _ready():
 	HistoryManager.register_node(self, properties, false, false)
 
 func _physics_process(delta: float) -> void:
+	if FreezeControl.is_frozen:
+		return
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta

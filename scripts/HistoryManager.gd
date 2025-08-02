@@ -38,6 +38,10 @@ func _physics_process(delta):
 			var state = frozen_states[node_id]
 			for prop in state.keys():
 				node.set(prop, state[prop])
+			var sprite = node.get_node_or_null("AnimatedSprite2D")
+			var animated_sprite = node.get_node_or_null("AnimatedSprite2D")
+			if animated_sprite and animated_sprite is AnimatedSprite2D:
+				animated_sprite.stop()
 		return
 		
 	var rewinding = TimeControl.is_rewinding
