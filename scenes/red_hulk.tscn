@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://c4usvoo0rrtog"]
+[gd_scene load_steps=42 format=3 uid="uid://c4usvoo0rrtog"]
 
 [ext_resource type="Texture2D" uid="uid://cptdi5u4qw5t0" path="res://assets/Red Panda Sprite Sheet.png" id="1_hasph"]
 
@@ -286,7 +286,10 @@ animations = [{
 radius = 6.08276
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hasph"]
-radius = 64.1327
+radius = 88.0511
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_330le"]
+radius = 47.0956
 
 [node name="RedHulk" type="CharacterBody2D"]
 collision_mask = 2
@@ -300,12 +303,20 @@ autoplay = "idle"
 position = Vector2(1, 10)
 shape = SubResource("CircleShape2D_pymch")
 
-[node name="LOSHulk" type="Area2D" parent="."]
+[node name="LargeLOSHulk" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 512
 
-[node name="LOSHulk" type="CollisionShape2D" parent="LOSHulk"]
+[node name="LargeLOSHulk" type="CollisionShape2D" parent="LargeLOSHulk"]
 position = Vector2(1, 10)
 shape = SubResource("CircleShape2D_hasph")
 
+[node name="SmallLOSHulk" type="Area2D" parent="."]
+
+[node name="SmallLOSHulk" type="CollisionShape2D" parent="SmallLOSHulk"]
+position = Vector2(1, 10)
+shape = SubResource("CircleShape2D_330le")
+
 [node name="los_hulk_ray" type="RayCast2D" parent="."]
+position = Vector2(1, 10)
+target_position = Vector2(39, 22)
