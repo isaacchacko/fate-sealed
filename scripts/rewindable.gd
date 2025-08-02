@@ -1,8 +1,8 @@
 extends Node
 
 
-@export var record_duration : float = 3.0        # seconds to store
-@export var snapshot_rate : int = 30             # how many saves per second
+@export var record_duration : float = 1000.0        # seconds to store
+@export var snapshot_rate : int = 60             # how many saves per second
 @export var properties : Array[StringName] = ["global_position"]
 
 var history : Array = []

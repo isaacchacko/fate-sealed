@@ -1,8 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://bxyndvqh2aqka"]
+[gd_scene load_steps=17 format=3 uid="uid://bxyndvqh2aqka"]
 
 [ext_resource type="Script" uid="uid://di8e5g17tycmh" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://b4wwuvab7nkq0" path="res://assets/player.png" id="2_g2els"]
-[ext_resource type="Script" path="res://scripts/rewindable.gd" id="3_qhqgy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
 atlas = ExtResource("2_g2els")
@@ -127,9 +126,6 @@ autoplay = "IDLE"
 
 [node name="gun" type="Node2D" parent="."]
 position = Vector2(15, -11)
-
-[node name="rewind" type="Node" parent="."]
-script = ExtResource("3_qhqgy")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(2, -10)

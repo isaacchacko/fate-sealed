@@ -7,6 +7,10 @@ const JUMP_VELOCITY = -300.0
 
 @onready var muzzle = $BombSpawn
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@export var properties := ["global_position"]
+
+func _ready():
+	HistoryManager.register_node(self, properties)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -65,7 +69,7 @@ func fire():
 	else:
 		bullet.dir = 0  # Facing right
 	get_parent().add_child(bullet)
-	
+
 func _input(event):
 	if event.is_action_pressed("rewind_time"):
 		rewind_script.start_rewind()

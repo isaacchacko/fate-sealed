@@ -7,9 +7,11 @@ var fall = 0.5
 @onready var ray_cast_left: RayCast2D = $RayCastLeft
 @onready var ray_cast_right: RayCast2D = $RayCastRight
 @onready var ray_cast_down: RayCast2D = $RayCastDown
-
 @onready var goonba: AnimatedSprite2D = $AnimatedSprite2D
+@export var properties := ["global_position"]
 
+func _ready():
+	HistoryManager.register_node(self, properties)
 
 func _process(delta: float):
 	if ray_cast_left.is_colliding():
