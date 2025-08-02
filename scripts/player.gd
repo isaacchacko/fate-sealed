@@ -1,6 +1,5 @@
 extends CharacterBody2D
 var bullet_path=preload("res://scenes/bullet.tscn")
-@onready var rewind_script = $scripts/rewind
 
 const SPEED = 200.0
 const JUMP_VELOCITY = -300.0
@@ -10,7 +9,7 @@ const JUMP_VELOCITY = -300.0
 @export var properties := ["global_position"]
 
 func _ready():
-	HistoryManager.register_node(self, properties)
+	HistoryManager.register_node(self, properties, false)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -69,9 +68,3 @@ func fire():
 	else:
 		bullet.dir = 0  # Facing right
 	get_parent().add_child(bullet)
-
-func _input(event):
-	if event.is_action_pressed("rewind_time"):
-		rewind_script.start_rewind()
-	elif event.is_action_released("rewind_time"):
-		rewind_script.stop_rewind()
