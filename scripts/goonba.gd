@@ -76,7 +76,7 @@ func _on_body_entered(body):
 
 func _on_body_exited(body):
 	if body == player:
-		direction = 1
+		#direction = 1
 		sit_timer = 1.0
 		state = "sit"
 		goonba.play("sit")
