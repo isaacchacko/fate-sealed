@@ -121,7 +121,6 @@ position = Vector2(2, -16)
 sprite_frames = SubResource("SpriteFrames_g2els")
 animation = &"jumping_down"
 autoplay = "IDLE"
-frame_progress = 0.877976
 
 [node name="gun" type="Node2D" parent="."]
 position = Vector2(15, -11)
