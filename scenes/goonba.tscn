@@ -1,0 +1,82 @@
+[gd_scene load_steps=11 format=3 uid="uid://bqe1pgnavya4c"]
+
+[ext_resource type="Texture2D" uid="uid://bo5srvhfqbcvl" path="res://assets/goomba.png" id="1_dkq4h"]
+[ext_resource type="Script" uid="uid://c76phpnhbmiim" path="res://scripts/goonba.gd" id="1_ghie5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghie5"]
+atlas = ExtResource("1_dkq4h")
+region = Rect2(20, 21, 39, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4k4wr"]
+atlas = ExtResource("1_dkq4h")
+region = Rect2(59, 21, 39, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m038f"]
+atlas = ExtResource("1_dkq4h")
+region = Rect2(98, 21, 39, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmdix"]
+atlas = ExtResource("1_dkq4h")
+region = Rect2(137, 21, 39, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fllnq"]
+atlas = ExtResource("1_dkq4h")
+region = Rect2(176, 21, 39, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0k8f"]
+atlas = ExtResource("1_dkq4h")
+region = Rect2(215, 21, 39, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sbr7i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghie5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4k4wr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m038f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmdix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fllnq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0k8f")
+}],
+"loop": true,
+"name": &"default",
+"speed": 13.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4k4wr"]
+radius = 7.0
+height = 22.0
+
+[node name="goonba" type="CharacterBody2D"]
+position = Vector2(2, -2)
+script = ExtResource("1_ghie5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_sbr7i")
+autoplay = "default"
+frame_progress = 0.43619
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 2)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_4k4wr")
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(-2, 2)
+target_position = Vector2(-20, 0)
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+target_position = Vector2(17, 0)
+
+[node name="RayCastDown" type="RayCast2D" parent="."]
+target_position = Vector2(-1, 10)
