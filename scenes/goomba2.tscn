@@ -1,0 +1,95 @@
+[gd_scene load_steps=11 format=3 uid="uid://cflwcv6x5rk8u"]
+
+[ext_resource type="Script" uid="uid://brwcop6jss6pb" path="res://scripts/goomba_2.gd" id="1_3lro2"]
+[ext_resource type="Texture2D" uid="uid://rqvljmeh13mh" path="res://assets/goomba.png" id="1_xe083"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3lro2"]
+atlas = ExtResource("1_xe083")
+region = Rect2(11, 0, 39, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0v8j"]
+atlas = ExtResource("1_xe083")
+region = Rect2(50, 0, 39, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpve7"]
+atlas = ExtResource("1_xe083")
+region = Rect2(89, 0, 39, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ewf8n"]
+atlas = ExtResource("1_xe083")
+region = Rect2(128, 0, 39, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1k1ny"]
+atlas = ExtResource("1_xe083")
+region = Rect2(167, 0, 39, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7w7a"]
+atlas = ExtResource("1_xe083")
+region = Rect2(206, 0, 39, 47)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ijnqx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3lro2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0v8j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hpve7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ewf8n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1k1ny")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7w7a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e0nr0"]
+radius = 6.0
+height = 22.0
+
+[node name="goomba2" type="Node2D"]
+position = Vector2(0, -7)
+script = ExtResource("1_3lro2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(3, -2)
+scale = Vector2(1, 1.0035)
+sprite_frames = SubResource("SpriteFrames_ijnqx")
+autoplay = "default"
+frame_progress = 0.891513
+
+[node name="killzone" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 3
+priority = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(2, -1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_e0nr0")
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+target_position = Vector2(-35, 0)
+collision_mask = 3
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+exclude_parent = false
+target_position = Vector2(46, 0)
+collision_mask = 3
+
+[node name="RayCastDown" type="RayCast2D" parent="."]
+exclude_parent = false
+target_position = Vector2(0, 11)
+collision_mask = 3

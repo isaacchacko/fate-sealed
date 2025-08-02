@@ -1,0 +1,85 @@
+[gd_scene load_steps=11 format=3 uid="uid://d3bb2nkfghbmq"]
+
+[ext_resource type="Script" uid="uid://brwcop6jss6pb" path="res://scripts/goomba_2.gd" id="1_ghie5"]
+[ext_resource type="Texture2D" uid="uid://rqvljmeh13mh" path="res://assets/goomba.png" id="2_4k4wr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m038f"]
+atlas = ExtResource("2_4k4wr")
+region = Rect2(11, 0, 39, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmdix"]
+atlas = ExtResource("2_4k4wr")
+region = Rect2(50, 0, 39, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fllnq"]
+atlas = ExtResource("2_4k4wr")
+region = Rect2(89, 0, 39, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0k8f"]
+atlas = ExtResource("2_4k4wr")
+region = Rect2(128, 0, 39, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbr7i"]
+atlas = ExtResource("2_4k4wr")
+region = Rect2(167, 0, 39, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0dq5"]
+atlas = ExtResource("2_4k4wr")
+region = Rect2(206, 0, 39, 47)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_26kkc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m038f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmdix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fllnq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0k8f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sbr7i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v0dq5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yrhf1"]
+radius = 6.0
+height = 24.0
+
+[node name="goonba" type="CharacterBody2D"]
+script = ExtResource("1_ghie5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, -9)
+scale = Vector2(0.961538, 1)
+sprite_frames = SubResource("SpriteFrames_26kkc")
+autoplay = "default"
+frame_progress = 0.0480508
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -7)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_yrhf1")
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(0, -7)
+target_position = Vector2(-23, 0)
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(3, -9)
+target_position = Vector2(4, -16)
+
+[node name="RayCastDown" type="RayCast2D" parent="."]
+position = Vector2(0, -6)
+target_position = Vector2(0, 14)

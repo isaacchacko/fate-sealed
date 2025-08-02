@@ -1,11 +1,19 @@
+<<<<<<< HEAD
 [gd_scene load_steps=11 format=3 uid="uid://cqmroqi28a6ev"]
+=======
+[gd_scene load_steps=10 format=3 uid="uid://cqmroqi28a6ev"]
+>>>>>>> 0e28cba (goomba)
 
 [ext_resource type="PackedScene" uid="uid://bxyndvqh2aqka" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://ci6d6qkrdp62a" path="res://icon.svg" id="1_yqjtg"]
 [ext_resource type="Texture2D" uid="uid://brioi1475dkep" path="res://assets/tileset.png" id="2_lbhrr"]
 [ext_resource type="Texture2D" uid="uid://b4wwuvab7nkq0" path="res://assets/player.png" id="3_iywne"]
 [ext_resource type="PackedScene" uid="uid://cdiven56e6ams" path="res://scenes/death.tscn" id="3_lnu2h"]
+<<<<<<< HEAD
 [ext_resource type="Texture2D" uid="uid://cbcw0jp777ldr" path="res://assets/Pixel_Art_Forest_Trees_And_Sky_Landscape_high_resolution_preview_3293114.jpg" id="6_p57ef"]
+=======
+[ext_resource type="PackedScene" uid="uid://d3bb2nkfghbmq" path="res://scenes/goonba.tscn" id="6_u5sy4"]
+>>>>>>> 0e28cba (goomba)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("1_yqjtg")
@@ -513,8 +521,20 @@ position_smoothing_enabled = true
 [node name="BombSpawn" type="Node2D" parent="player"]
 position = Vector2(15, -10)
 
+<<<<<<< HEAD
 [node name="PixelArtForestTreesAndSkyLandscapeHighResolutionPreview3293114" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(99, -107)
 scale = Vector2(0.394444, 0.394444)
 texture = ExtResource("6_p57ef")
+=======
+[node name="CollisionShape2D" type="CollisionShape2D" parent="death"]
+position = Vector2(-208, 86)
+shape = SubResource("WorldBoundaryShape2D_lbhrr")
+
+[node name="goonba" parent="." instance=ExtResource("6_u5sy4")]
+position = Vector2(75, -35)
+
+[node name="goonba2" parent="." instance=ExtResource("6_u5sy4")]
+position = Vector2(153, -32)
+>>>>>>> 0e28cba (goomba)
