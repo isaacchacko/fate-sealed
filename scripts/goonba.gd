@@ -11,7 +11,7 @@ var fall = 0.5
 @export var properties := ["global_position"]
 
 func _ready():
-	HistoryManager.register_node(self, properties, false)
+	HistoryManager.register_node(self, properties)
 
 func _process(delta: float):
 	if ray_cast_left.is_colliding():
