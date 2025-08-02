@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dcb7ai6k3ntmh"]
+[gd_scene load_steps=14 format=3 uid="uid://dcb7ai6k3ntmh"]
 
 [ext_resource type="Texture2D" uid="uid://bo5srvhfqbcvl" path="res://assets/goomba.png" id="1_dkq4h"]
 [ext_resource type="Script" uid="uid://c76phpnhbmiim" path="res://scripts/goonba.gd" id="1_ghie5"]
@@ -52,6 +52,14 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 13.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghie5")
+}],
+"loop": true,
+"name": &"sit",
+"speed": 4.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4k4wr"]
@@ -62,6 +70,9 @@ height = 22.0
 radius = 8.0
 height = 29.1667
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_4k4wr"]
+radius = 76.0
+
 [node name="goonba" type="CharacterBody2D"]
 position = Vector2(1, -1)
 collision_layer = 6
@@ -71,8 +82,9 @@ script = ExtResource("1_ghie5")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.987179, 1)
 sprite_frames = SubResource("SpriteFrames_sbr7i")
+animation = &"sit"
 autoplay = "default"
-frame_progress = 0.43619
+frame_progress = 0.849909
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
@@ -103,5 +115,15 @@ position = Vector2(-8, 4)
 rotation = 1.5708
 scale = Vector2(0.92, 0.959999)
 shape = SubResource("CapsuleShape2D_m038f")
+
+[node name="LOSpos" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 512
+
+[node name="LOSpos" type="CollisionShape2D" parent="LOSpos"]
+shape = SubResource("CircleShape2D_4k4wr")
+
+[node name="los_ray" type="RayCast2D" parent="."]
+target_position = Vector2(55, 50)
 
 [connection signal="body_entered" from="death/Area2D" to="death" method="_on_area_2d_body_entered"]
