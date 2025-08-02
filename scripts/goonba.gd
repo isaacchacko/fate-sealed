@@ -15,6 +15,7 @@ var sit_timer := 0.0
 @onready var goonba: AnimatedSprite2D = $AnimatedSprite2D
 @onready var los_area: Area2D = $LOSpos
 @onready var ray: RayCast2D = $los_ray
+@onready var sign: AnimatedSprite2D = $AnimatedSprite2D2
 
 
 @export var properties := ["global_position"]
@@ -24,21 +25,25 @@ func _ready():
 	HistoryManager.register_node(self, properties, false)
 	los_area.body_entered.connect(_on_body_entered)
 	los_area.body_exited.connect(_on_body_exited)
+	$AnimatedSprite2D2.visible = false
 
 func _physics_process(delta):
 	if player and los_area.get_overlapping_bodies().has(player) and is_player_in_los():
 		state = "chase"
 	match state:
 		"idle":
+			sign.hide()
 			idle_move(delta)
 		"chase":
+			sign.show()
 			chase_player(delta)
 		"sit":
+			sign.hide()
 			sit_timer -= delta
 			if sit_timer <= 0:
 				state = "idle"
 				goonba.play("default") # Switch to idle animation after sitting
-			
+
 func idle_move(delta: float):
 
 	if ray_cast_left.is_colliding():
@@ -88,3 +93,4 @@ func is_player_in_los() -> bool:
 	ray.target_position = (player.global_position + Vector2(0, los_y_offset)) - global_position
 	ray.force_raycast_update()
 	return ray.is_colliding() and ray.get_collider() == player
+	
