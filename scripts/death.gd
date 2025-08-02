@@ -1,15 +1,8 @@
 extends StaticBody2D
 
-func _on_body_entered(body):
-	print("you suck balls")
-
-
-
-#func _on_timer_timeout():
-	#print("reload should occur")
-	#get_tree().reload_current_scene()
-
+signal player_died
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	print("you sssss balls")
+	player_died.emit()
 	get_tree().reload_current_scene()
