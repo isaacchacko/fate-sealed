@@ -5,6 +5,7 @@ extends Node
 
 # registered[node_id] = { "node": node, "properties": [...], "created_at": int }
 var registered = {}
+var frozen_states = {}
 # node_id -> [state_dict, ...]
 var histories = {}
 var historyTime = 0;  # helps to distinguish when ephemeral nodes were created
@@ -12,10 +13,38 @@ var historyTime = 0;  # helps to distinguish when ephemeral nodes were created
 
 var accumulated_time : float = 0.0
 
+func _unhandled_input(event):
+	if event.is_action_pressed("seal_time"):  # "seal_time" should be bound to your freeze key (e.g., S) in Input Map
+		FreezeControl.is_frozen = true
+		frozen_states.clear()
+		for node_id in registered.keys():
+			var reg_info = registered[node_id]
+			var node = reg_info["node"]
+			var properties = reg_info["properties"]
+			var state = {}
+			for prop in properties:
+				state[prop] = node.get(prop)
+				frozen_states[node_id] = state
+	elif event.is_action_pressed("unfreeze_time"):  # For testing, or to allow undo freeze
+			FreezeControl.is_frozen = false
+		
 func _physics_process(delta):
+	# freeze code
+	if FreezeControl.is_frozen:
+		for node_id in frozen_states.keys():
+			var node = registered[node_id]["node"]
+			var state = frozen_states[node_id]
+			for prop in state.keys():
+				node.set(prop, state[prop])
+		
+		
 	var rewinding = TimeControl.is_rewinding
 	accumulated_time += delta
 	var interval = 1.0 / float(snapshot_rate)
+	
+	if FreezeControl.is_frozen:
+		return
+		
 	if accumulated_time >= interval:
 		accumulated_time -= interval
 
@@ -71,6 +100,7 @@ func _physics_process(delta):
 		historyTime += 1
 	elif TimeControl.is_rewinding:
 		historyTime = max(0, historyTime - 1)
+		
 
 # called when player dies
 func reset_all():
