@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://b5lxai2lpgiwf" path="res://scripts/death.gd" id="1_0hhgj"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0hhgj"]
-size = Vector2(1127, 45.5)
 
 [node name="death" type="StaticBody2D"]
 script = ExtResource("1_0hhgj")
@@ -13,7 +12,7 @@ collision_layer = 512
 collision_mask = 512
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("WorldBoundaryShape2D_0hhgj")
 position = Vector2(159.5, -0.5)
+shape = SubResource("WorldBoundaryShape2D_0hhgj")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

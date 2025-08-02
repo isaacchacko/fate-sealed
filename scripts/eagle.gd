@@ -13,6 +13,7 @@ extends CharacterBody2D
 @export var idle2_speed: float = 40.0
 @export var chase_speed: float = 120.0
 @export var return_speed: float = 80.0
+@export var los_y_offset: float = -16.0
 
 var base_position: Vector2
 var state := "idle" # possibilities are: "idle", "chase", "return"
@@ -23,7 +24,7 @@ var center = 0
 
 
 func _ready():
-	HistoryManager.register_node(self, properties)
+	# HistoryManager.register_node(self, properties)
 	base_position = global_position
 	los_area.body_entered.connect(_on_body_entered)
 	los_area.body_exited.connect(_on_body_exited)
@@ -101,7 +102,7 @@ func is_player_in_los() -> bool:
 	if not player:
 		return false
 	ray.global_position = global_position
-	ray.target_position = player.global_position - global_position
+	ray.target_position = (player.global_position + Vector2(0, los_y_offset)) - global_position
 	ray.force_raycast_update()
 	return ray.is_colliding() and ray.get_collider() == player
 		
