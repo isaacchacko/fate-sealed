@@ -7,7 +7,7 @@ extends CharacterBody2D
 @onready var ray_cast_top: RayCast2D = $RayCastTop
 @onready var exclaimsign: AnimatedSprite2D = $AnimatedSprite2D2
 @onready var questionsign: AnimatedSprite2D = $AnimatedSprite2D3
-
+@onready var hitbox = get_node("goonbadeath/Area2D")
 
 @export var properties := ["global_position"]
 @export var idle_amplitude: float = 36.0
@@ -43,6 +43,15 @@ var froze = false
 var first = true
 
 func _physics_process(delta):
+	if !FreezeControl.is_frozen:
+		var info = HistoryManager.get_registration(get_instance_id())
+		var isSealed = info['seal']['isSealed']
+		var sealExpiresAt = info['seal']['expiresAt']
+		var historyTime = HistoryManager.historyTime
+		var seal_visual_bool = isSealed and sealExpiresAt and historyTime < sealExpiresAt
+		mat.set_shader_parameter("enabled", seal_visual_bool)
+		hitbox.monitoring = not seal_visual_bool
+
 	if FreezeControl.is_frozen:
 		froze = true
 		return
