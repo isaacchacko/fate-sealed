@@ -27,37 +27,50 @@ func _unhandled_input(event):
 					state[prop] = node.get(prop)
 				frozen_states[node_id] = state
 
+func find_animated_sprite2d(node):
+	if node.has_node("AnimatedSprite2D"):
+		return node.get_node("AnimatedSprite2D")
+	for child in node.get_children():
+		if child is AnimatedSprite2D:
+			return child
+		if child.has_method("get_children"):
+			var found = find_animated_sprite2d(child)
+			if found:
+				return found
+		return null
+
 
 func _physics_process(delta):
-	# freeze code
+	# --- FREEZE: pause & snapshot state and animations ---
 	if FreezeControl.is_frozen:
-		for node_id in frozen_states.keys():
+		for node_id in registered.keys():
 			var node = registered[node_id]["node"]
+
+			# Halt movement for physics-based characters
 			if node is CharacterBody2D:
 				node.velocity = Vector2.ZERO
-			var state = frozen_states[node_id]
-			for prop in state.keys():
-				node.set(prop, state[prop])
-			#should pause the animations
-			if not paused_animation_states.has(node_id):
-				paused_animation_states[node_id]={}
-			var sprite_pausing = node.get_node_or_null("AnimatedSprite2D")
-			if sprite_pausing and sprite_pausing is AnimatableBody2D:
-				paused_animation_states[node_id]["sprite was playing"] = sprite_pausing.is_playing()
-				sprite_pausing.stop()
+
+			# Restore snapped properties
+			if frozen_states[node_id]:
+				var state = frozen_states[node_id]
+				for prop in state.keys():
+					node.set(prop, state[prop])
+			
+			#Pause any found Animated Sprite 2D
+			var sprite = find_animated_sprite2d(node)
+			if sprite and sprite is AnimatedSprite2D:
+				sprite.stop()
 		return
-			#should resume animations when unpause
-	if paused_animation_states.size() >0 and not FreezeControl.is_frozen:
-		for resume_id in paused_animation_states.keys():
-			var node = registered.has(resume_id) if registered.has(resume_id) else null
-			if not node:
-				continue
-			var sprite_resume = node.get_node_or_null("AnimatedSprite2D")
-			if sprite_resume and sprite_resume is AnimatedSprite2D and paused_animation_states[resume_id].has("sprite_was_playing"):
-				if paused_animation_states[resume_id]["sprite_was_playing"]:
-					sprite_resume.play()
-							
-		paused_animation_states.clear()
+
+	# --- UNFREEZE: resume animations as needed ---
+	if not FreezeControl.is_frozen:
+		for node_id in registered.keys():
+			var node = registered[node_id]["node"]
+			var sprite = find_animated_sprite2d(node)
+			if sprite and sprite is AnimatedSprite2D:
+				sprite.play()
+
+
 						
 	var rewinding = TimeControl.is_rewinding
 	accumulated_time += delta
