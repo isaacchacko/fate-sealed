@@ -1,0 +1,122 @@
+[gd_scene load_steps=16 format=3 uid="uid://b130rcbbp06cu"]
+
+[ext_resource type="Script" uid="uid://cxgwakehq7okb" path="res://scripts/how_to.gd" id="1_mah5v"]
+[ext_resource type="Texture2D" uid="uid://v1pmrnwy7jad" path="res://assets/annie background.PNG" id="2_kyhnv"]
+[ext_resource type="FontFile" uid="uid://ncehug2odtwn" path="res://assets/yoster-island.regular.ttf" id="3_ooihk"]
+[ext_resource type="Texture2D" uid="uid://cptdi5u4qw5t0" path="res://assets/Red Panda Sprite Sheet.png" id="4_ih6pn"]
+[ext_resource type="Texture2D" uid="uid://d10q58kdb0hjl" path="res://assets/eagle.png" id="5_7lgdl"]
+[ext_resource type="Texture2D" uid="uid://bo5srvhfqbcvl" path="res://assets/goomba.png" id="6_c6kru"]
+
+[sub_resource type="FontVariation" id="FontVariation_tvv6t"]
+base_font = ExtResource("3_ooihk")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3f162"]
+texture = ExtResource("4_ih6pn")
+region_rect = Rect2(2.38638, 17.0401, 25.2356, 19.6277)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sy4f0"]
+texture = ExtResource("5_7lgdl")
+region_rect = Rect2(161.248, 44.405, 42.1488, 39.6694)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hrnft"]
+texture = ExtResource("6_c6kru")
+region_rect = Rect2(22.6867, 26.4584, 33.8843, 32.2314)
+
+[sub_resource type="FontVariation" id="FontVariation_qn720"]
+base_font = ExtResource("3_ooihk")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gn1vk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qn720"]
+bg_color = Color(0.585062, 0.585062, 0.585062, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 3
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0cn6s"]
+bg_color = Color(0.316167, 0.316167, 0.316167, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 3
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yq5h1"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 3
+shadow_offset = Vector2(0, 3)
+
+[node name="credits" type="Node2D"]
+script = ExtResource("1_mah5v")
+
+[node name="AnnieBackground" type="Sprite2D" parent="."]
+position = Vector2(776, 385)
+texture = ExtResource("2_kyhnv")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 23.0
+offset_top = 21.0
+offset_right = 1050.0
+offset_bottom = 578.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_tvv6t")
+theme_override_font_sizes/font_size = 35
+text = "Devs:
+Boping Li, Allen Thomas, Isaac Chacko, William Lam, Andrew John, Ishaan Bansal, Ronil Shah
+
+Assets + Creatives:
+Annie Li
+Spikes by Omniclause
+SunnyLand by ansimuz
+RPG Type Retro by syvalia
+"
+autowrap_mode = 3
+
+[node name="Panel4" type="Panel" parent="."]
+offset_left = 821.0
+offset_top = 526.0
+offset_right = 917.0
+offset_bottom = 601.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_3f162")
+
+[node name="Panel5" type="Panel" parent="."]
+offset_left = 953.0
+offset_top = 115.0
+offset_right = 1112.0
+offset_bottom = 276.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_sy4f0")
+
+[node name="Panel3" type="Panel" parent="."]
+offset_left = 998.0
+offset_top = 528.0
+offset_right = 1079.0
+offset_bottom = 598.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_hrnft")
+
+[node name="return_main" type="Button" parent="."]
+offset_left = 790.0
+offset_top = 582.0
+offset_right = 1115.0
+offset_bottom = 616.0
+size_flags_vertical = 3
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_qn720")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gn1vk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qn720")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0cn6s")
+theme_override_styles/normal = SubResource("StyleBoxFlat_yq5h1")
+text = "⬅️ Return to Menu"
+
+[connection signal="pressed" from="return_main" to="." method="_on_return_main_pressed"]

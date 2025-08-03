@@ -11,3 +11,7 @@ func _on_exit_pressed() -> void:
 
 func _on_how_to_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/how_to.tscn")
+
+
+func _on_button_4_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/credits.tscn")
