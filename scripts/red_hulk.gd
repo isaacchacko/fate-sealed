@@ -9,6 +9,7 @@ extends CharacterBody2D
 @export var los_y_offset: float = -16.0
 @onready var muzzle = $BombSpawn
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var hitbox = get_node('goonbadeath/Area2D')
 
 var can_throw := true
 var state := "idle"
@@ -32,6 +33,17 @@ func _ready():
 	mat.set_shader_parameter("enabled", false)
 
 func _physics_process(delta):
+
+	if !FreezeControl.is_frozen:
+		var info = HistoryManager.get_registration(get_instance_id())
+		if info != {}:
+			var isSealed = info['seal']['isSealed']
+			var sealExpiresAt = info['seal']['expiresAt']
+			var historyTime = HistoryManager.historyTime
+			var seal_visual_bool = isSealed and sealExpiresAt and historyTime < sealExpiresAt
+			mat.set_shader_parameter("enabled", seal_visual_bool)
+			hitbox.monitoring = not seal_visual_bool
+
 	if player and small_los_area.get_overlapping_bodies().has(player) and is_player_in_los() and not FreezeControl.is_frozen:
 		if can_throw:
 			state = "throw"
