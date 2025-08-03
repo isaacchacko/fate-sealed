@@ -29,6 +29,9 @@ texture = ExtResource("5_yq5h1")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2xsv5"]
 texture = ExtResource("6_igyi7")
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0cn6s"]
+texture = ExtResource("8_qn720")
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gn1vk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qn720"]
@@ -116,6 +119,14 @@ offset_right = 690.0
 offset_bottom = 33.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_2xsv5")
 
+[node name="Panel6" type="Panel" parent="."]
+z_index = -5
+offset_left = -13.0
+offset_top = -20.0
+offset_right = 1179.0
+offset_bottom = 674.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_0cn6s")
+
 [node name="return_main" type="Button" parent="."]
 offset_left = 100.0
 offset_top = 387.0
@@ -131,6 +142,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_gn1vk")
 theme_override_styles/hover = SubResource("StyleBoxFlat_qn720")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_0cn6s")
 theme_override_styles/normal = SubResource("StyleBoxFlat_yq5h1")
-text = "Return to Menu"
+text = "⬅️ Return to Menu"
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="return_main" to="." method="_on_return_main_pressed"]
