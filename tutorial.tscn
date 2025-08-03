@@ -2,16 +2,16 @@
 
 [ext_resource type="PackedScene" uid="uid://cdiven56e6ams" path="res://scenes/death.tscn" id="1_tvjhf"]
 [ext_resource type="Script" uid="uid://dc7pdfcqdgpw" path="res://tutorial.gd" id="1_vmw6g"]
-[ext_resource type="PackedScene" uid="uid://bg4yphxg3bnlo" path="res://scenes/stopwatch.tscn" id="2_vmw6g"]
+[ext_resource type="PackedScene" uid="uid://ctp03u07ktt5l" path="res://scenes/stopwatch.tscn" id="2_vmw6g"]
 [ext_resource type="Texture2D" uid="uid://ci6d6qkrdp62a" path="res://icon.svg" id="3_4hjyh"]
 [ext_resource type="Texture2D" uid="uid://brioi1475dkep" path="res://assets/tileset.png" id="4_bsk3x"]
 [ext_resource type="Texture2D" uid="uid://b4wwuvab7nkq0" path="res://assets/player.png" id="5_dl7dh"]
 [ext_resource type="Texture2D" uid="uid://be3v4p5c1owjy" path="res://assets/16-bit-spike-Sheet.png" id="6_r4o0u"]
 [ext_resource type="PackedScene" uid="uid://bxyndvqh2aqka" path="res://scenes/player.tscn" id="7_k08xv"]
 [ext_resource type="Texture2D" uid="uid://cbcw0jp777ldr" path="res://assets/Pixel_Art_Forest_Trees_And_Sky_Landscape_high_resolution_preview_3293114.jpg" id="8_g52lx"]
-[ext_resource type="PackedScene" uid="uid://dcb7ai6k3ntmh" path="res://scenes/goonba.tscn" id="9_0lped"]
-[ext_resource type="PackedScene" uid="uid://ujw3wxcw3x0o" path="res://scenes/ender.tscn" id="10_dudfa"]
-[ext_resource type="PackedScene" uid="uid://dx7150d6erw1f" path="res://scenes/eagle.tscn" id="11_5gpbq"]
+[ext_resource type="PackedScene" uid="uid://7eond7jr52wg" path="res://scenes/goonba.tscn" id="9_0lped"]
+[ext_resource type="PackedScene" uid="uid://drkqaa6wp7m7f" path="res://scenes/ender.tscn" id="10_dudfa"]
+[ext_resource type="PackedScene" uid="uid://cpp1qqhb7ktog" path="res://scenes/eagle.tscn" id="11_5gpbq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vmw6g"]
 texture = ExtResource("3_4hjyh")
