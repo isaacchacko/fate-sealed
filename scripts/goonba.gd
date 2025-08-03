@@ -1,4 +1,3 @@
-
 extends CharacterBody2D
 
 signal enemy_clicked(node)
@@ -95,10 +94,21 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 
 func _on_area_2d_mouse_entered() -> void:
 	if FreezeControl.is_frozen and !HistoryManager.get_registration(get_instance_id())['seal']['isSealed']:
-		set_seal_visual(true)
+		mat.set_shader_parameter("enabled", true)
 
+	#shader_type canvas_item;
+#
+#uniform float tint_strength : hint_range(0.0, 1.0) = 1.0;
+#
+#void fragment() {
+	#vec4 tex_color = texture(TEXTURE, UV);
+	#// Pure yellow tint (RGB: 1.0, 1.0, 0.0)
+	#vec3 yellow = vec3(1.0, 1.0, 0.0);
+	#vec3 tinted = mix(tex_color.rgb, yellow, tint_strength);
+	#COLOR = vec4(tinted, tex_color.a);
+#}
 func _on_area_2d_mouse_exited() -> void:
-	set_seal_visual(false)
+	mat.set_shader_parameter("enabled", false)
 	print("goonba: revert to grey if possible")
 
 func chase_player(delta: float):
@@ -140,6 +150,3 @@ func is_player_in_los() -> bool:
 	ray.target_position = (player.global_position + Vector2(0, los_y_offset)) - global_position
 	ray.force_raycast_update()
 	return ray.is_colliding() and ray.get_collider() == player
-
-func set_seal_visual(isSealed):
-	mat.set_shader_parameter("enabled", isSealed)

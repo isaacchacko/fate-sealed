@@ -88,10 +88,8 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func die():
-	print('player die')
 	is_dead = true
 	var deathY = global_position.y +162.5
-	print(global_position.y)
 	$Camera2D.limit_bottom = deathY
 	animated_sprite_2d.play("Death")
 	velocity.y = death_jump_velocity

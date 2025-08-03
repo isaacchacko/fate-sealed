@@ -43,7 +43,6 @@ func find_animated_sprite2d(node):
 func _physics_process(delta):
 	# --- FREEZE: pause & snapshot state and animations ---
 
-	print('physics function called --------------')
 	# freeze code
 	if FreezeControl.is_frozen:
 		for node_id in registered.keys():
@@ -114,7 +113,6 @@ func _physics_process(delta):
 				if isSealed and historyTime < sealExpiresAt:  # obj sealed
 					var entry = histories.get(node_id, {})
 					if entry.has(historyTime):
-						print("about to crash from the forbidden line")
 						var state = entry[historyTime]
 						apply_state_to_node(node, state)
 					else:
@@ -145,12 +143,10 @@ func _physics_process(delta):
 
 					# either
 					if isSealed and historyTime < sealExpiresAt:  # obj sealed
-						print('attempting to read via seal while rewinding. sealExpiresAt=', sealExpiresAt, ', entry.size()=', entry.size(), " and historyTime=", historyTime, ", registeredAt=", registeredAt, ", finally (registeredAt + entry.size()) - historyTime-1=",(registeredAt + entry.size()) - historyTime -1)
 						state = entry[historyTime]
 					else:
 						state = entry[historyTime]
 						entry.erase(historyTime)
-						print("node ", node.name, " entry has now lost key", historyTime)
 
 					apply_state_to_node(node, state)
 
@@ -161,7 +157,6 @@ func _physics_process(delta):
 	if not rewinding:
 		historyTime += 1
 
-		print('history time increased. historyTime=', historyTime)
 	else:
 		historyTime = max(0, historyTime - 1)
 
@@ -200,7 +195,6 @@ func record_node_state(node: Node, properties: Array):
 	for prop in properties:
 		state[prop] = node.get(prop)
 	histories[node_id][historyTime] = state
-	print("node ", node.name, " entry now has key ", historyTime)
 
 func apply_state_to_node(node: Node, state: Dictionary):
 	for prop in state.keys():
