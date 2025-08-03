@@ -17,7 +17,9 @@ var sit_timer := 0.0
 @onready var goonba: AnimatedSprite2D = $AnimatedSprite2D
 @onready var los_area: Area2D = $LOSpos
 @onready var ray: RayCast2D = $los_ray
-@onready var sign: AnimatedSprite2D = $AnimatedSprite2D2
+@onready var exclaimsign: AnimatedSprite2D = $AnimatedSprite2D2
+@onready var questionsign: AnimatedSprite2D = $AnimatedSprite2D3
+
 
 
 @export var properties := ["global_position"]
@@ -27,6 +29,7 @@ var mat: ShaderMaterial
 const SealShader = preload("res://shaders/seal.gdshader")
 
 func _ready():
+	questionsign.hide()
 	HistoryManager.register_node(self, properties, false, true)
 	mat = ShaderMaterial.new()
 	mat.shader = SealShader
@@ -49,17 +52,19 @@ func _physics_process(delta):
 			#state = "idle"
 	match state:
 		"idle":
-			sign.hide()
-
+			exclaimsign.hide()
+			questionsign.hide()
 			goonba.play("default")
 			idle_move(delta)
 		"chase":
 			goonba.play("default")
-			sign.show()
+			questionsign.hide()
+			exclaimsign.show()
 			chase_player(delta)
 		"sit":
 			goonba.play("sit")
-			sign.hide()
+			exclaimsign.hide()
+			questionsign.show()
 			sit_timer -= delta
 			if sit_timer <= 0.4:
 				state = "idle"

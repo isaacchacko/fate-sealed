@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dcb7ai6k3ntmh"]
+[gd_scene load_steps=21 format=3 uid="uid://7eond7jr52wg"]
 
 [ext_resource type="Texture2D" uid="uid://bo5srvhfqbcvl" path="res://assets/goomba.png" id="1_dkq4h"]
 [ext_resource type="Script" uid="uid://c76phpnhbmiim" path="res://scripts/goonba.gd" id="1_ghie5"]
@@ -58,7 +58,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ghie5")
 }],
-"loop": true,
+"loop": false,
 "name": &"sit",
 "speed": 4.0
 }]
@@ -96,6 +96,28 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_26kkc"]
+atlas = ExtResource("4_m038f")
+region = Rect2(0, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrhf1"]
+atlas = ExtResource("4_m038f")
+region = Rect2(16, 80, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1oc2s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_26kkc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yrhf1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="goonba" type="CharacterBody2D"]
 position = Vector2(1, -1)
 collision_layer = 6
@@ -107,7 +129,7 @@ scale = Vector2(0.987179, 1)
 sprite_frames = SubResource("SpriteFrames_sbr7i")
 animation = &"sit"
 autoplay = "default"
-frame_progress = 0.849909
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
@@ -158,6 +180,8 @@ autoplay = "default"
 frame_progress = 0.175532
 
 [node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
+position = Vector2(6, -19)
+sprite_frames = SubResource("SpriteFrames_1oc2s")
 
 [connection signal="body_entered" from="goonbadeath/Area2D" to="goonbadeath" method="_on_area_2d_body_entered"]
 [connection signal="input_event" from="goonbadeath/Area2D" to="." method="_on_area_2d_input_event"]
