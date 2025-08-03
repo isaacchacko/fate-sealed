@@ -1,0 +1,136 @@
+[gd_scene load_steps=18 format=3 uid="uid://1qkmhuq6i6kj"]
+
+[ext_resource type="Script" uid="uid://cxgwakehq7okb" path="res://scripts/how_to.gd" id="1_gn1vk"]
+[ext_resource type="FontFile" uid="uid://ncehug2odtwn" path="res://assets/yoster-island.regular.ttf" id="1_h0xfg"]
+[ext_resource type="Texture2D" uid="uid://cptdi5u4qw5t0" path="res://assets/Red Panda Sprite Sheet.png" id="2_gn1vk"]
+[ext_resource type="Texture2D" uid="uid://d10q58kdb0hjl" path="res://assets/eagle.png" id="3_qn720"]
+[ext_resource type="Texture2D" uid="uid://bo5srvhfqbcvl" path="res://assets/goomba.png" id="4_0cn6s"]
+[ext_resource type="Texture2D" uid="uid://x14rf6m25jd3" path="res://assets/ER_keys.png" id="5_yq5h1"]
+[ext_resource type="Texture2D" uid="uid://d6ag1wuxio4x" path="res://assets/arrow_keys.png" id="6_igyi7"]
+
+[sub_resource type="FontVariation" id="FontVariation_tvv6t"]
+base_font = ExtResource("1_h0xfg")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3f162"]
+texture = ExtResource("2_gn1vk")
+region_rect = Rect2(2.38638, 17.0401, 25.2356, 19.6277)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sy4f0"]
+texture = ExtResource("3_qn720")
+region_rect = Rect2(161.248, 44.405, 42.1488, 39.6694)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hrnft"]
+texture = ExtResource("4_0cn6s")
+region_rect = Rect2(22.6867, 26.4584, 33.8843, 32.2314)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ry6gc"]
+texture = ExtResource("5_yq5h1")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2xsv5"]
+texture = ExtResource("6_igyi7")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gn1vk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qn720"]
+bg_color = Color(0.585062, 0.585062, 0.585062, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 3
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0cn6s"]
+bg_color = Color(0.316167, 0.316167, 0.316167, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 3
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yq5h1"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 3
+shadow_offset = Vector2(0, 3)
+
+[node name="HowTo" type="Node2D"]
+script = ExtResource("1_gn1vk")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 712.0
+offset_bottom = 244.0
+theme_override_fonts/font = SubResource("FontVariation_tvv6t")
+text = "Walk with [left] and [right] and jump with the [up arrow]
+
+You will face three enemies, a [Goonba], [Eagle], [Red hulk]
+
+The [Goonba] will walk back and forth, until the player enters his smell range!
+
+			The [Eagle] will idle in the sky and dive when you enter his view.
+
+The [Red hulk] won’t chase you but still be careful entering his line of sight 👀
+
+
+Rewind time to retry challenges and find creative approaches. Seal enemy movements–when you rewind, you’re free to move as you please, but they are stuck to their previous actions. Use these powers to solve puzzles and outsmart your foes.
+
+[E] to Seal and [R] to Rewind"
+autowrap_mode = 3
+
+[node name="Panel4" type="Panel" parent="."]
+offset_left = 43.0
+offset_top = 142.0
+offset_right = 112.0
+offset_bottom = 201.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_3f162")
+
+[node name="Panel5" type="Panel" parent="."]
+offset_left = 43.0
+offset_top = 98.0
+offset_right = 109.0
+offset_bottom = 163.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_sy4f0")
+
+[node name="Panel3" type="Panel" parent="."]
+offset_left = 49.0
+offset_top = 55.0
+offset_right = 116.0
+offset_bottom = 116.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_hrnft")
+
+[node name="Panel2" type="Panel" parent="."]
+offset_left = 306.0
+offset_top = 307.0
+offset_right = 386.0
+offset_bottom = 347.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_ry6gc")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 529.0
+offset_top = -7.0
+offset_right = 690.0
+offset_bottom = 33.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_2xsv5")
+
+[node name="return_main" type="Button" parent="."]
+offset_left = 100.0
+offset_top = 387.0
+offset_right = 568.0
+offset_bottom = 421.0
+size_flags_vertical = 3
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gn1vk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qn720")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0cn6s")
+theme_override_styles/normal = SubResource("StyleBoxFlat_yq5h1")
+text = "Return to Menu"
+
+[connection signal="pressed" from="return_main" to="." method="_on_return_main_pressed"]

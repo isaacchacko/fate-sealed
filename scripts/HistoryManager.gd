@@ -9,7 +9,7 @@ var frozen_states = {}
 # node_id -> [state_dict, ...]
 var histories = {}
 var historyTime = 0;  # helps to distinguish when ephemeral nodes were created
-var paused_animation_states ={}
+var paused_animation_states = {}
 
 var accumulated_time : float = 0.0
 
@@ -42,6 +42,9 @@ func find_animated_sprite2d(node):
 
 func _physics_process(delta):
 	# --- FREEZE: pause & snapshot state and animations ---
+
+	print('physics function called --------------')
+	# freeze code
 	if FreezeControl.is_frozen:
 		for node_id in registered.keys():
 			var node = registered[node_id]["node"]
@@ -55,7 +58,7 @@ func _physics_process(delta):
 				var state = frozen_states[node_id]
 				for prop in state.keys():
 					node.set(prop, state[prop])
-			
+
 			#Pause any found Animated Sprite 2D
 			var sprite = find_animated_sprite2d(node)
 			if sprite and sprite is AnimatedSprite2D:
@@ -71,7 +74,20 @@ func _physics_process(delta):
 				sprite.play()
 
 
-						
+
+			#should resume animations when unpause
+	if paused_animation_states.size() >0 and not FreezeControl.is_frozen:
+		for resume_id in paused_animation_states.keys():
+			var node = registered.has(resume_id) if registered.has(resume_id) else null
+			if not node:
+				continue
+			var sprite_resume = node.get_node_or_null("AnimatedSprite2D")
+			if sprite_resume and sprite_resume is AnimatedSprite2D and paused_animation_states[resume_id].has("sprite_was_playing"):
+				if paused_animation_states[resume_id]["sprite_was_playing"]:
+					sprite_resume.play()
+
+		paused_animation_states.clear()
+
 	var rewinding = TimeControl.is_rewinding
 	accumulated_time += delta
 	var interval = 1.0 / float(snapshot_rate)
@@ -92,21 +108,25 @@ func _physics_process(delta):
 			var seal_info = reg_info['seal']
 			var isSealed = seal_info['isSealed']
 			var sealExpiresAt = seal_info['expiresAt']
+			var registeredAt = reg_info['registeredAt']
 
 			if not rewinding:
 				if isSealed and historyTime < sealExpiresAt:  # obj sealed
-					var entry = histories.get(node_id, [])
-					if entry.size() > 0:
+					var entry = histories.get(node_id, {})
+					if entry.has(historyTime):
+						print("about to crash from the forbidden line")
 						var state = entry[historyTime]
 						apply_state_to_node(node, state)
+					else:
+						apply_state_to_node(node, registered[node_id]['first'])
 
 				else:  # record
 					record_node_state(node, properties)
 					# Clamp history size
-					var max_size = int(record_duration * snapshot_rate)
-					var entry = histories.get(node_id, [])
-					while entry.size() > max_size:
-						entry.pop_back()
+					#var max_size = int(record_duration * snapshot_rate)
+					#var entry = histories.get(node_id, {})
+					#while entry.size() > max_size:
+						#entry.pop_back()
 
 			else:
 
@@ -120,21 +140,29 @@ func _physics_process(delta):
 					continue
 
 				var entry = histories.get(node_id, [])
-				if entry.size() > 0:
+				if entry.has(historyTime):
 					var state
 
 					# either
 					if isSealed and historyTime < sealExpiresAt:  # obj sealed
+						print('attempting to read via seal while rewinding. sealExpiresAt=', sealExpiresAt, ', entry.size()=', entry.size(), " and historyTime=", historyTime, ", registeredAt=", registeredAt, ", finally (registeredAt + entry.size()) - historyTime-1=",(registeredAt + entry.size()) - historyTime -1)
 						state = entry[historyTime]
 					else:
-						state = entry.pop_front()
+						state = entry[historyTime]
+						entry.erase(historyTime)
+						print("node ", node.name, " entry has now lost key", historyTime)
 
 					apply_state_to_node(node, state)
 
+				else:
+					apply_state_to_node(node, registered[node_id]['first'])
+
 	# update the history time
-	if not TimeControl.is_rewinding:
+	if not rewinding:
 		historyTime += 1
-	elif TimeControl.is_rewinding:
+
+		print('history time increased. historyTime=', historyTime)
+	else:
 		historyTime = max(0, historyTime - 1)
 
 
@@ -158,7 +186,7 @@ func seal(node: Node):
 	if (!registered[node_id]['sealable']):
 		return
 
-	var entry = histories.get(node_id, [])
+	var entry = histories.get(node_id, {})
 	if entry.size() > 0:  # if there is history to seal
 		registered[node_id]['seal']['isSealed'] = true
 		registered[node_id]['seal']['expiresAt'] = historyTime
@@ -171,7 +199,8 @@ func record_node_state(node: Node, properties: Array):
 	var state = {}
 	for prop in properties:
 		state[prop] = node.get(prop)
-	histories[node_id].push_front(state)
+	histories[node_id][historyTime] = state
+	print("node ", node.name, " entry now has key ", historyTime)
 
 func apply_state_to_node(node: Node, state: Dictionary):
 	for prop in state.keys():
@@ -197,11 +226,17 @@ func register_node(node: Node, properties: Array, ephemeral: bool, sealable: boo
 		"node": node,
 		"properties": properties,
 		"createdAt": historyTime if ephemeral else -1,
+		"registeredAt": historyTime,
 		"sealable": sealable,
 		"seal": {
 			"isSealed": false,
 			"expiresAt": null
 			}
 		}
+
 	if !histories.has(node_id):
-		histories[node_id] = []
+		histories[node_id] = {}
+	var state = {}
+	for prop in properties:
+		state[prop] = node.get(prop)
+	registered[node_id]['first'] = state
