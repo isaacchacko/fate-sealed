@@ -1,6 +1,6 @@
-[gd_scene load_steps=26 format=3 uid="uid://c3b8ahm4hm6ib"]
+[gd_scene load_steps=26 format=3 uid="uid://dooc3omm1v2lu"]
 
-[ext_resource type="Script" uid="uid://behpeedxaffjr" path="res://scripts/level_2.gd" id="1_0ourt"]
+[ext_resource type="Script" path="res://scripts/level_2.gd" id="1_0ourt"]
 [ext_resource type="PackedScene" uid="uid://cdiven56e6ams" path="res://scenes/death.tscn" id="2_w200a"]
 [ext_resource type="PackedScene" uid="uid://ctp03u07ktt5l" path="res://scenes/stopwatch.tscn" id="3_uo0vl"]
 [ext_resource type="Texture2D" uid="uid://ci6d6qkrdp62a" path="res://icon.svg" id="4_k2aru"]
@@ -820,7 +820,7 @@ format = 2
 layer_0/tile_data = PackedInt32Array(-327650, 458752, 7, -327651, 458752, 7, -262115, 458752, 7, -196579, 458752, 7, -196580, 458752, 7, -262116, 458752, 7, -327652, 458752, 7, -131044, 458752, 7, -131043, 458752, 7, -131042, 458752, 7, -196578, 458752, 7, -262114, 458752, 7, -196620, 458752, 7, -196619, 458752, 7, -196618, 458752, 7, -1572850, 458752, 7, -1572849, 458752, 7, -1572848, 458752, 7, -1572847, 458752, 7, -1572846, 458752, 7, -1572845, 458752, 7, -196621, 458752, 7)
 
 [node name="player" parent="." instance=ExtResource("10_xrja0")]
-position = Vector2(-75, -43)
+position = Vector2(-16, -459)
 collision_mask = 259
 
 [node name="Camera2D" type="Camera2D" parent="player"]
