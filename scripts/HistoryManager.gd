@@ -9,7 +9,7 @@ var frozen_states = {}
 # node_id -> [state_dict, ...]
 var histories = {}
 var historyTime = 0;  # helps to distinguish when ephemeral nodes were created
-
+var paused_animation_states ={}
 
 var accumulated_time : float = 0.0
 
@@ -38,11 +38,27 @@ func _physics_process(delta):
 			var state = frozen_states[node_id]
 			for prop in state.keys():
 				node.set(prop, state[prop])
-			var sprite = node.get_node_or_null("AnimatedSprite2D")
-			var animated_sprite = node.get_node_or_null("AnimatedSprite2D")
-			if animated_sprite and animated_sprite is AnimatedSprite2D:
-				animated_sprite.stop()
+			#should pause the animations
+			if not paused_animation_states.has(node_id):
+				paused_animation_states[node_id]={}
+			var sprite_pausing = node.get_node_or_null("AnimatedSprite2D")
+			if sprite_pausing and sprite_pausing is AnimatableBody2D:
+				paused_animation_states[node_id]["sprite was playing"] = sprite_pausing.is_playing()
+				sprite_pausing.stop()
 		return
+			#should resume animations when unpause
+	if paused_animation_states.size() >0 and not FreezeControl.is_frozen:
+		for resume_id in paused_animation_states.keys():
+			var node = registered.has(resume_id) if registered.has(resume_id) else null
+			if not node:
+				continue
+			var sprite_resume = node.get_node_or_null("AnimatedSprite2D")
+			if sprite_resume and sprite_resume is AnimatedSprite2D and paused_animation_states[resume_id].has("sprite_was_playing"):
+				if paused_animation_states[resume_id]["sprite_was_playing"]:
+					sprite_resume.play()
+							
+		paused_animation_states.clear()
+						
 		
 	var rewinding = TimeControl.is_rewinding
 	accumulated_time += delta
@@ -51,7 +67,6 @@ func _physics_process(delta):
 		
 	if accumulated_time >= interval:
 		accumulated_time -= interval
-
 		for node_id in registered.keys():
 
 			# the following is used for ALL objects
