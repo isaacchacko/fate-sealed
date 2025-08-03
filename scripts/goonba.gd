@@ -21,7 +21,7 @@ var sit_timer := 0.0
 
 
 @export var properties := ["global_position"]
-@export var los_y_offset: float = -16.0
+@export var los_y_offset: float = -12.0
 
 var mat: ShaderMaterial
 
@@ -39,15 +39,25 @@ func _ready():
 func _physics_process(delta):
 	if player and los_area.get_overlapping_bodies().has(player) and is_player_in_los():
 		state = "chase"
+	#else:
+		#if state == "chase":
+			#sit_timer = 1
+			#state = "sit"
+			#goonba.play("sit")
+		#else:
+			#state = "idle"
 	match state:
 		"idle":
 			sign.hide()
+			
+			goonba.play("default")
 			idle_move(delta)
 		"chase":
 			goonba.play("default")
 			sign.show()
 			chase_player(delta)
 		"sit":
+			goonba.play("sit")
 			sign.hide()
 			sit_timer -= delta
 			if sit_timer <= 0.4:
@@ -61,7 +71,7 @@ func idle_move(delta: float):
 		direction = -1
 	if not ray_cast_down.is_colliding():
 		fall = 0.5
-		position.y += SPEED * delta
+		position.y += SPEED * delta * 6
 	else:
 		fall = 1
 	
@@ -69,7 +79,11 @@ func idle_move(delta: float):
 		goonba.flip_h = true
 	else: 
 		goonba.flip_h = false
-	position.x += direction * SPEED * delta * fall
+	if ray_cast_left.is_colliding() and ray_cast_right.is_colliding():
+		sit_timer = 1.0
+		state = "sit"
+	else:
+		position.x += direction * SPEED * delta * fall
 
 
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
@@ -104,12 +118,19 @@ func chase_player(delta: float):
 	else:
 		goonba.flip_h = false    # Player is to the left; face left
 	if player and is_player_in_los():
+		if not ray_cast_down.is_colliding():
+			fall = 0.5
+			position.y += SPEED * delta * 1.5
 		var x_direction = sign(player.global_position.x - global_position.x)
 		velocity.x = x_direction * chase_speed
 		velocity.y = 0  # Zero out vertical movement
-		move_and_slide()
+		if ray_cast_left.is_colliding() and ray_cast_right.is_colliding():
+			sit_timer = 1.0
+			state = "sit"
+		else:
+			move_and_slide()
 	else:
-		state = "idle2"
+		state = "sit"
 
 func _on_body_entered(body):
 	player = body
@@ -119,8 +140,9 @@ func _on_body_exited(body):
 	if body == player:
 		#direction = 1
 		sit_timer = 1.0
-		state = "sit"
-		goonba.play("sit")
+		if state == "chase":
+			state = "sit"
+			goonba.play("sit")
 
 func is_player_in_los() -> bool:
 	if not player:
