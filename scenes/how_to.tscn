@@ -75,6 +75,7 @@ offset_left = 23.0
 offset_top = 21.0
 offset_right = 1050.0
 offset_bottom = 578.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_tvv6t")
 theme_override_font_sizes/font_size = 25
 text = "Walk with [left] and [right] and jump with the [up arrow]
