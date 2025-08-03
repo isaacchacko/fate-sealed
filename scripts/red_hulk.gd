@@ -10,6 +10,7 @@ extends CharacterBody2D
 @onready var muzzle = $BombSpawn
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
+var can_throw := true
 var state := "idle"
 var player: Node2D = null
 
@@ -25,7 +26,8 @@ func _ready():
 
 func _physics_process(delta):
 	if player and small_los_area.get_overlapping_bodies().has(player) and is_player_in_los():
-		state = "throw"
+		if can_throw:
+			state = "throw"
 		await get_tree().create_timer(3).timeout
 	elif player and large_los_area.get_overlapping_bodies().has(player):
 		state = "postSpotIdle"
@@ -70,6 +72,10 @@ func _on_body_large_exited(body):
 		state = "nighty"
 
 func throw_shit():
+	if not can_throw:
+		return
+	can_throw = false
+	
 	# Flip hulk sprite to face player
 	if player.global_position.x > global_position.x:
 		hulk.flip_h = false
@@ -81,7 +87,6 @@ func throw_shit():
 	# Start position: spawn from BombSpawn
 	dirt_block.pos = $BombSpawn.global_position
 	
-	await get_tree().create_timer(3).timeout
 
 	# Rotation: match current hulk rotation if desired, or set to angle
 	dirt_block.rota = rotation
@@ -93,6 +98,9 @@ func throw_shit():
 		dirt_block.get_node("AnimatedSprite2D").play("throw")
 	# Add to scene
 	get_parent().add_child(dirt_block)
+	
+	await get_tree().create_timer(3.0).timeout
+	can_throw = true
 
 func is_player_in_los() -> bool:
 	if not player:
