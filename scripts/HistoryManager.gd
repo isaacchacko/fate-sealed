@@ -27,7 +27,7 @@ func _unhandled_input(event):
 					state[prop] = node.get(prop)
 				frozen_states[node_id] = state
 
-		
+
 func _physics_process(delta):
 	# freeze code
 	if FreezeControl.is_frozen:
@@ -59,12 +59,11 @@ func _physics_process(delta):
 							
 		paused_animation_states.clear()
 						
-		
 	var rewinding = TimeControl.is_rewinding
 	accumulated_time += delta
 	var interval = 1.0 / float(snapshot_rate)
-	
-		
+
+
 	if accumulated_time >= interval:
 		accumulated_time -= interval
 		for node_id in registered.keys():
@@ -124,13 +123,20 @@ func _physics_process(delta):
 		historyTime += 1
 	elif TimeControl.is_rewinding:
 		historyTime = max(0, historyTime - 1)
-		
+
 
 # called when player dies
 func reset_all():
 	registered.clear()
 	histories.clear()
 	historyTime = 0
+
+func get_registration(node_id):
+	if registered.has(node_id):
+		return registered[node_id]
+
+	print('node id not found')
+	return {}
 
 func seal(node: Node):
 	var node_id = node.get_instance_id()

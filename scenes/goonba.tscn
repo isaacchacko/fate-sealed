@@ -105,3 +105,6 @@ scale = Vector2(0.92, 0.959999)
 shape = SubResource("CapsuleShape2D_m038f")
 
 [connection signal="body_entered" from="death/Area2D" to="death" method="_on_area_2d_body_entered"]
+[connection signal="input_event" from="death/Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="death/Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="death/Area2D" to="." method="_on_area_2d_mouse_exited"]
