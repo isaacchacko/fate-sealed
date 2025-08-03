@@ -33,6 +33,7 @@ color = Color(0, 0, 0, 1)
 script = ExtResource("3_nu78o")
 
 [node name="status" type="Label" parent="ColorRect"]
+layout_mode = 0
 offset_left = 19.0
 offset_right = 197.0
 offset_bottom = 33.0
