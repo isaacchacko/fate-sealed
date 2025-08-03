@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://ctp03u07ktt5l" path="res://scenes/stopwatch.tscn" id="8_0tnpc"]
 [ext_resource type="Texture2D" uid="uid://cpnoltmfitfe0" path="res://assets/Breakable.png" id="8_trtic"]
 [ext_resource type="PackedScene" uid="uid://mxsx822xwt6v" path="res://scenes/ender.tscn" id="10_vtaks"]
-[ext_resource type="PackedScene" uid="uid://dx7150d6erw1f" path="res://scenes/eagle.tscn" id="11_kvpfn"]
+[ext_resource type="PackedScene" uid="uid://d1debhdoqe7n1" path="res://scenes/eagle.tscn" id="11_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://c4usvoo0rrtog" path="res://scenes/red_hulk.tscn" id="12_dinhu"]
 [ext_resource type="PackedScene" uid="uid://mgvpgkb8nqad" path="res://scenes/dirt_block.tscn" id="16_ca42v"]
 
