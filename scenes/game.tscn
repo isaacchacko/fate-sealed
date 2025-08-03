@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cqmroqi28a6ev"]
+[gd_scene load_steps=17 format=3 uid="uid://cqmroqi28a6ev"]
 
 [ext_resource type="Script" uid="uid://db6ygwvad1irf" path="res://scripts/game.gd" id="1_gee14"]
 [ext_resource type="PackedScene" uid="uid://bxyndvqh2aqka" path="res://scenes/player.tscn" id="1_uwrxv"]
@@ -557,7 +557,7 @@ layer_0/name = "0"
 layer_0/tile_data = PackedInt32Array(-65543, 0, 0, -65542, 0, 0, -65541, 0, 0, -458750, 131072, 0, -458749, 131072, 0, -458748, 131072, 0, -458747, 131072, 0, -327654, 65536, 0, -262118, 65536, 0, -196582, 65536, 0, -524278, 196608, 0, -458742, 196608, 0)
 
 [node name="player" parent="." instance=ExtResource("1_uwrxv")]
-position = Vector2(7, -25)
+position = Vector2(284, -132)
 collision_mask = 259
 
 [node name="Camera2D" type="Camera2D" parent="player"]
@@ -572,7 +572,7 @@ position = Vector2(15, -10)
 
 [node name="PixelArtForestTreesAndSkyLandscapeHighResolutionPreview3293114" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(99, -107)
+position = Vector2(1032, -188)
 scale = Vector2(0.394444, 0.394444)
 texture = ExtResource("6_p57ef")
 
@@ -587,3 +587,6 @@ position = Vector2(58, -187)
 
 [node name="eagle" parent="." instance=ExtResource("11_kvpfn")]
 position = Vector2(157, -193)
+
+[node name="RedHulk" parent="." instance=ExtResource("12_dinhu")]
+position = Vector2(249, -133)

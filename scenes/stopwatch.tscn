@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bg4yphxg3bnlo"]
+[gd_scene load_steps=3 format=3 uid="uid://ctp03u07ktt5l"]
 
-[ext_resource type="Script" uid="uid://b27mxhdudrr6i" path="res://scripts/stopwatch.gd" id="1_5iol8"]
+[ext_resource type="Script" path="res://scripts/stopwatch.gd" id="1_5iol8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d33h4"]
 bg_color = Color(0, 0, 0, 1)
