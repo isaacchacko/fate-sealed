@@ -31,7 +31,7 @@ func _physics_process(delta: float) -> void:
 
 	velocity.y += gravity * delta
 	var collision = move_and_collide(velocity * delta)
-	
+
 	var tilemap = get_node("../BreakableTileMap") # Adjust path as needed
 	var tile_coords_LB = tilemap.local_to_map(global_position)
 	var tile_data_LB = tilemap.get_cell_tile_data(0, tile_coords_LB)  # 0 is the layer index
@@ -43,7 +43,7 @@ func _physics_process(delta: float) -> void:
 	var tile_data_RU = tilemap.get_cell_tile_data(0, tile_coords_RU)  # 0 is the layer index
 	var tile_coords_LU = tilemap.local_to_map((global_position) + Vector2(0,32))
 	var tile_data_LU = tilemap.get_cell_tile_data(0, tile_coords_LU)  # 0 is the layer index
-	
+
 	if (tile_data_LB and tile_data_LB.get_custom_data("breakable")) or (tile_data_RB and tile_data_RB.get_custom_data("breakable")) or (tile_data_RU and tile_data_RU.get_custom_data("breakable")) or (tile_data_LU and tile_data_LU.get_custom_data("breakable")) or (tile_data_MB and tile_data_MB.get_custom_data("breakable")):
 		var cell_pos_LB = tilemap.local_to_map(global_position)
 		tilemap.set_cell(0, cell_pos_LB, -1)
@@ -89,7 +89,7 @@ func set_alive(is_alive: bool) -> void:
 		if alive:
 			show()
 		# don't hide immediately, let explosion play
-		else: 
+		else:
 			await get_tree().create_timer(.25).timeout
 			hide()
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cqmroqi28a6ev"]
+[gd_scene load_steps=27 format=3 uid="uid://cqmroqi28a6ev"]
 
 [ext_resource type="Script" uid="uid://db6ygwvad1irf" path="res://scripts/game.gd" id="1_gee14"]
 [ext_resource type="PackedScene" uid="uid://bxyndvqh2aqka" path="res://scenes/player.tscn" id="1_uwrxv"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://7eond7jr52wg" path="res://scenes/goonba.tscn" id="7_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://ctp03u07ktt5l" path="res://scenes/stopwatch.tscn" id="8_0tnpc"]
 [ext_resource type="Texture2D" uid="uid://cpnoltmfitfe0" path="res://assets/Breakable.png" id="8_trtic"]
-[ext_resource type="Texture2D" uid="uid://dbil78xpm7kwk" path="res://assets/1_Idle.png" id="9_ir15t"]
 [ext_resource type="PackedScene" uid="uid://drkqaa6wp7m7f" path="res://scenes/ender.tscn" id="10_vtaks"]
 [ext_resource type="PackedScene" uid="uid://cpp1qqhb7ktog" path="res://scenes/eagle.tscn" id="11_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://c4usvoo0rrtog" path="res://scenes/red_hulk.tscn" id="12_dinhu"]
@@ -616,11 +615,9 @@ texture_region_size = Vector2i(13, 13)
 6:6/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ca42v"]
-texture = ExtResource("9_ir15t")
 margins = Vector2i(5, 5)
 texture_region_size = Vector2i(11, 11)
 use_texture_padding = false
-0:0/size_in_atlas = Vector2i(2, 2)
 0:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_lbhrr"]
