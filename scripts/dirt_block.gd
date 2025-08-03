@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var properties := ["global_position", "velocity", "alive"]
 
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var hitbox = get_node("goonbadeath/Area2D")
 
 var pos: Vector2
 var rota: float
@@ -57,10 +58,6 @@ func _physics_process(delta: float) -> void:
 		tilemap.set_cell(0, cell_pos_MB, -1)
 	elif collision and collision.get_collider() is TileMap:
 		set_alive(false)
-		anim_sprite.play("explosion")
-		anim_sprite.connect("animation_finished", Callable(self, "_on_explosion_finished"), CONNECT_ONE_SHOT)
-		await get_tree().create_timer(.5).timeout
-		hide()
 
 func launch_to_target(target_position: Vector2, gravity: float = 980, arc_height: float = 100):
 	var start = global_position
@@ -90,8 +87,11 @@ func set_alive(is_alive: bool) -> void:
 			show()
 		# don't hide immediately, let explosion play
 		else:
+			anim_sprite.play("explosion")
+			anim_sprite.connect("animation_finished", Callable(self, "_on_explosion_finished"), CONNECT_ONE_SHOT)
 			await get_tree().create_timer(.25).timeout
 			hide()
+			hitbox.monitoring = false
 
 func _on_explosion_finished():
 	if anim_sprite.animation == "explosion":
