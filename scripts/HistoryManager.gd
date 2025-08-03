@@ -138,15 +138,15 @@ func _physics_process(delta):
 					continue
 
 				var entry = histories.get(node_id, [])
-				if entry.has(historyTime - 1):
+				if entry.has(historyTime):
 					var state
 
 					# either
-					if isSealed and historyTime - 1 < sealExpiresAt:  # obj sealed
-						state = entry[historyTime - 1]
+					if isSealed and historyTime < sealExpiresAt:  # obj sealed
+						state = entry[historyTime]
 					else:
-						state = entry[historyTime - 1]
-						entry.erase(historyTime - 1)
+						state = entry[historyTime]
+						entry.erase(historyTime)
 
 					apply_state_to_node(node, state)
 

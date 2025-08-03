@@ -19,7 +19,7 @@ var sit_timer := 0.0
 @onready var ray: RayCast2D = $los_ray
 @onready var exclaimsign: AnimatedSprite2D = $AnimatedSprite2D2
 @onready var questionsign: AnimatedSprite2D = $AnimatedSprite2D3
-@onready var hitbox = get_node("goonbadeath/Area2D")
+
 
 
 @export var properties := ["global_position"]
@@ -41,15 +41,6 @@ func _ready():
 	$AnimatedSprite2D2.visible = false
 
 func _physics_process(delta):
-	if !FreezeControl.is_frozen:
-		var info = HistoryManager.get_registration(get_instance_id())
-		var isSealed = info['seal']['isSealed']
-		var sealExpiresAt = info['seal']['expiresAt']
-		var historyTime = HistoryManager.historyTime
-		var seal_visual_bool = isSealed and sealExpiresAt and historyTime < sealExpiresAt
-		mat.set_shader_parameter("enabled", seal_visual_bool)
-		hitbox.monitoring = not seal_visual_bool
-
 	if player and los_area.get_overlapping_bodies().has(player) and is_player_in_los():
 		state = "chase"
 	#else:
@@ -104,7 +95,6 @@ func idle_move(delta: float):
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		if !HistoryManager.get_registration(get_instance_id())['seal']['isSealed']:
-			print('sealing')
 			HistoryManager.seal(self)
 
 func _on_area_2d_mouse_entered() -> void:

@@ -1,17 +1,17 @@
 [gd_scene load_steps=25 format=3 uid="uid://ej4v3kq4w6vm"]
 
-[ext_resource type="Script" uid="uid://voetdgvdlohr" path="res://scripts/lvl_1.gd" id="1_uhlj1"]
+[ext_resource type="Script" path="res://scripts/lvl_1.gd" id="1_uhlj1"]
 [ext_resource type="Texture2D" uid="uid://d1hvt7e76ou6b" path="res://assets/annie_background.png" id="2_47r3p"]
 [ext_resource type="PackedScene" uid="uid://cdiven56e6ams" path="res://scenes/death.tscn" id="2_pfr74"]
-[ext_resource type="PackedScene" uid="uid://bg4yphxg3bnlo" path="res://scenes/stopwatch.tscn" id="3_n343t"]
+[ext_resource type="PackedScene" uid="uid://ctp03u07ktt5l" path="res://scenes/stopwatch.tscn" id="3_n343t"]
 [ext_resource type="Texture2D" uid="uid://ci6d6qkrdp62a" path="res://icon.svg" id="4_rl4sa"]
 [ext_resource type="Texture2D" uid="uid://brioi1475dkep" path="res://assets/tileset.png" id="5_x1cht"]
 [ext_resource type="Texture2D" uid="uid://b4wwuvab7nkq0" path="res://assets/player.png" id="6_rlkjp"]
 [ext_resource type="Texture2D" uid="uid://be3v4p5c1owjy" path="res://assets/16-bit-spike-Sheet.png" id="7_dck17"]
 [ext_resource type="Texture2D" uid="uid://cpnoltmfitfe0" path="res://assets/Breakable.png" id="8_kgooo"]
 [ext_resource type="PackedScene" uid="uid://bxyndvqh2aqka" path="res://scenes/player.tscn" id="10_wtuha"]
-[ext_resource type="PackedScene" uid="uid://dcb7ai6k3ntmh" path="res://scenes/goonba.tscn" id="11_fu1y8"]
-[ext_resource type="PackedScene" uid="uid://mxsx822xwt6v" path="res://scenes/ender.tscn" id="12_gjsv3"]
+[ext_resource type="PackedScene" uid="uid://7eond7jr52wg" path="res://scenes/goonba.tscn" id="11_fu1y8"]
+[ext_resource type="PackedScene" uid="uid://drkqaa6wp7m7f" path="res://scenes/ender.tscn" id="12_gjsv3"]
 [ext_resource type="PackedScene" uid="uid://cpp1qqhb7ktog" path="res://scenes/eagle.tscn" id="14_7vnlh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_47r3p"]
@@ -823,7 +823,7 @@ tile_set = SubResource("TileSet_4ncxn")
 format = 2
 
 [node name="player" parent="." instance=ExtResource("10_wtuha")]
-position = Vector2(-667, -286)
+position = Vector2(-173, -26)
 collision_mask = 259
 
 [node name="Camera2D" type="Camera2D" parent="player"]
@@ -861,4 +861,4 @@ position = Vector2(-290, -197)
 position = Vector2(-229, -195)
 
 [node name="eagle2" parent="." instance=ExtResource("14_7vnlh")]
-position = Vector2(-422, 122)
+position = Vector2(-562, -247)
