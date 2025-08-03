@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://c4usvoo0rrtog"]
+[gd_scene load_steps=47 format=3 uid="uid://qunj1atdhnsu"]
 
 [ext_resource type="Script" uid="uid://dwainthicxd05" path="res://scripts/red_hulk.gd" id="1_330le"]
 [ext_resource type="Texture2D" uid="uid://cptdi5u4qw5t0" path="res://assets/Red Panda Sprite Sheet.png" id="1_hasph"]
