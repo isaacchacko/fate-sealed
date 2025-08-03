@@ -874,8 +874,7 @@ offset_right = 275.0
 offset_bottom = -386.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_goj7v")
-text = "Level 3: 
-The End"
+text = "Level 3: The End"
 autowrap_mode = 3
 
 [node name="Label2" type="Label" parent="."]
