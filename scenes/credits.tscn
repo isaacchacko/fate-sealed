@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b130rcbbp06cu"]
+[gd_scene load_steps=17 format=3 uid="uid://b130rcbbp06cu"]
 
 [ext_resource type="Script" uid="uid://cxgwakehq7okb" path="res://scripts/how_to.gd" id="1_mah5v"]
 [ext_resource type="Texture2D" uid="uid://v1pmrnwy7jad" path="res://assets/annie background.PNG" id="2_kyhnv"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cptdi5u4qw5t0" path="res://assets/Red Panda Sprite Sheet.png" id="4_ih6pn"]
 [ext_resource type="Texture2D" uid="uid://d10q58kdb0hjl" path="res://assets/eagle.png" id="5_7lgdl"]
 [ext_resource type="Texture2D" uid="uid://bo5srvhfqbcvl" path="res://assets/goomba.png" id="6_c6kru"]
+[ext_resource type="AudioStream" uid="uid://b0womi7diiioc" path="res://assets/Soundtrack.wav" id="7_kyhnv"]
 
 [sub_resource type="FontVariation" id="FontVariation_tvv6t"]
 base_font = ExtResource("3_ooihk")
@@ -77,6 +78,10 @@ Annie Li
 Spikes by Omniclause
 SunnyLand by ansimuz
 RPG Type Retro by syvalia
+Yoster Island Font by codeman38
+
+Special thanks to Allen's Parents 💖
+
 "
 autowrap_mode = 3
 
@@ -100,6 +105,11 @@ offset_top = 528.0
 offset_right = 1079.0
 offset_bottom = 598.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_hrnft")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(790, 582)
+stream = ExtResource("7_kyhnv")
+autoplay = true
 
 [node name="return_main" type="Button" parent="."]
 offset_left = 790.0

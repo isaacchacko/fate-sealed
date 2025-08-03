@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ej4v3kq4w6vm"]
+[gd_scene load_steps=28 format=3 uid="uid://ej4v3kq4w6vm"]
 
 [ext_resource type="Script" uid="uid://voetdgvdlohr" path="res://scripts/lvl_1.gd" id="1_uhlj1"]
 [ext_resource type="Texture2D" uid="uid://v1pmrnwy7jad" path="res://assets/annie background.PNG" id="2_47r3p"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://mxsx822xwt6v" path="res://scenes/ender.tscn" id="12_gjsv3"]
 [ext_resource type="FontFile" uid="uid://ncehug2odtwn" path="res://assets/yoster-island.regular.ttf" id="14_5r2gw"]
 [ext_resource type="PackedScene" uid="uid://cpp1qqhb7ktog" path="res://scenes/eagle.tscn" id="14_7vnlh"]
+[ext_resource type="AudioStream" uid="uid://b0womi7diiioc" path="res://assets/Soundtrack.wav" id="14_uhlj1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_47r3p"]
 texture = ExtResource("4_rl4sa")
@@ -859,6 +860,11 @@ position = Vector2(-229, -195)
 
 [node name="eagle2" parent="." instance=ExtResource("14_7vnlh")]
 position = Vector2(-533, -260)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-161, 1)
+stream = ExtResource("14_uhlj1")
+autoplay = true
 
 [node name="Label" type="Label" parent="."]
 offset_left = -161.0
