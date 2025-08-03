@@ -45,7 +45,7 @@ func _physics_process(delta):
 				goonba.play("default") # Switch to idle animation after sitting
 
 func idle_move(delta: float):
-
+	goonba.play("default")
 	if ray_cast_left.is_colliding():
 		direction = 1
 	if ray_cast_right.is_colliding():
