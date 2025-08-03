@@ -804,7 +804,7 @@ position = Vector2(103, -182)
 texture = ExtResource("2_goj7v")
 
 [node name="death" parent="." instance=ExtResource("2_w200a")]
-position = Vector2(1, 105)
+position = Vector2(-418, 218)
 
 [node name="stopwatch" parent="." instance=ExtResource("3_uo0vl")]
 
@@ -825,7 +825,7 @@ format = 2
 layer_0/tile_data = PackedInt32Array(-196620, 458752, 7, -196619, 458752, 7, -196618, 458752, 7, -1572850, 458752, 7, -1572849, 458752, 7, -1572848, 458752, 7, -1572847, 458752, 7, -1572846, 458752, 7, -1572845, 458752, 7, -196621, 458752, 7, -1507309, 458752, 7, -1507310, 458752, 7, -1507311, 458752, 7, -1507312, 458752, 7, -1507313, 458752, 7, -1507314, 458752, 7, -1769450, 458752, 7, -1834986, 458752, 7, -1900522, 458752, 7, -1966058, 458752, 7, -2031594, 458752, 7)
 
 [node name="player" parent="." instance=ExtResource("10_xrja0")]
-position = Vector2(-31, -454)
+position = Vector2(-35, -455)
 collision_mask = 259
 
 [node name="Camera2D" type="Camera2D" parent="player"]
