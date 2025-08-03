@@ -1,7 +1,7 @@
 [gd_scene load_steps=43 format=3 uid="uid://qunj1atdhnsu"]
 
 [ext_resource type="Script" path="res://scripts/red_hulk.gd" id="1_330le"]
-[ext_resource type="Texture2D" path="res://assets/Red Panda Sprite Sheet.png" id="1_hasph"]
+[ext_resource type="Texture2D" uid="uid://cptdi5u4qw5t0" path="res://assets/Red Panda Sprite Sheet.png" id="1_hasph"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_330le"]
 atlas = ExtResource("1_hasph")
