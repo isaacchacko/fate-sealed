@@ -1,17 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://dx7150d6erw1f"]
+[gd_scene load_steps=19 format=3 uid="uid://cpp1qqhb7ktog"]
 
 [ext_resource type="Texture2D" uid="uid://d10q58kdb0hjl" path="res://assets/eagle.png" id="1_2vgvb"]
 [ext_resource type="Script" uid="uid://di3v8p6u65ato" path="res://scripts/eagle.gd" id="2_jdxlk"]
-[ext_resource type="Texture2D" uid="uid://b6vtcpa5wemyw" path="res://assets/WarningSign_PixyFantasy/WarningSign01.png" id="3_bx3kx"]
+[ext_resource type="Texture2D" uid="uid://hg1udtd25hux" path="res://assets/rpg-type-retro-animated-speech-icons.png" id="3_7wwoj"]
 [ext_resource type="Script" uid="uid://b5lxai2lpgiwf" path="res://scripts/death.gd" id="3_g2fde"]
-[ext_resource type="Texture2D" uid="uid://bfoayd22u0auy" path="res://assets/WarningSign_PixyFantasy/WarningSign02.png" id="4_s8g5b"]
-[ext_resource type="Texture2D" uid="uid://blysmwf7s363q" path="res://assets/WarningSign_PixyFantasy/WarningSign03.png" id="5_3ywqr"]
-[ext_resource type="Texture2D" uid="uid://gmddobclv3f8" path="res://assets/WarningSign_PixyFantasy/WarningSign04.png" id="6_ljhfn"]
-[ext_resource type="Texture2D" uid="uid://c7tvgayt403eq" path="res://assets/WarningSign_PixyFantasy/WarningSign05.png" id="7_ypgs3"]
-[ext_resource type="Texture2D" uid="uid://ddo2mjuge4lsv" path="res://assets/WarningSign_PixyFantasy/WarningSign06.png" id="8_udr1e"]
-[ext_resource type="Texture2D" uid="uid://gv4m3iv3p3vq" path="res://assets/WarningSign_PixyFantasy/WarningSign07.png" id="9_3nvcm"]
-[ext_resource type="Texture2D" uid="uid://b1r5a7lvxoidy" path="res://assets/WarningSign_PixyFantasy/WarningSign08.png" id="10_e4w2x"]
-[ext_resource type="Texture2D" uid="uid://r5q1mm7fealy" path="res://assets/WarningSign_PixyFantasy/WarningSign09.png" id="11_rnp1r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jdxlk"]
 
@@ -54,35 +46,22 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_g2fde"]
 radius = 153.013
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_av1ye"]
+atlas = ExtResource("3_7wwoj")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgv6x"]
+atlas = ExtResource("3_7wwoj")
+region = Rect2(16, 48, 16, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_g00ga"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_bx3kx")
+"texture": SubResource("AtlasTexture_av1ye")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_s8g5b")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_3ywqr")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_ljhfn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_ypgs3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_udr1e")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_3nvcm")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_e4w2x")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_rnp1r")
+"texture": SubResource("AtlasTexture_xgv6x")
 }],
 "loop": true,
 "name": &"default",
@@ -92,6 +71,28 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s8g5b"]
 radius = 10.8696
 height = 35.4167
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_33tx8"]
+atlas = ExtResource("3_7wwoj")
+region = Rect2(0, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sty0s"]
+atlas = ExtResource("3_7wwoj")
+region = Rect2(16, 80, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bx3kx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_33tx8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sty0s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="eagle" type="CharacterBody2D"]
 collision_layer = 2
@@ -125,8 +126,8 @@ collision_mask = 3
 target_position = Vector2(0, -12)
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
-position = Vector2(-1, -19)
-scale = Vector2(0.4375, 0.375)
+position = Vector2(-1, -21)
+scale = Vector2(0.921875, 0.9375)
 sprite_frames = SubResource("SpriteFrames_g00ga")
 
 [node name="goonbadeath" type="StaticBody2D" parent="."]
@@ -141,5 +142,9 @@ position = Vector2(-4.54747e-13, -2)
 rotation = 1.5708
 scale = Vector2(0.92, 0.959999)
 shape = SubResource("CapsuleShape2D_s8g5b")
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -21)
+sprite_frames = SubResource("SpriteFrames_bx3kx")
 
 [connection signal="body_entered" from="goonbadeath/Area2D" to="goonbadeath" method="_on_area_2d_body_entered"]

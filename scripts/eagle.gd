@@ -5,7 +5,8 @@ extends CharacterBody2D
 @onready var ray: RayCast2D = $los_ray
 @onready var ray_cast_bot: RayCast2D = $RayCastBot
 @onready var ray_cast_top: RayCast2D = $RayCastTop
-@onready var sign: AnimatedSprite2D = $AnimatedSprite2D2
+@onready var exclaimsign: AnimatedSprite2D = $AnimatedSprite2D2
+@onready var questionsign: AnimatedSprite2D = $AnimatedSprite2D3
 
 
 @export var properties := ["global_position"]
@@ -25,11 +26,14 @@ var center = 0
 
 
 func _ready():
+	questionsign.hide()
 	HistoryManager.register_node(self, properties, true, false)
 	base_position = global_position
 	los_area.body_entered.connect(_on_body_entered)
 	los_area.body_exited.connect(_on_body_exited)
 var froze = false
+var first = true
+
 func _physics_process(delta):
 	if FreezeControl.is_frozen:
 		froze = true
@@ -42,18 +46,27 @@ func _physics_process(delta):
 		state = "chase"
 	match state:
 		"idle":
-			sign.hide()
+			exclaimsign.hide()
+			questionsign.hide()
 			idle_hover(delta)
 			#idle_hover_p2(delta)
 		"chase":
-			sign.show()
+			exclaimsign.show()
+			questionsign.hide()
 			chase_player(delta)
+			first = true
 		"return":
-			sign.hide()
+			exclaimsign.hide()
+			questionsign.hide()
 			return_home(delta)
 		"idle2":
-			sign.hide()
+			exclaimsign.hide()
+			if first == true:
+				questionsign.show()
+				await get_tree().create_timer(1.5).timeout
+				questionsign.hide()
 			idle_hover_p2(delta)
+			first = false
 
 func _on_body_entered(body):
 	player = body
