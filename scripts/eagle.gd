@@ -7,9 +7,10 @@ extends CharacterBody2D
 @onready var ray_cast_top: RayCast2D = $RayCastTop
 @onready var exclaimsign: AnimatedSprite2D = $AnimatedSprite2D2
 @onready var questionsign: AnimatedSprite2D = $AnimatedSprite2D3
+@onready var hitbox = get_node("goonbadeath/Area2D")
 
 
-@export var properties := ["global_position"]
+@export var properties := ["global_position", "state"]
 @export var idle_amplitude: float = 36.0
 @export var idle_speed: float = 2.0
 @export var idle2_speed: float = 40.0
@@ -18,16 +19,20 @@ extends CharacterBody2D
 @export var los_y_offset: float = -16.0
 
 var base_position: Vector2
-var state := "idle" # possibilities are: "idle", "chase", "return"
+var idle_center
+var state
+#var idle_center = global_position
+#var state := "idle2" # possibilities are: "idle", "chase", "return"
 var player: Node2D = null
 var direction = 1 # 1 for continue path
-var idle_center: Vector2
 var center = 0
 
 var mat: ShaderMaterial
 const SealShader = preload("res://shaders/seal.gdshader")
 
 func _ready():
+	var idle_center = global_position
+	var state := "idle2"
 	questionsign.hide()
 	HistoryManager.register_node(self, properties, false, true)
 
@@ -43,6 +48,15 @@ var froze = false
 var first = true
 
 func _physics_process(delta):
+	if !FreezeControl.is_frozen:
+		var info = HistoryManager.get_registration(get_instance_id())
+		var isSealed = info['seal']['isSealed']
+		var sealExpiresAt = info['seal']['expiresAt']
+		var historyTime = HistoryManager.historyTime
+		var seal_visual_bool = isSealed and sealExpiresAt and historyTime < sealExpiresAt
+		mat.set_shader_parameter("enabled", seal_visual_bool)
+		hitbox.monitoring = not seal_visual_bool
+
 	if FreezeControl.is_frozen:
 		froze = true
 		return
