@@ -24,11 +24,12 @@ var sit_timer := 0.0
 @export var los_y_offset: float = -12.0
 
 var mat: ShaderMaterial
+const SealShader = preload("res://shaders/seal.gdshader")
 
 func _ready():
 	HistoryManager.register_node(self, properties, false, true)
 	mat = ShaderMaterial.new()
-	mat.shader = preload("res://shaders/seal.gdshader")
+	mat.shader = SealShader
 	$AnimatedSprite2D.material = mat
 	mat.set_shader_parameter("enabled", false)
 
@@ -49,7 +50,7 @@ func _physics_process(delta):
 	match state:
 		"idle":
 			sign.hide()
-			
+
 			goonba.play("default")
 			idle_move(delta)
 		"chase":
@@ -74,10 +75,10 @@ func idle_move(delta: float):
 		position.y += SPEED * delta * 6
 	else:
 		fall = 1
-	
+
 	if direction == 1:
 		goonba.flip_h = true
-	else: 
+	else:
 		goonba.flip_h = false
 	if ray_cast_left.is_colliding() and ray_cast_right.is_colliding():
 		sit_timer = 1.0
@@ -89,13 +90,11 @@ func idle_move(delta: float):
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		if !HistoryManager.get_registration(get_instance_id())['seal']['isSealed']:
-			print("goonba: Left mouse button was clicked inside the area!")
 			HistoryManager.seal(self)
 
 func _on_area_2d_mouse_entered() -> void:
-	if !HistoryManager.get_registration(get_instance_id())['seal']['isSealed']:
+	if FreezeControl.is_frozen and !HistoryManager.get_registration(get_instance_id())['seal']['isSealed']:
 		mat.set_shader_parameter("enabled", true)
-		print("goonba: change to yellow")
 
 	#shader_type canvas_item;
 #
@@ -151,4 +150,3 @@ func is_player_in_los() -> bool:
 	ray.target_position = (player.global_position + Vector2(0, los_y_offset)) - global_position
 	ray.force_raycast_update()
 	return ray.is_colliding() and ray.get_collider() == player
-	
