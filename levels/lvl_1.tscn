@@ -10,9 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://cpnoltmfitfe0" path="res://assets/Breakable.png" id="8_kgooo"]
 [ext_resource type="Texture2D" uid="uid://cbcw0jp777ldr" path="res://assets/Pixel_Art_Forest_Trees_And_Sky_Landscape_high_resolution_preview_3293114.jpg" id="9_acooe"]
 [ext_resource type="PackedScene" uid="uid://bxyndvqh2aqka" path="res://scenes/player.tscn" id="10_wtuha"]
-[ext_resource type="PackedScene" uid="uid://dcb7ai6k3ntmh" path="res://scenes/goonba.tscn" id="11_fu1y8"]
+[ext_resource type="PackedScene" uid="uid://7eond7jr52wg" path="res://scenes/goonba.tscn" id="11_fu1y8"]
 [ext_resource type="PackedScene" uid="uid://mxsx822xwt6v" path="res://scenes/ender.tscn" id="12_gjsv3"]
-[ext_resource type="PackedScene" uid="uid://d1debhdoqe7n1" path="res://scenes/eagle.tscn" id="14_7vnlh"]
+[ext_resource type="PackedScene" uid="uid://cpp1qqhb7ktog" path="res://scenes/eagle.tscn" id="14_7vnlh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2lb68"]
 texture = ExtResource("4_rl4sa")
