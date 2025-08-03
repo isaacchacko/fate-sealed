@@ -25,7 +25,7 @@ func _ready():
 	#shoot_cooldown_timer.timeout.connect(_on_shoot_cooldown_timeout)
 
 func _physics_process(delta):
-	if player and small_los_area.get_overlapping_bodies().has(player) and is_player_in_los():
+	if player and small_los_area.get_overlapping_bodies().has(player) and is_player_in_los() and not FreezeControl.is_frozen:
 		if can_throw:
 			state = "throw"
 		await get_tree().create_timer(3).timeout

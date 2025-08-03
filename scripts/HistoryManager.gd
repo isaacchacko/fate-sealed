@@ -51,7 +51,7 @@ func _physics_process(delta):
 				node.velocity = Vector2.ZERO
 
 			# Restore snapped properties
-			if frozen_states[node_id]:
+			if frozen_states.has(node_id):
 				var state = frozen_states[node_id]
 				for prop in state.keys():
 					node.set(prop, state[prop])
