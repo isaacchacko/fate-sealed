@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://mgvpgkb8nqad" path="res://scenes/dirt_block.tscn" id="15_cp3aq"]
 [ext_resource type="FontFile" uid="uid://ncehug2odtwn" path="res://assets/yoster-island.regular.ttf" id="15_mmgg7"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wgvos"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_goj7v"]
 texture = ExtResource("4_k2aru")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -148,7 +148,7 @@ texture = ExtResource("4_k2aru")
 7:7/0 = 0
 7:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m4706"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gvuit"]
 texture = ExtResource("5_ndgrd")
 1:1/next_alternative_id = 5
 1:1/0 = 0
@@ -405,7 +405,7 @@ texture = ExtResource("5_ndgrd")
 15:21/0 = 0
 15:21/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4xp61"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4g5hd"]
 texture = ExtResource("6_h351q")
 0:0/0 = 0
 1:0/0 = 0
@@ -491,7 +491,7 @@ texture = ExtResource("6_h351q")
 2:11/0 = 0
 3:11/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4yoxl"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xo432"]
 texture = ExtResource("7_dpc8t")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -5.93534, 8, 8, -8, 8)
@@ -506,7 +506,7 @@ texture = ExtResource("7_dpc8t")
 3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:0/0/custom_data_0 = true
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6dcgf"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_egud7"]
 texture = ExtResource("8_ngvhw")
 margins = Vector2i(13, 18)
 texture_region_size = Vector2i(13, 13)
@@ -611,7 +611,7 @@ texture_region_size = Vector2i(13, 13)
 5:6/0 = 0
 6:6/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ubuva"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vucrf"]
 margins = Vector2i(5, 5)
 texture_region_size = Vector2i(11, 11)
 use_texture_padding = false
@@ -623,14 +623,14 @@ custom_data_layer_0/name = "deadly"
 custom_data_layer_0/type = 1
 custom_data_layer_1/name = "explosive"
 custom_data_layer_1/type = 1
-sources/0 = SubResource("TileSetAtlasSource_wgvos")
-sources/1 = SubResource("TileSetAtlasSource_m4706")
-sources/2 = SubResource("TileSetAtlasSource_4xp61")
-sources/3 = SubResource("TileSetAtlasSource_4yoxl")
-sources/5 = SubResource("TileSetAtlasSource_6dcgf")
-sources/7 = SubResource("TileSetAtlasSource_ubuva")
+sources/0 = SubResource("TileSetAtlasSource_goj7v")
+sources/1 = SubResource("TileSetAtlasSource_gvuit")
+sources/2 = SubResource("TileSetAtlasSource_4g5hd")
+sources/3 = SubResource("TileSetAtlasSource_xo432")
+sources/5 = SubResource("TileSetAtlasSource_egud7")
+sources/7 = SubResource("TileSetAtlasSource_vucrf")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pjs8f"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bja75"]
 texture = ExtResource("7_dpc8t")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -651,9 +651,9 @@ physics_layer_0/collision_mask = 0
 navigation_layer_0/layers = 1
 custom_data_layer_0/name = "deadly"
 custom_data_layer_0/type = 1
-sources/0 = SubResource("TileSetAtlasSource_pjs8f")
+sources/0 = SubResource("TileSetAtlasSource_bja75")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ghfw4"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mjyuw"]
 texture = ExtResource("5_ndgrd")
 1:1/0 = 0
 3:1/0 = 0
@@ -791,7 +791,7 @@ physics_layer_0/collision_layer = 33
 physics_layer_0/collision_mask = 0
 custom_data_layer_0/name = "breakable"
 custom_data_layer_0/type = 1
-sources/0 = SubResource("TileSetAtlasSource_ghfw4")
+sources/0 = SubResource("TileSetAtlasSource_mjyuw")
 
 [sub_resource type="FontVariation" id="FontVariation_goj7v"]
 base_font = ExtResource("15_mmgg7")
