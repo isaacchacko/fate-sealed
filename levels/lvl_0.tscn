@@ -836,7 +836,7 @@ tile_set = SubResource("TileSet_vfbqk")
 format = 2
 
 [node name="player" parent="." instance=ExtResource("10_4jenv")]
-position = Vector2(-282, -228)
+position = Vector2(-227, -21)
 collision_mask = 259
 
 [node name="Camera2D" type="Camera2D" parent="player"]
@@ -853,7 +853,7 @@ position = Vector2(15, -10)
 position = Vector2(137, -21)
 
 [node name="eagle" parent="." instance=ExtResource("12_oiig3")]
-position = Vector2(26, -210)
+position = Vector2(-85, -212)
 
 [node name="ender" parent="." instance=ExtResource("13_0r05b")]
 position = Vector2(-253, -251)
