@@ -14,7 +14,7 @@ extends CharacterBody2D
 @export var idle2_speed: float = 40.0
 @export var chase_speed: float = 120.0
 @export var return_speed: float = 80.0
-@export var los_y_offset: float = -12.0
+@export var los_y_offset: float = -16.0
 
 var base_position: Vector2
 var state := "idle" # possibilities are: "idle", "chase", "return"
