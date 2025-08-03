@@ -1,6 +1,7 @@
 [gd_scene load_steps=25 format=3 uid="uid://ej4v3kq4w6vm"]
 
 [ext_resource type="Script" uid="uid://voetdgvdlohr" path="res://scripts/lvl_1.gd" id="1_uhlj1"]
+[ext_resource type="Texture2D" uid="uid://d1hvt7e76ou6b" path="res://assets/annie_background.png" id="2_47r3p"]
 [ext_resource type="PackedScene" uid="uid://cdiven56e6ams" path="res://scenes/death.tscn" id="2_pfr74"]
 [ext_resource type="PackedScene" uid="uid://bg4yphxg3bnlo" path="res://scenes/stopwatch.tscn" id="3_n343t"]
 [ext_resource type="Texture2D" uid="uid://ci6d6qkrdp62a" path="res://icon.svg" id="4_rl4sa"]
@@ -8,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://b4wwuvab7nkq0" path="res://assets/player.png" id="6_rlkjp"]
 [ext_resource type="Texture2D" uid="uid://be3v4p5c1owjy" path="res://assets/16-bit-spike-Sheet.png" id="7_dck17"]
 [ext_resource type="Texture2D" uid="uid://cpnoltmfitfe0" path="res://assets/Breakable.png" id="8_kgooo"]
-[ext_resource type="Texture2D" uid="uid://cbcw0jp777ldr" path="res://assets/Pixel_Art_Forest_Trees_And_Sky_Landscape_high_resolution_preview_3293114.jpg" id="9_acooe"]
 [ext_resource type="PackedScene" uid="uid://bxyndvqh2aqka" path="res://scenes/player.tscn" id="10_wtuha"]
 [ext_resource type="PackedScene" uid="uid://7eond7jr52wg" path="res://scenes/goonba.tscn" id="11_fu1y8"]
 [ext_resource type="PackedScene" uid="uid://mxsx822xwt6v" path="res://scenes/ender.tscn" id="12_gjsv3"]
@@ -797,6 +797,11 @@ sources/0 = SubResource("TileSetAtlasSource_07j8y")
 [node name="lvl1" type="Node2D"]
 script = ExtResource("1_uhlj1")
 
+[node name="AnnieBackground" type="Sprite2D" parent="."]
+position = Vector2(-131, -211)
+scale = Vector2(0.648958, 0.628704)
+texture = ExtResource("2_47r3p")
+
 [node name="death" parent="." instance=ExtResource("2_pfr74")]
 position = Vector2(1, 105)
 
@@ -857,9 +862,3 @@ position = Vector2(-229, -195)
 
 [node name="eagle2" parent="." instance=ExtResource("14_7vnlh")]
 position = Vector2(-562, -247)
-
-[node name="PixelArtForestTreesAndSkyLandscapeHighResolutionPreview3293114" type="Sprite2D" parent="."]
-z_index = -1
-position = Vector2(-142, -325)
-scale = Vector2(0.64618, 0.610185)
-texture = ExtResource("9_acooe")
