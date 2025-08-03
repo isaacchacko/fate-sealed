@@ -9,7 +9,7 @@ extends CharacterBody2D
 
 
 @export var properties := ["global_position"]
-@export var idle_amplitude: float = 16.0
+@export var idle_amplitude: float = 36.0
 @export var idle_speed: float = 2.0
 @export var idle2_speed: float = 40.0
 @export var chase_speed: float = 120.0
@@ -25,18 +25,26 @@ var center = 0
 
 
 func _ready():
-	HistoryManager.register_node(self, properties, false)
+	HistoryManager.register_node(self, properties, true, false)
 	base_position = global_position
 	los_area.body_entered.connect(_on_body_entered)
 	los_area.body_exited.connect(_on_body_exited)
-
+var froze = false
 func _physics_process(delta):
+	if FreezeControl.is_frozen:
+		froze = true
+		return
+	if froze:
+		idle_center = global_position
+		state = "idle2"
+		froze = false
 	if player and los_area.get_overlapping_bodies().has(player) and is_player_in_los():
 		state = "chase"
 	match state:
 		"idle":
 			sign.hide()
 			idle_hover(delta)
+			#idle_hover_p2(delta)
 		"chase":
 			sign.show()
 			chase_player(delta)
@@ -60,7 +68,8 @@ func _on_body_exited(body):
 func idle_hover(delta):
 	if (ray_cast_bot.is_colliding() or ray_cast_top.is_colliding()):
 		direction = direction * -1
-	global_position.y = base_position.y + sin(Time.get_ticks_msec() / 1000.0 * idle_speed) * idle_amplitude * direction
+	if not FreezeControl.is_frozen:
+		global_position.y = base_position.y + sin(Time.get_ticks_msec() / 1000.0 * idle_speed) * idle_amplitude * direction
 
 	
 
@@ -69,6 +78,7 @@ func idle_hover_p2(delta):
 		direction *= -1
 	elif abs(global_position.y - idle_center.y) > idle_amplitude:
 		direction *= -1
+
 	global_position.y += idle2_speed * delta * direction
 	
 	

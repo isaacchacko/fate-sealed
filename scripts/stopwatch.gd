@@ -20,6 +20,12 @@ func _process(delta):
 		else:
 			elapsed_time += delta
 		$label.text = format_time(elapsed_time)
+	
+	if FreezeControl.is_frozen:
+		running = false
+	else:
+		running = true
+		
 
 func start():
 	running = true

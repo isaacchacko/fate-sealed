@@ -17,7 +17,7 @@ var player: Node2D = null
 var dirt_block_scene = preload("res://scenes/dirt_block.tscn") # Just preload, don't instantiate yet
 
 func _ready():
-	HistoryManager.register_node(self, properties, false)
+	HistoryManager.register_node(self, properties, true, false)
 	large_los_area.body_entered.connect(_on_body_entered)
 	large_los_area.body_exited.connect(_on_body_large_exited)
 	small_los_area.body_entered.connect(_on_body_small_entered)
@@ -25,7 +25,7 @@ func _ready():
 	#shoot_cooldown_timer.timeout.connect(_on_shoot_cooldown_timeout)
 
 func _physics_process(delta):
-	if player and small_los_area.get_overlapping_bodies().has(player) and is_player_in_los():
+	if player and small_los_area.get_overlapping_bodies().has(player) and is_player_in_los() and not FreezeControl.is_frozen:
 		if can_throw:
 			state = "throw"
 		await get_tree().create_timer(3).timeout
@@ -58,7 +58,7 @@ func _on_body_entered(body):
 func _on_body_small_entered(body):
 	player = body
 	state = "throw"
-	
+
 
 func _on_body_small_exited(body):
 	if body == player:
@@ -72,7 +72,7 @@ func throw_shit():
 	if not can_throw:
 		return
 	can_throw = false
-	
+
 	# Flip hulk sprite to face player
 	if player.global_position.x > global_position.x:
 		hulk.flip_h = false
@@ -83,7 +83,7 @@ func throw_shit():
 	var dirt_block = dirt_block_scene.instantiate()
 	# Start position: spawn from BombSpawn
 	dirt_block.pos = $BombSpawn.global_position
-	
+
 
 	dirt_block.rota = rotation
 	# Compute direction in radians from dirt block spawn to player
@@ -96,7 +96,7 @@ func throw_shit():
 		dirt_block.get_node("AnimatedSprite2D").play("throw")
 	# Add to scene
 	get_parent().add_child(dirt_block)
-	
+
 	await get_tree().create_timer(3.0).timeout
 	can_throw = true
 

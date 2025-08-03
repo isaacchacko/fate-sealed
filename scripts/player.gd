@@ -15,7 +15,7 @@ var is_dead = false
 var death_velocity = Vector2.ZERO
 
 func _ready():
-	HistoryManager.register_node(self, properties, false)
+	HistoryManager.register_node(self, properties, false, false)
 
 func check_spike_collision():
 	if is_dead == false:
@@ -30,6 +30,8 @@ func check_spike_collision():
 		
 
 func _physics_process(delta: float) -> void:
+	if FreezeControl.is_frozen:
+		return
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
