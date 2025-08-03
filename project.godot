@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 TimeControl="*res://scripts/TimeControl.gd"
 HistoryManager="*res://scripts/HistoryManager.gd"
 FreezeControl="*res://scripts/FreezeControl.gd"
+DeathManager="*res://scripts/death_manager.gd"
 
 [input]
 
