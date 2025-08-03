@@ -1,8 +1,14 @@
-[gd_scene load_steps=45 format=3 uid="uid://c4usvoo0rrtog"]
+[gd_scene load_steps=47 format=3 uid="uid://qunj1atdhnsu"]
 
 [ext_resource type="Script" uid="uid://dwainthicxd05" path="res://scripts/red_hulk.gd" id="1_330le"]
 [ext_resource type="Texture2D" uid="uid://cptdi5u4qw5t0" path="res://assets/Red Panda Sprite Sheet.png" id="1_hasph"]
+[ext_resource type="Shader" uid="uid://xvj2rchnhkdx" path="res://shaders/seal.gdshader" id="2_yx1ow"]
 [ext_resource type="Script" uid="uid://b5lxai2lpgiwf" path="res://scripts/death.gd" id="3_8wdwa"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_31mdg"]
+shader = ExtResource("2_yx1ow")
+shader_parameter/enabled = true
+shader_parameter/tint_strength = 0.6
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_330le"]
 atlas = ExtResource("1_hasph")
@@ -302,6 +308,7 @@ collision_mask = 2
 script = ExtResource("1_330le")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_31mdg")
 position = Vector2(0, -11)
 sprite_frames = SubResource("SpriteFrames_oaxlh")
 animation = &"GroundPound"
@@ -348,3 +355,6 @@ scale = Vector2(0.92, 0.959999)
 shape = SubResource("CapsuleShape2D_yx1ow")
 
 [connection signal="body_entered" from="goonbadeath/Area2D" to="goonbadeath" method="_on_area_2d_body_entered"]
+[connection signal="input_event" from="goonbadeath/Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="goonbadeath/Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="goonbadeath/Area2D" to="." method="_on_area_2d_mouse_exited"]

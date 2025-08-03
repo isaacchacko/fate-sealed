@@ -13,6 +13,8 @@ extends CharacterBody2D
 var can_throw := true
 var state := "idle"
 var player: Node2D = null
+var mat: ShaderMaterial
+const SealShader = preload("res://shaders/seal.gdshader")
 
 var dirt_block_scene = preload("res://scenes/dirt_block.tscn") # Just preload, don't instantiate yet
 
@@ -23,6 +25,11 @@ func _ready():
 	small_los_area.body_entered.connect(_on_body_small_entered)
 	small_los_area.body_exited.connect(_on_body_small_exited)
 	#shoot_cooldown_timer.timeout.connect(_on_shoot_cooldown_timeout)
+	
+	mat = ShaderMaterial.new()
+	mat.shader = SealShader
+	$AnimatedSprite2D.material = mat
+	mat.set_shader_parameter("enabled", false)
 
 func _physics_process(delta):
 	if player and small_los_area.get_overlapping_bodies().has(player) and is_player_in_los() and not FreezeControl.is_frozen:
@@ -107,3 +114,17 @@ func is_player_in_los() -> bool:
 	ray.target_position = (player.global_position + Vector2(0, los_y_offset)) - global_position
 	ray.force_raycast_update()
 	return ray.is_colliding() and ray.get_collider() == player
+	
+func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		if !HistoryManager.get_registration(get_instance_id())['seal']['isSealed']:
+			HistoryManager.seal(self)
+
+func _on_area_2d_mouse_entered() -> void:
+	if FreezeControl.is_frozen and !HistoryManager.get_registration(get_instance_id())['seal']['isSealed']:
+		mat.set_shader_parameter("enabled", true)
+
+
+func _on_area_2d_mouse_exited() -> void:
+	mat.set_shader_parameter("enabled", false)
+	print("goonba: revert to grey if possible")
