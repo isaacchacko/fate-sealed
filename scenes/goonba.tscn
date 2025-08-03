@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://7eond7jr52wg"]
 
 [ext_resource type="Texture2D" uid="uid://bo5srvhfqbcvl" path="res://assets/goomba.png" id="1_dkq4h"]
-[ext_resource type="Script" path="res://scripts/goonba.gd" id="1_ghie5"]
+[ext_resource type="Script" uid="uid://c76phpnhbmiim" path="res://scripts/goonba.gd" id="1_ghie5"]
 [ext_resource type="Script" uid="uid://b5lxai2lpgiwf" path="res://scripts/death.gd" id="3_4k4wr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ghie5"]

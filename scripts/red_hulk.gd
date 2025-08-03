@@ -85,11 +85,12 @@ func throw_shit():
 	dirt_block.pos = $BombSpawn.global_position
 	
 
-	# Rotation: match current hulk rotation if desired, or set to angle
 	dirt_block.rota = rotation
 	# Compute direction in radians from dirt block spawn to player
 	var direction_angle = (player.global_position - dirt_block.pos).angle()
-	dirt_block.dir = direction_angle
+	var x_distance = player.global_position.x - dirt_block.pos.x
+	dirt_block.target_position = player.global_position
+	dirt_block.start = dirt_block.pos
 	# Make sure to play throw animation (requires the property/variable in your dirt_block script)
 	if dirt_block.has_node("AnimatedSprite2D"):
 		dirt_block.get_node("AnimatedSprite2D").play("throw")
