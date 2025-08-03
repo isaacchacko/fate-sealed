@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://mxsx822xwt6v"]
 
-[ext_resource type="Script" uid="uid://b6jaq5q86wp1f" path="res://ender.gd" id="1_trpg2"]
+[ext_resource type="Script" uid="uid://b6jaq5q86wp1f" path="res://scripts/ender.gd" id="1_trpg2"]
 [ext_resource type="Texture2D" uid="uid://dp58gup1wsunu" path="res://assets/ender.png" id="2_32iky"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w8wr1"]
