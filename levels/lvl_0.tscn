@@ -832,11 +832,7 @@ tile_set = SubResource("TileSet_vfbqk")
 format = 2
 
 [node name="player" parent="." instance=ExtResource("10_4jenv")]
-<<<<<<< Updated upstream
-position = Vector2(-227, -21)
-=======
 position = Vector2(-199, -21)
->>>>>>> Stashed changes
 collision_mask = 259
 
 [node name="Camera2D" type="Camera2D" parent="player"]
