@@ -798,7 +798,7 @@ sources/0 = SubResource("TileSetAtlasSource_rlkjp")
 script = ExtResource("1_uhlj1")
 
 [node name="AnnieBackground" type="Sprite2D" parent="."]
-position = Vector2(-131, -211)
+position = Vector2(-12, -467)
 scale = Vector2(0.648958, 0.628704)
 texture = ExtResource("2_47r3p")
 

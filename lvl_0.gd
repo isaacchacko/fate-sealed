@@ -5,7 +5,6 @@ func _ready():
 	var death_sources = [
 		$death,
 		get_node("goonba/goonbadeath"),
-		get_node("goonba2/goonbadeath"),
 		get_node("eagle/goonbadeath"),
 		get_node("player")  # Not sure if this is right; check if correct
 	]
