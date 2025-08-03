@@ -867,13 +867,13 @@ position = Vector2(-262, 123)
 position = Vector2(-218, -108)
 
 [node name="Label" type="Label" parent="."]
-offset_left = -11.0
-offset_top = -433.0
-offset_right = 275.0
-offset_bottom = -386.0
+offset_left = -13.0
+offset_top = -435.0
+offset_right = 81.0
+offset_bottom = -388.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_goj7v")
-text = "Level 3: The End"
+text = "Level 3: Learning"
 autowrap_mode = 3
 
 [node name="Label2" type="Label" parent="."]
