@@ -9,6 +9,7 @@ var state := "idle" # possibilities are: "idle", "chase", "sit"
 var player: Node2D = null
 var sit_timer := 0.0
 
+
 @onready var ray_cast_left: RayCast2D = $RayCastLeft
 @onready var ray_cast_right: RayCast2D = $RayCastRight
 @onready var ray_cast_down: RayCast2D = $RayCastDown
@@ -35,17 +36,17 @@ func _physics_process(delta):
 			sign.hide()
 			idle_move(delta)
 		"chase":
+			goonba.play("default")
 			sign.show()
 			chase_player(delta)
 		"sit":
 			sign.hide()
 			sit_timer -= delta
-			if sit_timer <= 0:
+			if sit_timer <= 0.4:
 				state = "idle"
 				goonba.play("default") # Switch to idle animation after sitting
 
 func idle_move(delta: float):
-	goonba.play("default")
 	if ray_cast_left.is_colliding():
 		direction = 1
 	if ray_cast_right.is_colliding():
