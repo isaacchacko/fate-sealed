@@ -1,3 +1,4 @@
+
 extends CharacterBody2D
 
 signal enemy_clicked(node)
@@ -20,7 +21,7 @@ var sit_timer := 0.0
 @onready var sign: AnimatedSprite2D = $AnimatedSprite2D2
 
 
-@export var properties := ["global_position", "state"]
+@export var properties := ["global_position"]
 @export var los_y_offset: float = -12.0
 
 var mat: ShaderMaterial
@@ -65,14 +66,6 @@ func _physics_process(delta):
 				state = "idle"
 				goonba.play("default") # Switch to idle animation after sitting
 
-	var info = HistoryManager.get_registration(get_instance_id())
-	print("info: ", info)
-	if info['seal']['isSealed']:
-		var highlighted = info['seal']['isSealed'] and HistoryManager.historyTime < info['seal']['expiresAt']
-		mat.set_shader_parameter("enabled", highlighted)
-	else:
-		mat.set_shader_parameter("enabled", false)
-
 func idle_move(delta: float):
 	if ray_cast_left.is_colliding():
 		direction = 1
@@ -102,11 +95,10 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 
 func _on_area_2d_mouse_entered() -> void:
 	if FreezeControl.is_frozen and !HistoryManager.get_registration(get_instance_id())['seal']['isSealed']:
-		mat.set_shader_parameter("enabled", true)
-
+		set_seal_visual(true)
 
 func _on_area_2d_mouse_exited() -> void:
-	mat.set_shader_parameter("enabled", false)
+	set_seal_visual(false)
 	print("goonba: revert to grey if possible")
 
 func chase_player(delta: float):
@@ -149,19 +141,5 @@ func is_player_in_los() -> bool:
 	ray.force_raycast_update()
 	return ray.is_colliding() and ray.get_collider() == player
 
-func _on_clickable_mouse_entered() -> void:
-	if !HistoryManager.get_registration(get_instance_id())['seal']['isSealed']:
-		mat.set_shader_parameter("enabled", true)
-		print("goonba: change to yellow")
-
-
-func _on_clickable_mouse_exited() -> void:
-	mat.set_shader_parameter("enabled", false)
-	print("goonba: revert to grey if possible")
-
-
-func _on_clickable_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		if !HistoryManager.get_registration(get_instance_id())['seal']['isSealed']:
-			print("goonba: Left mouse button was clicked inside the area! and historyTime=", HistoryManager.historyTime)
-			HistoryManager.seal(self)
+func set_seal_visual(isSealed):
+	mat.set_shader_parameter("enabled", isSealed)
