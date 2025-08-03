@@ -1,5 +1,7 @@
 extends Node2D
 
+func _ready():
+	$AnimationPlayer.play("fade_in")
 
 func _on_start_pressed() -> void:
 	get_tree().change_scene_to_file("res://levels/lvl_0.tscn")
