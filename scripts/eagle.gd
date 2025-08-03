@@ -50,12 +50,13 @@ var first = true
 func _physics_process(delta):
 	if !FreezeControl.is_frozen:
 		var info = HistoryManager.get_registration(get_instance_id())
-		var isSealed = info['seal']['isSealed']
-		var sealExpiresAt = info['seal']['expiresAt']
-		var historyTime = HistoryManager.historyTime
-		var seal_visual_bool = isSealed and sealExpiresAt and historyTime < sealExpiresAt
-		mat.set_shader_parameter("enabled", seal_visual_bool)
-		hitbox.monitoring = not seal_visual_bool
+		if info != {}:
+			var isSealed = info['seal']['isSealed']
+			var sealExpiresAt = info['seal']['expiresAt']
+			var historyTime = HistoryManager.historyTime
+			var seal_visual_bool = isSealed and sealExpiresAt and historyTime < sealExpiresAt
+			mat.set_shader_parameter("enabled", seal_visual_bool)
+			hitbox.monitoring = not seal_visual_bool
 
 	if FreezeControl.is_frozen:
 		froze = true
