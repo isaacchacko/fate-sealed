@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://s4d0e5fb17t7"]
 
-[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_ekxnf"]
+[ext_resource type="Script" uid="uid://de72ngjrif171" path="res://scripts/main_menu.gd" id="1_ekxnf"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ekxnf"]
 modulate_color = Color(0.43712, 0.43712, 0.43712, 1)

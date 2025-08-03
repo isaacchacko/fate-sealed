@@ -55,7 +55,7 @@ func set_alive(is_alive: bool) -> void:
 		if alive:
 			show()
 		# don't hide immediately, let explosion play
-		else: 
+		else:
 			await get_tree().create_timer(.25).timeout
 			hide()
 

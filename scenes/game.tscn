@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cqmroqi28a6ev"]
+[gd_scene load_steps=22 format=3 uid="uid://cqmroqi28a6ev"]
 
 [ext_resource type="Script" uid="uid://db6ygwvad1irf" path="res://scripts/game.gd" id="1_gee14"]
 [ext_resource type="PackedScene" uid="uid://bxyndvqh2aqka" path="res://scenes/player.tscn" id="1_uwrxv"]
@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cpnoltmfitfe0" path="res://assets/Breakable.png" id="8_trtic"]
 [ext_resource type="PackedScene" uid="uid://mxsx822xwt6v" path="res://scenes/ender.tscn" id="10_vtaks"]
 [ext_resource type="PackedScene" uid="uid://d1debhdoqe7n1" path="res://scenes/eagle.tscn" id="11_kvpfn"]
-[ext_resource type="PackedScene" path="res://scenes/red_hulk.tscn" id="12_dinhu"]
+[ext_resource type="PackedScene" uid="uid://c4usvoo0rrtog" path="res://scenes/red_hulk.tscn" id="12_dinhu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("1_yqjtg")

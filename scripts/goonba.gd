@@ -20,7 +20,7 @@ var sit_timer := 0.0
 @onready var sign: AnimatedSprite2D = $AnimatedSprite2D2
 
 
-@export var properties := ["global_position"]
+@export var properties := ["global_position", "state"]
 @export var los_y_offset: float = -16.0
 
 var mat: ShaderMaterial
@@ -54,6 +54,14 @@ func _physics_process(delta):
 				state = "idle"
 				goonba.play("default") # Switch to idle animation after sitting
 
+	var info = HistoryManager.get_registration(get_instance_id())
+	print("info: ", info)
+	if info['seal']['isSealed']:
+		var highlighted = info['seal']['isSealed'] and HistoryManager.historyTime < info['seal']['expiresAt']
+		mat.set_shader_parameter("enabled", highlighted)
+	else:
+		mat.set_shader_parameter("enabled", false)
+
 func idle_move(delta: float):
 	if ray_cast_left.is_colliding():
 		direction = 1
@@ -64,39 +72,12 @@ func idle_move(delta: float):
 		position.y += SPEED * delta
 	else:
 		fall = 1
-	
+
 	if direction == 1:
 		goonba.flip_h = true
-	else: 
+	else:
 		goonba.flip_h = false
 	position.x += direction * SPEED * delta * fall
-
-
-func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		if !HistoryManager.get_registration(get_instance_id())['seal']['isSealed']:
-			print("goonba: Left mouse button was clicked inside the area!")
-			HistoryManager.seal(self)
-
-func _on_area_2d_mouse_entered() -> void:
-	if !HistoryManager.get_registration(get_instance_id())['seal']['isSealed']:
-		mat.set_shader_parameter("enabled", true)
-		print("goonba: change to yellow")
-
-	#shader_type canvas_item;
-#
-#uniform float tint_strength : hint_range(0.0, 1.0) = 1.0;
-#
-#void fragment() {
-	#vec4 tex_color = texture(TEXTURE, UV);
-	#// Pure yellow tint (RGB: 1.0, 1.0, 0.0)
-	#vec3 yellow = vec3(1.0, 1.0, 0.0);
-	#vec3 tinted = mix(tex_color.rgb, yellow, tint_strength);
-	#COLOR = vec4(tinted, tex_color.a);
-#}
-func _on_area_2d_mouse_exited() -> void:
-	mat.set_shader_parameter("enabled", false)
-	print("goonba: revert to grey if possible")
 
 func chase_player(delta: float):
 	if player.global_position.x > global_position.x:
@@ -129,4 +110,21 @@ func is_player_in_los() -> bool:
 	ray.target_position = (player.global_position + Vector2(0, los_y_offset)) - global_position
 	ray.force_raycast_update()
 	return ray.is_colliding() and ray.get_collider() == player
-	
+
+
+func _on_clickable_mouse_entered() -> void:
+	if !HistoryManager.get_registration(get_instance_id())['seal']['isSealed']:
+		mat.set_shader_parameter("enabled", true)
+		print("goonba: change to yellow")
+
+
+func _on_clickable_mouse_exited() -> void:
+	mat.set_shader_parameter("enabled", false)
+	print("goonba: revert to grey if possible")
+
+
+func _on_clickable_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		if !HistoryManager.get_registration(get_instance_id())['seal']['isSealed']:
+			print("goonba: Left mouse button was clicked inside the area! and historyTime=", HistoryManager.historyTime)
+			HistoryManager.seal(self)
