@@ -19,7 +19,7 @@ var sit_timer := 0.0
 @onready var ray: RayCast2D = $los_ray
 @onready var exclaimsign: AnimatedSprite2D = $AnimatedSprite2D2
 @onready var questionsign: AnimatedSprite2D = $AnimatedSprite2D3
-
+@onready var hitbox = get_node('goonbadeath/Area2D')
 
 
 @export var properties := ["global_position"]
@@ -41,6 +41,15 @@ func _ready():
 	$AnimatedSprite2D2.visible = false
 
 func _physics_process(delta):
+	if !FreezeControl.is_frozen:
+		var info = HistoryManager.get_registration(get_instance_id())
+		var isSealed = info['seal']['isSealed']
+		var sealExpiresAt = info['seal']['expiresAt']
+		var historyTime = HistoryManager.historyTime
+		var seal_visual_bool = isSealed and sealExpiresAt and historyTime < sealExpiresAt
+		mat.set_shader_parameter("enabled", seal_visual_bool)
+		hitbox.monitoring = not seal_visual_bool
+
 	if player and los_area.get_overlapping_bodies().has(player) and is_player_in_los():
 		state = "chase"
 	#else:
