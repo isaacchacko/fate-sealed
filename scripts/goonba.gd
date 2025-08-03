@@ -96,17 +96,7 @@ func _on_area_2d_mouse_entered() -> void:
 	if FreezeControl.is_frozen and !HistoryManager.get_registration(get_instance_id())['seal']['isSealed']:
 		mat.set_shader_parameter("enabled", true)
 
-	#shader_type canvas_item;
-#
-#uniform float tint_strength : hint_range(0.0, 1.0) = 1.0;
-#
-#void fragment() {
-	#vec4 tex_color = texture(TEXTURE, UV);
-	#// Pure yellow tint (RGB: 1.0, 1.0, 0.0)
-	#vec3 yellow = vec3(1.0, 1.0, 0.0);
-	#vec3 tinted = mix(tex_color.rgb, yellow, tint_strength);
-	#COLOR = vec4(tinted, tex_color.a);
-#}
+
 func _on_area_2d_mouse_exited() -> void:
 	mat.set_shader_parameter("enabled", false)
 	print("goonba: revert to grey if possible")
