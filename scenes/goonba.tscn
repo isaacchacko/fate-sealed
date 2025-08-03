@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dcb7ai6k3ntmh"]
+[gd_scene load_steps=24 format=3 uid="uid://7eond7jr52wg"]
 
 [ext_resource type="Texture2D" uid="uid://bo5srvhfqbcvl" path="res://assets/goomba.png" id="1_dkq4h"]
 [ext_resource type="Script" uid="uid://c76phpnhbmiim" path="res://scripts/goonba.gd" id="1_ghie5"]
@@ -148,6 +148,7 @@ collision_mask = 7
 
 [node name="goonbadeath" type="StaticBody2D" parent="."]
 position = Vector2(8, -4)
+collision_mask = 2
 script = ExtResource("3_4k4wr")
 
 [node name="Area2D" type="Area2D" parent="goonbadeath"]
