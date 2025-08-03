@@ -84,10 +84,16 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_tuyoq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlg0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqkch")
 }],
 "loop": true,
 "name": &"IDLE",
-"speed": 10.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -141,9 +147,9 @@ script = ExtResource("1_g2els")
 z_index = 12
 position = Vector2(-1, -15)
 sprite_frames = SubResource("SpriteFrames_g2els")
-animation = &"Death"
+animation = &"IDLE"
 autoplay = "IDLE"
-frame_progress = 0.0653109
+frame_progress = 0.373542
 
 [node name="gun" type="Node2D" parent="."]
 position = Vector2(10, -10)
