@@ -8,6 +8,7 @@ var base_position: Vector2
 var state := "idle" # possibilities are: "idle", "chase", "sit"
 var player: Node2D = null
 var sit_timer := 0.0
+var distanceBetween = 0
 
 
 @onready var ray_cast_left: RayCast2D = $RayCastLeft
@@ -53,7 +54,7 @@ func idle_move(delta: float):
 		direction = -1
 	if not ray_cast_down.is_colliding():
 		fall = 0.5
-		position.y += SPEED * delta
+		position.y += SPEED * delta * 4
 	else:
 		fall = 1
 	
@@ -69,7 +70,13 @@ func chase_player(delta: float):
 	else:
 		goonba.flip_h = false    # Player is to the left; face left
 	if player and is_player_in_los():
-		var x_direction = sign(player.global_position.x - global_position.x)
+		distanceBetween = player.global_position.x - global_position.x
+		if not ray_cast_down.is_colliding():
+			fall = 0.5
+			position.y += SPEED * delta * 4
+		var x_direction = sign(distanceBetween)
+		if distanceBetween <= 100:
+			goonba.play("sit")
 		velocity.x = x_direction * chase_speed
 		velocity.y = 0  # Zero out vertical movement
 		move_and_slide()
