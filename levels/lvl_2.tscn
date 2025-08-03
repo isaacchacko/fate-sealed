@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b6k4fkugs6bvd"]
+[gd_scene load_steps=30 format=3 uid="uid://b6k4fkugs6bvd"]
 
 [ext_resource type="Script" uid="uid://behpeedxaffjr" path="res://scripts/level_2.gd" id="1_0ourt"]
 [ext_resource type="Texture2D" uid="uid://v1pmrnwy7jad" path="res://assets/annie background.PNG" id="2_goj7v"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://c4usvoo0rrtog" path="res://scenes/red_hulk.tscn" id="14_amxoe"]
 [ext_resource type="PackedScene" uid="uid://mgvpgkb8nqad" path="res://scenes/dirt_block.tscn" id="15_cp3aq"]
 [ext_resource type="FontFile" uid="uid://ncehug2odtwn" path="res://assets/yoster-island.regular.ttf" id="15_mmgg7"]
+[ext_resource type="AudioStream" uid="uid://b0womi7diiioc" path="res://assets/Soundtrack.wav" id="17_gvuit"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wgvos"]
 texture = ExtResource("4_k2aru")
@@ -886,3 +887,8 @@ theme_override_fonts/font = SubResource("FontVariation_goj7v")
 theme_override_font_sizes/font_size = 14
 text = "Genuinley crazy you got this far this was hella hard for us"
 autowrap_mode = 3
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-11, -433)
+stream = ExtResource("17_gvuit")
+autoplay = true
