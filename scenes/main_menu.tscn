@@ -1,11 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://s4d0e5fb17t7"]
+[gd_scene load_steps=10 format=3 uid="uid://s4d0e5fb17t7"]
 
 [ext_resource type="Script" uid="uid://de72ngjrif171" path="res://scripts/main_menu.gd" id="1_ekxnf"]
 [ext_resource type="Texture2D" uid="uid://ngh4806fthtf" path="res://assets/menu_bg.jpg" id="2_ekxnf"]
+[ext_resource type="Texture2D" uid="uid://dc5aq7eh6d6c5" path="res://assets/title_player.png" id="3_bqqt6"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ekxnf"]
 texture = ExtResource("2_ekxnf")
 modulate_color = Color(0.43712, 0.43712, 0.43712, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bqqt6"]
+texture = ExtResource("3_bqqt6")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bqqt6"]
 
@@ -45,11 +49,18 @@ offset_right = 1152.0
 offset_bottom = 795.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_ekxnf")
 
+[node name="Panel2" type="Panel" parent="."]
+offset_left = 246.0
+offset_top = 57.0
+offset_right = 910.0
+offset_bottom = 365.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_bqqt6")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_left = 343.0
-offset_top = 298.0
-offset_right = 820.0
-offset_bottom = 518.0
+offset_left = 330.0
+offset_top = 361.0
+offset_right = 807.0
+offset_bottom = 581.0
 theme_override_constants/separation = 15
 
 [node name="Button" type="Button" parent="VBoxContainer"]
@@ -93,20 +104,6 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_wu84c")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_8ln24")
 theme_override_styles/normal = SubResource("StyleBoxFlat_vue75")
 text = "Exit"
-
-[node name="Label" type="Label" parent="."]
-offset_left = 341.0
-offset_top = 104.0
-offset_right = 832.0
-offset_bottom = 280.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_offset_y = 6
-theme_override_font_sizes/font_size = 32
-text = "We Cooking
-
-(Change Background and Fonts)"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_how_to_pressed"]
