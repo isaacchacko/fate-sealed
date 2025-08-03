@@ -159,7 +159,13 @@ frame_progress = 0.175532
 
 [node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
 
+[node name="clickable" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="clickable"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_4k4wr")
+
 [connection signal="body_entered" from="goonbadeath/Area2D" to="goonbadeath" method="_on_area_2d_body_entered"]
-[connection signal="input_event" from="goonbadeath/Area2D" to="." method="_on_area_2d_input_event"]
-[connection signal="mouse_entered" from="goonbadeath/Area2D" to="." method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="goonbadeath/Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="input_event" from="clickable" to="." method="_on_clickable_input_event"]
+[connection signal="mouse_entered" from="clickable" to="." method="_on_clickable_mouse_entered"]
+[connection signal="mouse_exited" from="clickable" to="." method="_on_clickable_mouse_exited"]

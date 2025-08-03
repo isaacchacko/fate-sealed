@@ -17,7 +17,7 @@ var player: Node2D = null
 var dirt_block_scene = preload("res://scenes/dirt_block.tscn") # Just preload, don't instantiate yet
 
 func _ready():
-	HistoryManager.register_node(self, properties, true, false)
+	HistoryManager.register_node(self, properties, false, true)
 	large_los_area.body_entered.connect(_on_body_entered)
 	large_los_area.body_exited.connect(_on_body_large_exited)
 	small_los_area.body_entered.connect(_on_body_small_entered)

@@ -27,7 +27,7 @@ var center = 0
 
 func _ready():
 	questionsign.hide()
-	HistoryManager.register_node(self, properties, true, false)
+	HistoryManager.register_node(self, properties, false, true)
 	base_position = global_position
 	los_area.body_entered.connect(_on_body_entered)
 	los_area.body_exited.connect(_on_body_exited)
@@ -77,14 +77,14 @@ func _on_body_exited(body):
 		idle_center = global_position
 		direction = 1
 		state = "idle2"
-		
+
 func idle_hover(delta):
 	if (ray_cast_bot.is_colliding() or ray_cast_top.is_colliding()):
 		direction = direction * -1
 	if not FreezeControl.is_frozen:
 		global_position.y = base_position.y + sin(Time.get_ticks_msec() / 1000.0 * idle_speed) * idle_amplitude * direction
 
-	
+
 
 func idle_hover_p2(delta):
 	if ray_cast_bot.is_colliding() or ray_cast_top.is_colliding():
@@ -93,8 +93,8 @@ func idle_hover_p2(delta):
 		direction *= -1
 
 	global_position.y += idle2_speed * delta * direction
-	
-	
+
+
 func chase_player (delta):
 	if player.global_position.x > global_position.x:
 		goonba.flip_h = true   # Player is to the right; face right (adjust as needed)
@@ -125,7 +125,7 @@ func return_home(delta):
 	#check for player re-entering LOS
 	if player and los_area.get_overlapping_bodies().has(player) and is_player_in_los():
 		state = "chase"
-		
+
 func is_player_in_los() -> bool:
 	if not player:
 		return false
@@ -133,8 +133,3 @@ func is_player_in_los() -> bool:
 	ray.target_position = (player.global_position + Vector2(0, los_y_offset)) - global_position
 	ray.force_raycast_update()
 	return ray.is_colliding() and ray.get_collider() == player
-		
-		
-
-
-	
