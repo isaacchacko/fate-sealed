@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://1qkmhuq6i6kj"]
+[gd_scene load_steps=18 format=3 uid="uid://muo5ectpltt5"]
 
 [ext_resource type="Script" path="res://scripts/how_to.gd" id="1_gn1vk"]
 [ext_resource type="FontFile" uid="uid://ncehug2odtwn" path="res://assets/yoster-island.regular.ttf" id="1_h0xfg"]
@@ -28,12 +28,6 @@ texture = ExtResource("5_yq5h1")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2xsv5"]
 texture = ExtResource("6_igyi7")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qn720"]
-texture = ExtResource("8_qn720")
-
-[sub_resource type="FontVariation" id="FontVariation_qn720"]
-base_font = ExtResource("1_h0xfg")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gn1vk"]
 
@@ -132,7 +126,6 @@ theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = SubResource("FontVariation_qn720")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gn1vk")
 theme_override_styles/hover = SubResource("StyleBoxFlat_qn720")
