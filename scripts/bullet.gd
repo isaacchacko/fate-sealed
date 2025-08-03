@@ -22,11 +22,9 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if not alive:
-		print("v: alive: ", alive, " ", ("right" if velocity.x > 0 else "left"), " ", ("up" if velocity.y < 0 else "down"))
 		return
 
 	velocity.y += gravity * delta
-	print("v: alive: ", alive, " ", ("right" if velocity.x > 0 else "left"), " ", ("up" if velocity.y < 0 else "down"))
 	var collision = move_and_collide(velocity * delta)
 	if collision and collision.get_collider() is TileMap:
 		set_alive(false)

@@ -1,7 +1,15 @@
-[gd_scene load_steps=17 format=3 uid="uid://bxyndvqh2aqka"]
+[gd_scene load_steps=19 format=3 uid="uid://bxyndvqh2aqka"]
 
 [ext_resource type="Script" uid="uid://di8e5g17tycmh" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://b4wwuvab7nkq0" path="res://assets/player.png" id="2_g2els"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1ej7"]
+atlas = ExtResource("2_g2els")
+region = Rect2(0, 128, 33, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oprun"]
+atlas = ExtResource("2_g2els")
+region = Rect2(33, 128, 33, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
 atlas = ExtResource("2_g2els")
@@ -53,6 +61,17 @@ region = Rect2(0, 160, 33, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g2els"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1ej7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oprun")
+}],
+"loop": true,
+"name": &"Death",
+"speed": 3.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qhqgy")
@@ -120,14 +139,15 @@ script = ExtResource("1_g2els")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 12
-position = Vector2(2, -16)
+position = Vector2(-1, -15)
 sprite_frames = SubResource("SpriteFrames_g2els")
-animation = &"jumping_down"
+animation = &"Death"
 autoplay = "IDLE"
+frame_progress = 0.0653109
 
 [node name="gun" type="Node2D" parent="."]
-position = Vector2(15, -11)
+position = Vector2(10, -10)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(2, -13)
+position = Vector2(0, -11)
 shape = SubResource("RectangleShape2D_g2els")

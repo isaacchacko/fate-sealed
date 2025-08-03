@@ -30,6 +30,7 @@ func stop():
 func reset():
 	elapsed_time = 0.0
 	$label.text = format_time(elapsed_time)
+	
 
 func format_time(seconds: float) -> String:
 	var minutes = int(seconds) / 60
