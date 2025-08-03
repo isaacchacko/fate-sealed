@@ -1,6 +1,7 @@
-[gd_scene load_steps=26 format=3 uid="uid://dkkgdb3sb1dhv"]
+[gd_scene load_steps=27 format=3 uid="uid://dkkgdb3sb1dhv"]
 
 [ext_resource type="Texture2D" uid="uid://v1pmrnwy7jad" path="res://assets/annie background.PNG" id="1_dnpru"]
+[ext_resource type="Script" uid="uid://cncmxoswaqexd" path="res://levels/lvl_3.gd" id="1_f2fpv"]
 [ext_resource type="PackedScene" uid="uid://cdiven56e6ams" path="res://scenes/death.tscn" id="2_f2fpv"]
 [ext_resource type="PackedScene" uid="uid://ctp03u07ktt5l" path="res://scenes/stopwatch.tscn" id="3_d5723"]
 [ext_resource type="Texture2D" uid="uid://ci6d6qkrdp62a" path="res://icon.svg" id="4_lvl5y"]
@@ -794,14 +795,12 @@ sources/0 = SubResource("TileSetAtlasSource_w2dm1")
 base_font = ExtResource("13_x5akk")
 
 [node name="lvl_3" type="Node2D"]
+script = ExtResource("1_f2fpv")
 
 [node name="AnnieBackground" type="Sprite2D" parent="."]
-position = Vector2(-103.5, -552)
-scale = Vector2(1.05677, 1.22037)
+position = Vector2(-114, -530)
+scale = Vector2(1.05677, 1.37315)
 texture = ExtResource("1_dnpru")
-
-[node name="death" parent="." instance=ExtResource("2_f2fpv")]
-position = Vector2(-406, 1)
 
 [node name="stopwatch" parent="." instance=ExtResource("3_d5723")]
 
@@ -880,3 +879,6 @@ autowrap_mode = 3
 
 [node name="RedHulk3" parent="." instance=ExtResource("11_uwbca")]
 position = Vector2(57, -951)
+
+[node name="death" parent="." instance=ExtResource("2_f2fpv")]
+position = Vector2(-583, -41)
