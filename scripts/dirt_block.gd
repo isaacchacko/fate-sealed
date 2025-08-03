@@ -18,7 +18,7 @@ var gravity = 1000.0
 var alive := true
 
 func _ready() -> void:
-	HistoryManager.register_node(self, properties, true)
+	HistoryManager.register_node(self, properties, true, false)
 	global_position = pos
 	global_rotation = rota
 	launch_to_target(target_position)
