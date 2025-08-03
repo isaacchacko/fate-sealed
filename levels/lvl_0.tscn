@@ -1,7 +1,7 @@
 [gd_scene load_steps=27 format=3 uid="uid://bi0dh6ysfd44h"]
 
-[ext_resource type="Script" path="res://lvl_0.gd" id="1_y03ah"]
-[ext_resource type="Texture2D" uid="uid://d1hvt7e76ou6b" path="res://assets/annie_background.png" id="2_nl6k2"]
+[ext_resource type="Script" uid="uid://cl47tvwaphud5" path="res://lvl_0.gd" id="1_y03ah"]
+[ext_resource type="Texture2D" uid="uid://v1pmrnwy7jad" path="res://assets/annie background.PNG" id="2_nl6k2"]
 [ext_resource type="PackedScene" uid="uid://cdiven56e6ams" path="res://scenes/death.tscn" id="3_ra1yw"]
 [ext_resource type="PackedScene" uid="uid://bg4yphxg3bnlo" path="res://scenes/stopwatch.tscn" id="4_jumvi"]
 [ext_resource type="Texture2D" uid="uid://ci6d6qkrdp62a" path="res://icon.svg" id="5_aqeqw"]
@@ -806,9 +806,9 @@ base_font = ExtResource("14_nl6k2")
 [node name="lvl0" type="Node2D"]
 script = ExtResource("1_y03ah")
 
-[node name="AnnieBackground" type="Sprite2D" parent="."]
-position = Vector2(40, -174)
-scale = Vector2(0.648958, 0.628704)
+[node name="AnnieBackground2" type="Sprite2D" parent="."]
+position = Vector2(-45, -283)
+scale = Vector2(1, 1)
 texture = ExtResource("2_nl6k2")
 
 [node name="death" parent="." instance=ExtResource("3_ra1yw")]

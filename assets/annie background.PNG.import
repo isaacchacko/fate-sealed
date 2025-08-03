@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1hvt7e76ou6b"
-path="res://.godot/imported/annie_background.png-8d181b89d252fe76d74633bbad5e529c.ctex"
+uid="uid://v1pmrnwy7jad"
+path="res://.godot/imported/annie background.PNG-0e72eece2c5af4940e196e872431e372.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/annie_background.png"
-dest_files=["res://.godot/imported/annie_background.png-8d181b89d252fe76d74633bbad5e529c.ctex"]
+source_file="res://assets/annie background.PNG"
+dest_files=["res://.godot/imported/annie background.PNG-0e72eece2c5af4940e196e872431e372.ctex"]
 
 [params]
 

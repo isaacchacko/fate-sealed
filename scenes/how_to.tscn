@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://muo5ectpltt5"]
+[gd_scene load_steps=19 format=3 uid="uid://muo5ectpltt5"]
 
 [ext_resource type="Script" path="res://scripts/how_to.gd" id="1_gn1vk"]
 [ext_resource type="FontFile" uid="uid://ncehug2odtwn" path="res://assets/yoster-island.regular.ttf" id="1_h0xfg"]
 [ext_resource type="Texture2D" uid="uid://cptdi5u4qw5t0" path="res://assets/Red Panda Sprite Sheet.png" id="2_gn1vk"]
+[ext_resource type="Texture2D" uid="uid://v1pmrnwy7jad" path="res://assets/annie background.PNG" id="2_qn720"]
 [ext_resource type="Texture2D" uid="uid://d10q58kdb0hjl" path="res://assets/eagle.png" id="3_qn720"]
 [ext_resource type="Texture2D" uid="uid://bo5srvhfqbcvl" path="res://assets/goomba.png" id="4_0cn6s"]
 [ext_resource type="Texture2D" uid="uid://x14rf6m25jd3" path="res://assets/ER_keys.png" id="5_yq5h1"]
@@ -60,6 +61,10 @@ shadow_offset = Vector2(0, 3)
 
 [node name="HowTo" type="Node2D"]
 script = ExtResource("1_gn1vk")
+
+[node name="AnnieBackground" type="Sprite2D" parent="."]
+position = Vector2(774, 399)
+texture = ExtResource("2_qn720")
 
 [node name="Label" type="Label" parent="."]
 offset_right = 712.0
