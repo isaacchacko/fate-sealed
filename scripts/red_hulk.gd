@@ -5,13 +5,15 @@ extends CharacterBody2D
 @onready var ray: RayCast2D = $los_hulk_ray
 @onready var small_los_area: Area2D = $SmallLOSHulk
 
-
 @export var properties := ["global_position"]
 @export var los_y_offset: float = -16.0
+@onready var muzzle = $BombSpawn
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
-var state := "idle" # possibilities are: "idle", "chase", "return"
+var state := "idle"
 var player: Node2D = null
 
+var dirt_block_scene = preload("res://scenes/dirt_block.tscn") # Just preload, don't instantiate yet
 
 func _ready():
 	HistoryManager.register_node(self, properties, false)
@@ -19,10 +21,12 @@ func _ready():
 	large_los_area.body_exited.connect(_on_body_large_exited)
 	small_los_area.body_entered.connect(_on_body_small_entered)
 	small_los_area.body_exited.connect(_on_body_small_exited)
+	#shoot_cooldown_timer.timeout.connect(_on_shoot_cooldown_timeout)
 
 func _physics_process(delta):
 	if player and small_los_area.get_overlapping_bodies().has(player) and is_player_in_los():
 		state = "throw"
+		await get_tree().create_timer(3).timeout
 	elif player and large_los_area.get_overlapping_bodies().has(player):
 		state = "postSpotIdle"
 	match state:
@@ -34,12 +38,19 @@ func _physics_process(delta):
 			state = "postSpotIdle"
 		"postSpotIdle":
 			hulk.play("postSpotIdle")
+			await get_tree().create_timer(3).timeout
 		"throw":
-			throw_shit(delta)
+			hulk.play("throw")
+			throw_shit()
+			await get_tree().create_timer(3).timeout
+			state = "postSpotIdle" # Only throw once until state changes
 		"nighty":
 			hulk.play("nighty")
 			await hulk.animation_finished
 			state = "idle"
+
+	if Input.is_action_just_pressed("fire"):
+		throw_shit()
 
 func _on_body_entered(body):
 	player = body
@@ -48,18 +59,41 @@ func _on_body_entered(body):
 func _on_body_small_entered(body):
 	player = body
 	state = "throw"
+	
 
 func _on_body_small_exited(body):
 	if body == player:
 		state = "postSpotIdle"
-		
+
 func _on_body_large_exited(body):
 	if body == player:
 		state = "nighty"
 
-func throw_shit(delta):
-	pass
-# currently not used, would be useful if we ever want it to return to base
+func throw_shit():
+	# Flip hulk sprite to face player
+	if player.global_position.x > global_position.x:
+		hulk.flip_h = false
+	else:
+		hulk.flip_h = true
+
+	# Instance dirt block
+	var dirt_block = dirt_block_scene.instantiate()
+	# Start position: spawn from BombSpawn
+	dirt_block.pos = $BombSpawn.global_position
+	
+	await get_tree().create_timer(3).timeout
+
+	# Rotation: match current hulk rotation if desired, or set to angle
+	dirt_block.rota = rotation
+	# Compute direction in radians from dirt block spawn to player
+	var direction_angle = (player.global_position - dirt_block.pos).angle()
+	dirt_block.dir = direction_angle
+	# Make sure to play throw animation (requires the property/variable in your dirt_block script)
+	if dirt_block.has_node("AnimatedSprite2D"):
+		dirt_block.get_node("AnimatedSprite2D").play("throw")
+	# Add to scene
+	get_parent().add_child(dirt_block)
+
 func is_player_in_los() -> bool:
 	if not player:
 		return false
@@ -67,8 +101,3 @@ func is_player_in_los() -> bool:
 	ray.target_position = (player.global_position + Vector2(0, los_y_offset)) - global_position
 	ray.force_raycast_update()
 	return ray.is_colliding() and ray.get_collider() == player
-		
-		
-
-
-	

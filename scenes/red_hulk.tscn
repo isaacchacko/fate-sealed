@@ -287,22 +287,24 @@ animations = [{
 radius = 6.08276
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hasph"]
-radius = 175.183
+radius = 143.003
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_330le"]
-radius = 120.599
+radius = 94.0053
 
 [node name="RedHulk" type="CharacterBody2D"]
 collision_mask = 2
 script = ExtResource("1_330le")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -11)
 sprite_frames = SubResource("SpriteFrames_oaxlh")
-animation = &"idle"
+animation = &"wakey"
 autoplay = "idle"
+frame = 3
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 10)
 shape = SubResource("CircleShape2D_pymch")
 
 [node name="LargeLOSHulk" type="Area2D" parent="."]
@@ -310,7 +312,6 @@ collision_layer = 0
 collision_mask = 512
 
 [node name="LargeLOSHulk" type="CollisionShape2D" parent="LargeLOSHulk"]
-position = Vector2(1, 10)
 shape = SubResource("CircleShape2D_hasph")
 
 [node name="SmallLOSHulk" type="Area2D" parent="."]
@@ -320,9 +321,10 @@ collision_mask = 512
 [node name="SmallLOSHulk" type="CollisionShape2D" parent="SmallLOSHulk"]
 light_mask = 0
 visibility_layer = 512
-position = Vector2(1, 10)
 shape = SubResource("CircleShape2D_330le")
 
 [node name="los_hulk_ray" type="RayCast2D" parent="."]
-position = Vector2(1, 10)
 target_position = Vector2(39, 22)
+
+[node name="BombSpawn" type="Node2D" parent="."]
+position = Vector2(11, -11)
