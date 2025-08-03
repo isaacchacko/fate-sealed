@@ -120,7 +120,7 @@ func chase_player(delta: float):
 	if player and is_player_in_los():
 		if not ray_cast_down.is_colliding():
 			fall = 0.5
-			position.y += SPEED * delta * 3
+			position.y += SPEED * delta * 1.5
 		var x_direction = sign(player.global_position.x - global_position.x)
 		velocity.x = x_direction * chase_speed
 		velocity.y = 0  # Zero out vertical movement
