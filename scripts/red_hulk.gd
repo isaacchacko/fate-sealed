@@ -42,7 +42,7 @@ func _physics_process(delta):
 			hulk.play("postSpotIdle")
 			await get_tree().create_timer(3).timeout
 		"throw":
-			hulk.play("throw")
+			hulk.play("GroundPound")
 			throw_shit()
 			await get_tree().create_timer(3).timeout
 			state = "postSpotIdle" # Only throw once until state changes
@@ -50,9 +50,6 @@ func _physics_process(delta):
 			hulk.play("nighty")
 			await hulk.animation_finished
 			state = "idle"
-
-	if Input.is_action_just_pressed("fire"):
-		throw_shit()
 
 func _on_body_entered(body):
 	player = body

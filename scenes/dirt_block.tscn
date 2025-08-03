@@ -59,18 +59,19 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m38wc"]
-radius = 21.0
+radius = 9.05539
 
 [node name="DirtBlock" type="CharacterBody2D"]
-collision_layer = 0
+collision_layer = 8
+collision_mask = 4
 script = ExtResource("1_w6n7a")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 8)
-scale = Vector2(0.445313, 0.515625)
+position = Vector2(1, 7)
+scale = Vector2(0.207031, 0.28125)
 sprite_frames = SubResource("SpriteFrames_f530v")
 animation = &"explosion"
-frame_progress = 0.607451
+frame_progress = 0.763372
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_m38wc")

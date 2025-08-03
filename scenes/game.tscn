@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://cqmroqi28a6ev"]
 
-[ext_resource type="Script" uid="uid://db6ygwvad1irf" path="res://scripts/game.gd" id="1_gee14"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_gee14"]
 [ext_resource type="PackedScene" uid="uid://bxyndvqh2aqka" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://ci6d6qkrdp62a" path="res://icon.svg" id="1_yqjtg"]
 [ext_resource type="Texture2D" uid="uid://brioi1475dkep" path="res://assets/tileset.png" id="2_lbhrr"]
@@ -491,7 +491,7 @@ texture = ExtResource("3_iywne")
 3:11/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_lbhrr"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 5
 sources/0 = SubResource("TileSetAtlasSource_lnu2h")
 sources/1 = SubResource("TileSetAtlasSource_iywne")
 sources/2 = SubResource("TileSetAtlasSource_p57ef")
