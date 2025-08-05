@@ -88,18 +88,19 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func die():
-	is_dead = true
-	var deathY = global_position.y +162.5
-	$Camera2D.limit_bottom = deathY
-	animated_sprite_2d.play("Death")
-	velocity.y = death_jump_velocity
-	collision_layer = 0
-	collision_mask = 0
-	var timer = Timer.new()
-	print("you sssss balls")
-	await get_tree().create_timer(1).timeout	
-	HistoryManager.reset_all()
-	get_tree().reload_current_scene()
+	if not TimeControl.is_rewinding:
+		is_dead = true
+		var deathY = global_position.y +162.5
+		$Camera2D.limit_bottom = deathY
+		animated_sprite_2d.play("Death")
+		velocity.y = death_jump_velocity
+		collision_layer = 0
+		collision_mask = 0
+		var timer = Timer.new()
+		print("you sssss balls")
+		await get_tree().create_timer(1).timeout	
+		HistoryManager.reset_all()
+		get_tree().reload_current_scene()
 	
 
 func fire():
