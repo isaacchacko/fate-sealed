@@ -1,10 +1,31 @@
-This is a platformer game made in the engine Godot for GMTK 2025 by UTA(ustin)MU
+# Fate Sealed: GMTK Game Jam 2025
 
-Loop is the name of the game and we chose to go with an Outer Wilds inspired timeloop game. Outsmart your foes by running past them through time. While they're stuck in the past, you can change your actions and circumvent demise to reach the next level. Good Luck Dear traveler, I wish you luck.
+**This year's game jam theme is:** **Loop**!
 
-Devs: Boping Li, Allen Thomas, Isaac Chacko, William Lam, Andrew John, Ishaan Bansal, Ronil Shah
-Assets + Creatives:
-Annie Li
-Spikes by Omniclause
-SunnyLand by ansimuz
-RPG Type Retro by syvalia
+Made within 48 hours, _Fate Sealed_ is a puzzle-platformer inspired by games like _Braid_ and _Outer Wilds_, where the player can utilize fated time loops to dodge enemies and reach the portal.
+
+> _The world of **Fate Sealed** is full of deadly enemies that will hunt you down in an instant, and unfortunately you left your fists at home. But, using your ability to seal the fate of enemies around you, you can sneakily dodge their attacks, predict their movements, and even pit them against each other to progress through the levels._
+
+---
+
+## Credits
+
+### Development (alphabetically)
+
+- Ishaan Bansal
+- Isaac Chacko
+- Andrew John
+- William Lam
+- Boping Li
+- Ronil Shah
+- Allen Thomas
+
+### Creative Lead
+
+- Annie Li
+
+### Utilized Asset Packs
+
+- Spikes by Omniclause
+- SunnyLand by ansimuz
+- RPG Type Retro by syvalia
