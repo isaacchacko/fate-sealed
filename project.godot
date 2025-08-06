@@ -22,6 +22,11 @@ HistoryManager="*res://scripts/HistoryManager.gd"
 FreezeControl="*res://scripts/FreezeControl.gd"
 DeathManager="*res://scripts/death_manager.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
 [input]
 
 jump={
