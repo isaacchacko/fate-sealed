@@ -1,7 +1,7 @@
-[gd_scene load_steps=27 format=3 uid="uid://dkkgdb3sb1dhv"]
+[gd_scene load_steps=27 format=3 uid="uid://duu4brjatj88e"]
 
 [ext_resource type="Texture2D" uid="uid://v1pmrnwy7jad" path="res://assets/annie background.PNG" id="1_dnpru"]
-[ext_resource type="Script" uid="uid://cncmxoswaqexd" path="res://levels/lvl_3.gd" id="1_f2fpv"]
+[ext_resource type="Script" uid="uid://cncmxoswaqexd" path="res://lvl_3.gd" id="1_f2fpv"]
 [ext_resource type="PackedScene" uid="uid://cdiven56e6ams" path="res://scenes/death.tscn" id="2_f2fpv"]
 [ext_resource type="PackedScene" uid="uid://ctp03u07ktt5l" path="res://scenes/stopwatch.tscn" id="3_d5723"]
 [ext_resource type="Texture2D" uid="uid://ci6d6qkrdp62a" path="res://icon.svg" id="4_lvl5y"]
