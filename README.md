@@ -26,6 +26,10 @@ Made within 48 hours, _Fate Sealed_ is a puzzle-platformer inspired by games lik
 
 ### Utilized Asset Packs
 
-- Spikes by Omniclause
-- SunnyLand by ansimuz
-- RPG Type Retro by syvalia
+- [Spikes by Omniclause](https://omniclause.itch.io/spikes)
+- [SunnyLand by ansimuz](https://ansimuz.itch.io/sunny-land-pixel-game-art)
+- [RPG Type Retro by syvalia](https://syyvvalia.itch.io/rpg-type-retro-16x16-animated-speech-icons)
+
+### Fonts
+
+- [Yoster Island by codeman38](https://www.1001fonts.com/yoster-island-font.html)
