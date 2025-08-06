@@ -1,5 +1,9 @@
 # Fate Sealed: GMTK Game Jam 2025
 
+![Main Menu](https://raw.githubusercontent.com/isaacchacko/fate-sealed/5c25e7b68c7e9148ecdad46d529373a66e2395f6/screenshots/main_menu.png)
+![Level One](https://raw.githubusercontent.com/isaacchacko/fate-sealed/5c25e7b68c7e9148ecdad46d529373a66e2395f6/screenshots/level_one.png)
+![Level Three](https://raw.githubusercontent.com/isaacchacko/fate-sealed/5c25e7b68c7e9148ecdad46d529373a66e2395f6/screenshots/level_three.png)
+
 **This year's game jam theme is:** **Loop**!
 
 Made within 48 hours, _Fate Sealed_ is a puzzle-platformer inspired by games like _Braid_ and _Outer Wilds_, where the player can utilize fated time loops to dodge enemies and reach the portal.
