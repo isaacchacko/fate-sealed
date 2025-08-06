@@ -10,19 +10,19 @@ Made within 48 hours, _Fate Sealed_ is a puzzle-platformer inspired by games lik
 
 ## Credits
 
-### Development (alphabetically)
+### Development (alphabetically, by last name)
 
-- Ishaan Bansal
-- Isaac Chacko
-- Andrew John
-- William Lam
-- Boping Li
-- Ronil Shah
-- Allen Thomas
+- [Ishaan Bansal](https://github.com/IshaanBansal2006)
+- [Isaac Chacko](https://github.com/isaacchacko)
+- [Andrew John](https://github.com/a2g2j)
+- [William Lam](https://github.com/winterberrylavender)
+- [Boping Li](https://github.com/plokerno)
+- [Ronil Shah](https://github.com/ronilmshah)
+- [Allen Thomas](https://github.com/AllenA28)
 
 ### Creative Lead
 
-- Annie Li
+- [Annie Li](https://github.com/liannie3)
 
 ### Utilized Asset Packs
 
