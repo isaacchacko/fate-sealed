@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://muo5ectpltt5"]
+[gd_scene load_steps=24 format=3 uid="uid://muo5ectpltt5"]
 
 [ext_resource type="Script" uid="uid://cxgwakehq7okb" path="res://scripts/how_to.gd" id="1_gn1vk"]
 [ext_resource type="FontFile" uid="uid://ncehug2odtwn" path="res://assets/yoster-island.regular.ttf" id="1_h0xfg"]
@@ -6,9 +6,22 @@
 [ext_resource type="Texture2D" uid="uid://v1pmrnwy7jad" path="res://assets/annie background.PNG" id="2_qn720"]
 [ext_resource type="Texture2D" uid="uid://d10q58kdb0hjl" path="res://assets/eagle.png" id="3_qn720"]
 [ext_resource type="Texture2D" uid="uid://bo5srvhfqbcvl" path="res://assets/goomba.png" id="4_0cn6s"]
-[ext_resource type="Texture2D" uid="uid://x14rf6m25jd3" path="res://assets/ER_keys.png" id="5_yq5h1"]
 [ext_resource type="Texture2D" uid="uid://d6ag1wuxio4x" path="res://assets/arrow_keys.png" id="6_igyi7"]
+[ext_resource type="Texture2D" uid="uid://bp1lu0f0drdge" path="res://assets/E_key.png" id="7_yq5h1"]
 [ext_resource type="AudioStream" uid="uid://b0womi7diiioc" path="res://assets/Soundtrack.wav" id="9_0cn6s"]
+[ext_resource type="Texture2D" uid="uid://bf11cvjdmel8d" path="res://assets/R_key.png" id="9_igyi7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_igyi7"]
+bg_color = Color(0.2356, 0.29336, 0.38, 0.839216)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_blend = true
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
 
 [sub_resource type="FontVariation" id="FontVariation_tvv6t"]
 base_font = ExtResource("1_h0xfg")
@@ -26,10 +39,13 @@ texture = ExtResource("4_0cn6s")
 region_rect = Rect2(22.6867, 26.4584, 33.8843, 32.2314)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ry6gc"]
-texture = ExtResource("5_yq5h1")
+texture = ExtResource("7_yq5h1")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2xsv5"]
 texture = ExtResource("6_igyi7")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g425p"]
+texture = ExtResource("9_igyi7")
 
 [sub_resource type="FontVariation" id="FontVariation_qn720"]
 base_font = ExtResource("1_h0xfg")
@@ -67,80 +83,135 @@ shadow_offset = Vector2(0, 3)
 script = ExtResource("1_gn1vk")
 
 [node name="AnnieBackground" type="Sprite2D" parent="."]
-position = Vector2(774, 399)
+position = Vector2(1.43051e-06, 0)
+scale = Vector2(0.600926, 0.600926)
 texture = ExtResource("2_qn720")
+centered = false
 
-[node name="Label" type="Label" parent="."]
-offset_left = 24.0
-offset_top = 18.0
-offset_right = 1051.0
-offset_bottom = 633.0
+[node name="Instructions" type="Panel" parent="."]
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 0.622
+anchor_bottom = 0.5
+offset_left = 58.0
+offset_top = 48.0
+offset_right = 1109.0
+offset_bottom = 607.0
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_igyi7")
+
+[node name="Label" type="Label" parent="Instructions"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -512.5
+offset_top = -304.5
+offset_right = 514.5
+offset_bottom = 310.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_tvv6t")
 theme_override_font_sizes/font_size = 25
-text = "Walk with [left] and [right] and jump with the [up arrow]
+text = "Use the [b]arrow keys[/b] to move and jump.
 
-You will face three enemies, a [Goonba], [Eagle], [Red hulk]
+You will face three enemies in this forest: the [Goonba], [Eagle] and [Red Hulk].
 
-          The [Goonba] will walk back and forth, until the player enters his smell range!
+          The [Goonba] will walk back and forth until the player enters his smell range.
 
 
           The [Eagle] will idle in the sky and dive when you enter his view.
 
 
-          The [Red hulk] won’t chase you but still be careful entering his line of sight 👀
+          The [Red Hulk] won’t chase you—but still be careful entering his line of sight 👀
 
 
-Rewind time to retry challenges and find creative approaches. Seal enemy movements–after you rewind, you’re free to move as you please, but they are stuck to their previous actions. Use these powers to solve puzzles and outsmart your foes.
-
-[E] to Seal and [R] to Rewind"
+Rewind time to retry challenges and find creative approaches. Freeze time with [E] and seal enemy movements by [clicking] on them—after you rewind with [R], you’re free to move as you please, but they are stuck to their previous actions. Use these powers to solve puzzles and outsmart your foes."
 autowrap_mode = 3
 
+[node name="RichTextLabel" type="RichTextLabel" parent="Instructions"]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 55.0
+offset_right = 1006.0
+offset_bottom = 541.0
+theme_override_constants/line_separation = 1
+theme_override_fonts/normal_font = ExtResource("1_h0xfg")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "You’ve been sealed into this forest, forced to repeat your escape until you find the true path out.
+
+Use                     to move and jump. 
+Freeze time with        (E key) and seal enemies by clicking on them while time is stopped. 
+After you rewind time with       (R key), you’re free to move as you please, but sealed enemies are locked into repeating their previous actions.
+
+You will face three enemies here: the  [Goonba] ,  [Eagle]  and  [Red Hulk] .
+
+          The  [Goonba]  will walk back and forth until the player enters his smell range.
+
+          The  [Eagle]  will idle in the sky and dive when you enter his view.
+
+          The [Red Hulk] won’t chase you—but still be careful entering his line of sight 👀
+
+Use your powers to outsmart your foes. Rewind time to retry challenges and find creative approaches. "
+
 [node name="Panel4" type="Panel" parent="."]
-offset_left = 30.0
-offset_top = 314.0
-offset_right = 99.0
-offset_bottom = 373.0
+offset_left = 107.0
+offset_top = 398.0
+offset_right = 176.0
+offset_bottom = 457.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_3f162")
 
 [node name="Panel5" type="Panel" parent="."]
-offset_left = 29.0
-offset_top = 232.0
-offset_right = 95.0
-offset_bottom = 297.0
+offset_left = 110.0
+offset_top = 351.0
+offset_right = 176.0
+offset_bottom = 416.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_sy4f0")
 
 [node name="Panel3" type="Panel" parent="."]
-offset_left = 29.0
-offset_top = 117.0
-offset_right = 96.0
-offset_bottom = 178.0
+offset_left = 110.0
+offset_top = 310.0
+offset_right = 177.0
+offset_bottom = 371.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_hrnft")
 
-[node name="Panel2" type="Panel" parent="."]
-offset_left = 470.0
-offset_top = 601.0
-offset_right = 550.0
-offset_bottom = 641.0
+[node name="Panel6" type="Panel" parent="."]
+offset_left = 295.0
+offset_top = 192.0
+offset_right = 329.0
+offset_bottom = 225.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_ry6gc")
 
 [node name="Panel" type="Panel" parent="."]
-offset_left = 867.0
-offset_top = 16.0
-offset_right = 1028.0
-offset_bottom = 56.0
+offset_left = 157.0
+offset_top = 164.0
+offset_right = 282.0
+offset_bottom = 195.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_2xsv5")
 
+[node name="Panel7" type="Panel" parent="."]
+offset_left = 405.0
+offset_top = 221.0
+offset_right = 435.0
+offset_bottom = 251.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_g425p")
+
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-position = Vector2(790, 582)
+position = Vector2(585, 437)
 stream = ExtResource("9_0cn6s")
 autoplay = true
 
 [node name="return_main" type="Button" parent="."]
-offset_left = 809.0
-offset_top = 595.0
-offset_right = 1134.0
-offset_bottom = 629.0
+offset_left = 420.0
+offset_top = 544.0
+offset_right = 735.0
+offset_bottom = 577.0
 size_flags_vertical = 3
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
