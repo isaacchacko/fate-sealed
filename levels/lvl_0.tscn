@@ -1,6 +1,6 @@
 [gd_scene load_steps=27 format=3 uid="uid://cemn4miyoetse"]
 
-[ext_resource type="Script" uid="uid://c486ijug8vut1" path="res://lvl_0.gd" id="1_y03ah"]
+[ext_resource type="Script" uid="uid://ct7m64cfnr3ol" path="res://lvl_0.gd" id="1_y03ah"]
 [ext_resource type="Texture2D" uid="uid://v1pmrnwy7jad" path="res://assets/annie background.PNG" id="2_nl6k2"]
 [ext_resource type="PackedScene" uid="uid://cdiven56e6ams" path="res://scenes/death.tscn" id="3_ra1yw"]
 [ext_resource type="PackedScene" uid="uid://ctp03u07ktt5l" path="res://scenes/stopwatch.tscn" id="4_jumvi"]
@@ -807,7 +807,7 @@ base_font = ExtResource("14_nl6k2")
 script = ExtResource("1_y03ah")
 
 [node name="AnnieBackground2" type="Sprite2D" parent="."]
-position = Vector2(-45, -283)
+position = Vector2(-46, -267)
 texture = ExtResource("2_nl6k2")
 
 [node name="death" parent="." instance=ExtResource("3_ra1yw")]
@@ -851,21 +851,24 @@ position = Vector2(137, -21)
 position = Vector2(-253, -251)
 
 [node name="Label" type="Label" parent="."]
-offset_left = -232.0
-offset_top = -77.0
-offset_right = 54.0
-offset_bottom = -30.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+offset_left = -220.0
+offset_top = -94.0
+offset_right = 66.0
+offset_bottom = -47.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.0941176, 0.0941176, 0.333333, 1)
 theme_override_fonts/font = SubResource("FontVariation_ra1yw")
+theme_override_font_sizes/font_size = 15
 text = "Bait the Goonba over and seal him to ride him after you rewind!"
 autowrap_mode = 3
 
 [node name="Label2" type="Label" parent="."]
-offset_left = -281.0
-offset_top = 3.0
-offset_right = 5.0
-offset_bottom = 50.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+offset_left = -296.0
+offset_top = 6.0
+offset_right = -10.0
+offset_bottom = 53.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.0941176, 0.0941176, 0.333333, 1)
 theme_override_fonts/font = SubResource("FontVariation_ra1yw")
 text = "Level 1: The Beginning!"
 autowrap_mode = 3

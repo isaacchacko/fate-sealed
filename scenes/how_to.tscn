@@ -13,15 +13,14 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_igyi7"]
 bg_color = Color(0.2356, 0.29336, 0.38, 0.839216)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_blend = true
-corner_radius_top_left = 30
-corner_radius_top_right = 30
-corner_radius_bottom_right = 30
-corner_radius_bottom_left = 30
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [sub_resource type="FontVariation" id="FontVariation_tvv6t"]
 base_font = ExtResource("1_h0xfg")
@@ -93,9 +92,9 @@ anchors_preset = -1
 anchor_top = 0.5
 anchor_right = 0.622
 anchor_bottom = 0.5
-offset_left = 58.0
+offset_left = 55.0
 offset_top = 48.0
-offset_right = 1109.0
+offset_right = 1106.0
 offset_bottom = 607.0
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -161,24 +160,24 @@ You will face three enemies here: the  [Goonba] ,  [Eagle]  and  [Red Hulk] .
 Use your powers to outsmart your foes. Rewind time to retry challenges and find creative approaches. "
 
 [node name="Panel4" type="Panel" parent="."]
-offset_left = 107.0
-offset_top = 398.0
-offset_right = 176.0
-offset_bottom = 457.0
+offset_left = 106.0
+offset_top = 413.0
+offset_right = 175.0
+offset_bottom = 472.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_3f162")
 
 [node name="Panel5" type="Panel" parent="."]
-offset_left = 110.0
-offset_top = 351.0
-offset_right = 176.0
-offset_bottom = 416.0
+offset_left = 108.0
+offset_top = 361.0
+offset_right = 174.0
+offset_bottom = 426.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_sy4f0")
 
 [node name="Panel3" type="Panel" parent="."]
-offset_left = 110.0
-offset_top = 310.0
-offset_right = 177.0
-offset_bottom = 371.0
+offset_left = 108.0
+offset_top = 315.0
+offset_right = 175.0
+offset_bottom = 376.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_hrnft")
 
 [node name="Panel6" type="Panel" parent="."]

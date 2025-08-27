@@ -797,7 +797,8 @@ base_font = ExtResource("14_5r2gw")
 script = ExtResource("1_uhlj1")
 
 [node name="AnnieBackground" type="Sprite2D" parent="."]
-position = Vector2(-140, -225)
+position = Vector2(-170, -188)
+scale = Vector2(0.894444, 0.894444)
 texture = ExtResource("2_47r3p")
 
 [node name="death" parent="." instance=ExtResource("2_pfr74")]
@@ -867,11 +868,13 @@ stream = ExtResource("14_uhlj1")
 autoplay = true
 
 [node name="Label" type="Label" parent="."]
-offset_left = -161.0
-offset_top = 1.0
-offset_right = 125.0
-offset_bottom = 48.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+offset_left = -158.0
+offset_top = 2.0
+offset_right = 128.0
+offset_bottom = 49.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.0941176, 0.0941176, 0.333333, 1)
 theme_override_fonts/font = SubResource("FontVariation_uhlj1")
+theme_override_font_sizes/font_size = 15
 text = "Level 2: A Hawk Too? AHHH"
 autowrap_mode = 3

@@ -798,8 +798,8 @@ base_font = ExtResource("13_x5akk")
 script = ExtResource("1_f2fpv")
 
 [node name="AnnieBackground" type="Sprite2D" parent="."]
-position = Vector2(-114, -530)
-scale = Vector2(1.05677, 1.37315)
+position = Vector2(-141.5, -530)
+scale = Vector2(1.36823, 1.37315)
 texture = ExtResource("1_dnpru")
 
 [node name="stopwatch" parent="." instance=ExtResource("3_d5723")]
@@ -847,34 +847,38 @@ position = Vector2(573, 321)
 position = Vector2(-104, -952)
 
 [node name="Label" type="Label" parent="."]
-offset_left = -550.0
+offset_left = -584.0
 offset_top = -587.0
-offset_right = -344.0
+offset_right = -378.0
 offset_bottom = -540.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.0941176, 0.0941176, 0.333333, 1)
 theme_override_fonts/font = SubResource("FontVariation_lky5u")
-text = "If you get stuck dont forget about rewind!"
+theme_override_font_sizes/font_size = 16
+text = "If you get stuck don't forget about rewind!"
 autowrap_mode = 3
 
 [node name="Label2" type="Label" parent="."]
-offset_left = 134.0
+offset_left = 156.0
 offset_top = -583.0
-offset_right = 318.0
+offset_right = 375.0
 offset_bottom = -536.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.0941176, 0.0941176, 0.333333, 1)
 theme_override_fonts/font = SubResource("FontVariation_lky5u")
-theme_override_font_sizes/font_size = 14
-text = "If you get stuck dont forget about rewind!"
+theme_override_font_sizes/font_size = 16
+text = "If you get stuck don't forget about rewind!"
 autowrap_mode = 3
 
 [node name="Label3" type="Label" parent="."]
 offset_left = -516.0
-offset_top = -882.0
+offset_top = -881.0
 offset_right = -310.0
-offset_bottom = -835.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+offset_bottom = -834.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.0941176, 0.0941176, 0.333333, 1)
 theme_override_fonts/font = SubResource("FontVariation_lky5u")
-text = "Level 3: Wheeee!"
+text = "Level 4: Wheeee!"
 autowrap_mode = 3
 
 [node name="RedHulk3" parent="." instance=ExtResource("11_uwbca")]

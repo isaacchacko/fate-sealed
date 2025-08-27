@@ -867,23 +867,26 @@ position = Vector2(-262, 123)
 position = Vector2(-218, -108)
 
 [node name="Label" type="Label" parent="."]
-offset_left = -13.0
-offset_top = -435.0
-offset_right = 81.0
-offset_bottom = -388.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+offset_left = -16.0
+offset_top = -433.0
+offset_right = 78.0
+offset_bottom = -386.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.0941176, 0.0941176, 0.333333, 1)
+theme_override_constants/line_spacing = 0
 theme_override_fonts/font = SubResource("FontVariation_goj7v")
 text = "Level 3: Learning"
 autowrap_mode = 3
 
 [node name="Label2" type="Label" parent="."]
-offset_left = 242.0
-offset_top = 176.0
-offset_right = 528.0
-offset_bottom = 223.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+offset_left = 244.0
+offset_top = 178.0
+offset_right = 472.0
+offset_bottom = 225.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.0941176, 0.0941176, 0.333333, 1)
 theme_override_fonts/font = SubResource("FontVariation_goj7v")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 13
 text = "Genuinley crazy you got this far this was hella hard for us"
 autowrap_mode = 3
 
