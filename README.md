@@ -1,14 +1,13 @@
 # Fate Sealed: GMTK Game Jam 2025
 
-![Main Menu](https://raw.githubusercontent.com/isaacchacko/fate-sealed/5c25e7b68c7e9148ecdad46d529373a66e2395f6/screenshots/main_menu.png)
-![Level One](https://raw.githubusercontent.com/isaacchacko/fate-sealed/5c25e7b68c7e9148ecdad46d529373a66e2395f6/screenshots/level_one.png)
-![Level Three](https://raw.githubusercontent.com/isaacchacko/fate-sealed/5c25e7b68c7e9148ecdad46d529373a66e2395f6/screenshots/level_three.png)
+![Main Menu](https://raw.githubusercontent.com/isaacchacko/fate-sealed/main/screenshots/main_menu.png)
+![Level One](https://raw.githubusercontent.com/isaacchacko/fate-sealed/main/screenshots/level_one.png)
 
 **This year's game jam theme is:** **Loop**!
 
-Made within 48 hours, _Fate Sealed_ is a puzzle-platformer inspired by games like _Braid_ and _Outer Wilds_, where the player can utilize fated time loops to dodge enemies and reach the portal.
+Made within 48 hours, _Fate Sealed_ is a puzzle-platformer inspired by games like _Braid_ and _Outer Wilds_, where the player can utilize time loops to dodge enemies and reach the portal at the end of every level.
 
-> _The world of **Fate Sealed** is full of deadly enemies that will hunt you down in an instant, and unfortunately you left your fists at home. But, using your ability to seal the fate of enemies around you, you can sneakily dodge their attacks, predict their movements, and even pit them against each other to progress through the levels._
+> _The world of **Fate Sealed** is full of deadly enemies that will hunt you down in an instant, and unfortunately you left your fists at home. But, using your ability to seal the fate of enemies around you, you can sneakily predict their movements, dodge their attacks and even pit them against each other to progress through the levels.
 
 ---
 
@@ -28,7 +27,7 @@ Made within 48 hours, _Fate Sealed_ is a puzzle-platformer inspired by games lik
 
 - [Annie Li](https://github.com/liannie3)
 
-### Utilized Asset Packs
+### Asset Packs Used
 
 - [Spikes by Omniclause](https://omniclause.itch.io/spikes)
 - [SunnyLand by ansimuz](https://ansimuz.itch.io/sunny-land-pixel-game-art)
